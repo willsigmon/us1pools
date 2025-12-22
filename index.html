@@ -3,14 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>US-1 Pools | Modern Pool Design, Build, and Care</title>
-  <meta name="description" content="A modern take on US-1 Pools: design-forward pools, smart renovations, and attentive service for everyday life outside." />
+  <title>US-1 Pools | Sales, Service & Installation</title>
+  <meta name="description" content="Sales, Service & Installation — US-1 Pools does it all. Pool sales, installs, service, and retail in Franklinton and the Triangle." />
+  <meta name="keywords" content="US-1 Pools, Franklinton pools, above ground pools, in-ground pools, hot tubs, pool service, Wake Forest, Triangle" />
+  <meta property="og:title" content="US-1 Pools | The Triangle's Premier Pool Experts" />
+  <meta property="og:description" content="Sales, Service & Installation — US-1 Pools does it all across Franklinton, Wake Forest, and the Triangle." />
+  <meta property="og:image" content="assets/images/hero.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="US-1 Pools | The Triangle's Premier Pool Experts" />
+  <meta name="twitter:description" content="Sales, Service & Installation — US-1 Pools does it all across Franklinton, Wake Forest, and the Triangle." />
+  <meta name="twitter:image" content="assets/images/hero.webp" />
+  <link rel="canonical" href="https://www.us1pools.com/" />
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/images/hero.webp" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body data-page="home">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <div class="bg-orb orb-1" aria-hidden="true"></div>
@@ -19,19 +30,39 @@
 
   <header class="site-header" id="top">
     <div class="container header-inner">
-      <div class="brand">
-        <span class="brand-mark"></span>
+      <a class="brand" href="index.html">
+        <img src="assets/images/logo.png" alt="US-1 Pools logo" />
         <span class="brand-name">US-1 Pools</span>
-      </div>
+      </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
       <nav class="nav-links" id="nav-links">
-        <a href="#services">Services</a>
-        <a href="#projects">Projects</a>
-        <a href="#process">Process</a>
-        <a href="#clinic">Pool Clinic</a>
-        <a href="#contact">Contact</a>
+        <div class="nav-primary">
+          <a class="nav-link" href="index.html" data-page-link="home">Home</a>
+          <a class="nav-link" href="about.html" data-page-link="about">About</a>
+          <div class="nav-dropdown">
+            <a class="nav-link" href="pools.html" data-page-link="pools">Pools & Spas</a>
+            <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="dropdown-pools">
+              <span class="sr-only">Toggle Pools & Spas menu</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="dropdown-menu" id="dropdown-pools">
+              <a href="pools.html">Overview</a>
+              <a href="above-ground.html">Above Ground</a>
+              <a href="in-ground.html">In-Ground</a>
+              <a href="hot-tubs.html">Hot Tubs & Spas</a>
+            </div>
+          </div>
+          <a class="nav-link" href="gallery.html" data-page-link="gallery">Gallery</a>
+          <a class="nav-link" href="services.html" data-page-link="services">Services</a>
+          <a class="nav-link" href="contact.html" data-page-link="contact">Contact</a>
+        </div>
+        <div class="nav-actions">
+          <a class="nav-phone" href="tel:9194410033">919.441.0033</a>
+          <a class="btn btn-primary" href="contact.html">Get Quote</a>
+        </div>
       </nav>
-      <a class="btn btn-primary" href="#contact">Start a Project</a>
     </div>
   </header>
 
@@ -39,224 +70,243 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Design forward. Built for the long swim.</p>
-          <h1>Modern pools made for real life outside.</h1>
-          <p class="lead">A reimagined US-1 Pools experience focused on clean lines, seamless outdoor living, and a smarter, calmer build process.</p>
+          <div class="hero-badge">
+            <img src="assets/images/award.png" alt="Best of the Best award" />
+            <span>2023 Best of the Best</span>
+          </div>
+          <p class="eyebrow">Sales, Service & Installation</p>
+          <h1>The Triangle's premier aquatic experts.</h1>
+          <p class="lead">US-1 Pools does it all — from above-ground installs to custom in-ground builds, plus retail support, service plans, and water care.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact">Get a Custom Quote</a>
-            <a class="btn btn-ghost" href="#projects">View the Work</a>
+            <a class="btn btn-primary is-glow" href="contact.html">Get a Custom Quote</a>
+            <a class="btn btn-ghost" href="pools.html">Explore Pools</a>
           </div>
           <div class="hero-highlights">
             <div class="highlight">
-              <span>Design + Build</span>
-              <p>Architectural layouts, finishes, and smart circulation.</p>
+              <span>Family owned</span>
+              <p>Local team focused on honest service and clean installs.</p>
             </div>
             <div class="highlight">
-              <span>Remodel + Refresh</span>
-              <p>Resurfacing, tile, coping, and energy-efficient upgrades.</p>
+              <span>NC licensed</span>
+              <p>Certified professionals with experience across residential and commercial work.</p>
             </div>
             <div class="highlight">
-              <span>Service Plans</span>
-              <p>Weekly care, seasonal checks, and proactive fixes.</p>
+              <span>Full-service shop</span>
+              <p>Sales, installs, maintenance, and retail equipment in one place.</p>
             </div>
           </div>
         </div>
-        <div class="hero-visual" aria-hidden="true">
-          <div class="wave-card">
-            <div class="wave-top"></div>
-            <div class="wave-content">
-              <h3>Outside, upgraded.</h3>
-              <p>Pool, patio, lighting, and outdoor kitchen in one plan.</p>
-              <div class="chip-row">
-                <span class="chip">Salt systems</span>
-                <span class="chip">LED lighting</span>
-                <span class="chip">Heaters</span>
-                <span class="chip">Automation</span>
-              </div>
+        <div class="hero-media" aria-hidden="true">
+          <figure class="image-card">
+            <img src="assets/images/hero.webp" alt="" loading="eager" fetchpriority="high" />
+            <span class="image-caption">Custom in-ground builds</span>
+            <div class="image-overlay">
+              <img src="assets/images/nc-licensed.png" alt="" />
+              <span>NC Licensed</span>
             </div>
-          </div>
-          <div class="stat-row">
-            <div class="stat">
-              <strong>Residential</strong>
-              <span>Custom builds + makeovers</span>
-            </div>
-            <div class="stat">
-              <strong>Commercial</strong>
-              <span>HOAs, hotels, and community pools</span>
-            </div>
-            <div class="stat">
-              <strong>Outdoor Living</strong>
-              <span>Kitchens, fireplaces, and hardscape</span>
-            </div>
-          </div>
+          </figure>
+          <figure class="image-card">
+            <img src="assets/images/hero-secondary.webp" alt="" loading="lazy" />
+            <span class="image-caption">Above-ground installs</span>
+          </figure>
+        </div>
+      </div>
+      <div class="container trust-bar">
+        <div class="trust-item">
+          <strong>Quality guaranteed</strong>
+          <p>Thoughtful installs backed by a team that answers the phone.</p>
+        </div>
+        <div class="trust-item">
+          <strong>Shark-smart pricing</strong>
+          <p>Great value without the bite.</p>
+        </div>
+        <div class="trust-item">
+          <strong>Financing options</strong>
+          <p>Ask about LightStream and HFS programs.</p>
+        </div>
+        <div class="trust-item">
+          <strong>Service area</strong>
+          <p>Franklinton, Wake Forest, and the Triangle.</p>
         </div>
       </div>
     </section>
 
-    <section class="section reveal" id="services">
+    <section class="section reveal" id="pools">
       <div class="container">
         <div class="section-head">
           <div>
-            <p class="eyebrow">Services</p>
-            <h2>Everything you need for a smarter pool.</h2>
+            <p class="eyebrow">Pools & Spas</p>
+            <h2>Find your perfect pool.</h2>
           </div>
-          <p class="section-sub">From first sketch to long-term care, US-1 Pools keeps the experience consistent, clear, and beautifully executed.</p>
+          <p class="section-sub">Above-ground, in-ground, and hot tubs backed by trusted brands like Imagine Fiberglass, Pools by Genesis, Tranquility, and Garden Leisure.</p>
         </div>
 
         <div class="card-grid">
           <article class="service-card">
-            <h3>Design + Build</h3>
-            <p>Collaborative design, 3D layouts, and finish palettes that fit your space.</p>
+            <h3>Above Ground</h3>
+            <p>Vinyl liner and resin systems with optional deck packages.</p>
+            <div class="model-list">
+              <span class="model-chip">Genesis</span>
+              <span class="model-chip">Nakoma</span>
+              <span class="model-chip">Discovery</span>
+            </div>
+            <a class="btn btn-ghost" href="above-ground.html">View options</a>
           </article>
           <article class="service-card">
-            <h3>Renovation</h3>
-            <p>Full refreshes that modernize tile, coping, decking, and waterline detail.</p>
+            <h3>In-Ground</h3>
+            <p>Fiberglass pools with modern finishes and smart systems.</p>
+            <div class="model-list">
+              <span class="model-chip">Imagine Fiberglass</span>
+              <span class="model-chip">Pools by Genesis</span>
+            </div>
+            <a class="btn btn-ghost" href="in-ground.html">See builds</a>
           </article>
           <article class="service-card">
-            <h3>Resurfacing</h3>
-            <p>New plaster, pebble, or quartz finishes with improved durability.</p>
-          </article>
-          <article class="service-card">
-            <h3>Equipment Upgrades</h3>
-            <p>Automation, heaters, pumps, filters, and energy-smart controls.</p>
-          </article>
-          <article class="service-card">
-            <h3>Weekly Service</h3>
-            <p>Consistent chemistry, cleaning, and preventive maintenance.</p>
-          </article>
-          <article class="service-card">
-            <h3>Outdoor Living</h3>
-            <p>Outdoor kitchens, fireplaces, and living zones that flow with the pool.</p>
+            <h3>Hot Tubs & Spas</h3>
+            <p>Stand-alone or integrated spas for year-round relaxation.</p>
+            <div class="model-list">
+              <span class="model-chip">Tranquility</span>
+              <span class="model-chip">Garden Leisure</span>
+            </div>
+            <a class="btn btn-ghost" href="hot-tubs.html">Explore spas</a>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section split reveal" id="projects">
+    <section class="section split reveal" id="services">
       <div class="container">
         <div class="section-head">
           <div>
-            <p class="eyebrow">Featured work</p>
-            <h2>Signature builds with coastal calm.</h2>
+            <p class="eyebrow">Service & Maintenance</p>
+            <h2>Keep your pool running smoothly.</h2>
           </div>
-          <p class="section-sub">A clean, timeless palette that still feels bold. Every project is built to move water, light, and air with ease.</p>
+          <p class="section-sub">From openings and closings to liner changes and equipment installs, our service team keeps everything in sync.</p>
         </div>
 
-        <div class="project-grid">
-          <article class="project-card">
-            <div class="project-image project-a"></div>
-            <div class="project-body">
-              <h3>Glassline Modern</h3>
-              <p>Geometric lap pool with floating steps and inset spa.</p>
+        <div class="content-grid">
+          <div class="list-grid">
+            <div class="list-card">
+              <h3>Openings & closings</h3>
+              <p>Seasonal prep, balancing, and protection.</p>
             </div>
+            <div class="list-card">
+              <h3>Sand changes</h3>
+              <p>Filter performance and water clarity upgrades.</p>
+            </div>
+            <div class="list-card">
+              <h3>Equipment installs</h3>
+              <p>Pumps, filters, heaters, and automation systems.</p>
+            </div>
+            <div class="list-card">
+              <h3>Liner changes</h3>
+              <p>Vinyl liner replacements and leak fixes.</p>
+            </div>
+            <a class="btn btn-primary" href="services.html">See all services</a>
+          </div>
+          <div class="image-card">
+            <img src="assets/images/gallery-04.webp" alt="" loading="lazy" />
+            <span class="image-caption">Service-ready systems</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="retail">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Retail + Water Care</p>
+            <h2>Everything for the pool — in one stop.</h2>
+          </div>
+          <p class="section-sub">Chemicals, toys, automatic cleaners, and chlorine alternatives like oxygen pools and salt-based systems.</p>
+        </div>
+
+        <div class="card-grid">
+          <article class="service-card">
+            <h3>Water testing</h3>
+            <p>Bring a sample in and leave with a plan.</p>
           </article>
-          <article class="project-card">
-            <div class="project-image project-b"></div>
-            <div class="project-body">
-              <h3>Dune Retreat</h3>
-              <p>Soft curves, beach entry, and layered outdoor living.</p>
-            </div>
+          <article class="service-card">
+            <h3>Oxygen + salt systems</h3>
+            <p>Chlorine alternatives with a softer water feel.</p>
           </article>
-          <article class="project-card">
-            <div class="project-image project-c"></div>
-            <div class="project-body">
-              <h3>Courtyard Social</h3>
-              <p>Compact footprint with statement lighting and fire feature.</p>
-            </div>
+          <article class="service-card">
+            <h3>Automatic cleaners</h3>
+            <p>Robotic and pressure cleaners for every pool type.</p>
+          </article>
+          <article class="service-card">
+            <h3>Chemical concierge</h3>
+            <p>Delivery and support for regular chemical needs.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section reveal" id="process">
-      <div class="container process-grid">
+    <section class="section split reveal" id="why-us">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Why US-1 Pools</p>
+            <h2>Quality, pricing, and pro installs.</h2>
+          </div>
+          <p class="section-sub">We keep the process simple: honest pricing, experienced installers, and a team that sticks around after the build.</p>
+        </div>
+        <div class="card-grid">
+          <article class="service-card">
+            <h3>Quality guaranteed</h3>
+            <p>Materials and installs you can count on.</p>
+          </article>
+          <article class="service-card">
+            <h3>Shark-smart pricing</h3>
+            <p>Transparent pricing without the bite.</p>
+          </article>
+          <article class="service-card">
+            <h3>Pro installation</h3>
+            <p>Experienced crews and clear timelines.</p>
+          </article>
+          <article class="service-card">
+            <h3>Free water testing</h3>
+            <p>Lab-style testing every time you visit.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="team">
+      <div class="container content-grid">
         <div>
-          <p class="eyebrow">Process</p>
-          <h2>Clear steps, calm builds.</h2>
-          <p class="section-sub">We keep the timeline clean with clear milestones, transparent selections, and a single point of contact.</p>
+          <p class="eyebrow">Our Team</p>
+          <h2>Local experts, hands-on leadership.</h2>
+          <p class="section-sub">Owners Shayne and Cathy Parrish are CPO certified and have been in the pool industry since 1986.</p>
+          <div class="badge-row">
+            <span class="badge"><img src="assets/images/nc-licensed.png" alt="" /> NC Licensed</span>
+            <span class="badge">CPO Certified</span>
+            <span class="badge">Founded 2015</span>
+          </div>
         </div>
-        <ol class="process-steps">
-          <li>
-            <h3>Discover</h3>
-            <p>Site walk, inspiration, and a scoped proposal built around your goals.</p>
-          </li>
-          <li>
-            <h3>Design</h3>
-            <p>Layout, materials, and finish selections that align with your home.</p>
-          </li>
-          <li>
-            <h3>Build</h3>
-            <p>Structured project management and weekly updates to stay aligned.</p>
-          </li>
-          <li>
-            <h3>Care</h3>
-            <p>Service plans and equipment support to keep everything running strong.</p>
-          </li>
-        </ol>
+        <div class="image-card">
+          <img src="assets/images/team.webp" alt="US-1 Pools leadership team" loading="lazy" />
+          <span class="image-caption">Family owned and operated</span>
+        </div>
       </div>
     </section>
 
-    <section class="section clinic reveal" id="clinic">
+    <section class="section reveal" id="visit">
       <div class="container clinic-card">
         <div>
-          <p class="eyebrow">Pool Clinic</p>
-          <h2>Smarter maintenance without the mystery.</h2>
-          <p class="section-sub">Our Pool Clinic is a modern service membership for owners who want proactive maintenance, expert check-ins, and a stable water profile year-round.</p>
+          <p class="eyebrow">Visit the showroom</p>
+          <h2>Franklinton based. Triangle focused.</h2>
+          <p class="section-sub">Stop by our Franklinton location for water testing, retail supplies, or to talk through a new build.</p>
         </div>
         <div class="clinic-details">
           <ul>
-            <li>Monthly system audit and performance report</li>
-            <li>Priority scheduling for repairs and equipment</li>
-            <li>Seasonal water balancing and filter care</li>
+            <li>3453 US Hwy 1 South, Franklinton, NC 27525</li>
+            <li>Closed for winter — call for appointments</li>
+            <li>Primary: 919.441.0033 · Secondary: 919.864.0277</li>
           </ul>
-          <a class="btn btn-secondary" href="#contact">Ask About Pool Clinic</a>
+          <a class="btn btn-secondary" href="contact.html">Plan a visit</a>
         </div>
-      </div>
-    </section>
-
-    <section class="section contact reveal" id="contact">
-      <div class="container contact-grid">
-        <div>
-          <p class="eyebrow">Contact</p>
-          <h2>Tell us about your space.</h2>
-          <p class="section-sub">Share a few details and we will guide the next steps. We reply within two business days.</p>
-          <div class="contact-cards">
-            <div>
-              <h4>Project types</h4>
-              <p>New builds, renovations, and outdoor living upgrades.</p>
-            </div>
-            <div>
-              <h4>Service</h4>
-              <p>Weekly cleaning, water balancing, and equipment support.</p>
-            </div>
-          </div>
-        </div>
-        <form class="contact-form">
-          <label>
-            Full name
-            <input type="text" name="name" placeholder="Your name" />
-          </label>
-          <label>
-            Email address
-            <input type="email" name="email" placeholder="you@email.com" />
-          </label>
-          <label>
-            Project type
-            <select name="project">
-              <option value="">Select one</option>
-              <option>New build</option>
-              <option>Renovation</option>
-              <option>Weekly service</option>
-              <option>Equipment upgrade</option>
-              <option>Outdoor living</option>
-            </select>
-          </label>
-          <label>
-            Tell us about your space
-            <textarea name="details" rows="4" placeholder="Location, timeline, and goals"></textarea>
-          </label>
-          <button class="btn btn-primary" type="submit">Send project details</button>
-        </form>
       </div>
     </section>
   </main>
@@ -265,21 +315,26 @@
     <div class="container footer-inner">
       <div>
         <div class="brand">
-          <span class="brand-mark"></span>
+          <img src="assets/images/logo.png" alt="US-1 Pools logo" />
           <span class="brand-name">US-1 Pools</span>
         </div>
-        <p>Modern pool design, build, and care.</p>
+        <p>Sales, Service & Installation — US-1 Pools does it all.</p>
       </div>
       <div class="footer-links">
-        <a href="#services">Services</a>
-        <a href="#projects">Projects</a>
-        <a href="#process">Process</a>
-        <a href="#clinic">Pool Clinic</a>
-        <a href="#contact">Contact</a>
+        <a href="about.html">About</a>
+        <a href="pools.html">Pools & Spas</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="faq.html">FAQ</a>
       </div>
       <div class="footer-meta">
-        <p>Ready for your next pool chapter?</p>
-        <a class="btn btn-ghost" href="#contact">Start here</a>
+        <div class="footer-contact">
+          <div>3453 US Hwy 1 South, Franklinton, NC 27525</div>
+          <div>919.441.0033 · us1pools@gmail.com</div>
+          <div>Closed for winter — call for appointments</div>
+        </div>
+        <a class="btn btn-ghost" href="contact.html">Start here</a>
       </div>
     </div>
   </footer>
