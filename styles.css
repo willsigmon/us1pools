@@ -1,16 +1,19 @@
 :root {
-  --ink: #0c1b1f;
-  --ink-soft: #1e2b30;
-  --ocean: #0a6e82;
-  --aqua: #2bb3a3;
-  --seafoam: #dff4f2;
-  --sand: #f6f1e8;
-  --sun: #f2a23a;
-  --coral: #e56a4e;
+  --ink: #06262c;
+  --ink-soft: #0f3a42;
+  --deep-ocean: #052026;
+  --ocean: #0a5c6b;
+  --lagoon: #0f7d8a;
+  --aqua: #1fb9c6;
+  --aqua-bright: #40d3dd;
+  --seafoam: #d7f6f4;
+  --sand: #f2efe7;
+  --sun: #f6b35d;
+  --coral: #ef6b5b;
   --white: #ffffff;
-  --glass: rgba(255, 255, 255, 0.7);
-  --glass-strong: rgba(255, 255, 255, 0.9);
-  --shadow: 0 24px 60px rgba(12, 27, 31, 0.12);
+  --glass: rgba(231, 251, 250, 0.72);
+  --glass-strong: rgba(243, 255, 255, 0.92);
+  --shadow: 0 24px 60px rgba(6, 38, 44, 0.14);
   --radius-xl: 32px;
   --radius-lg: 24px;
   --radius-md: 18px;
@@ -30,7 +33,11 @@ body {
   margin: 0;
   font-family: "Space Grotesk", sans-serif;
   color: var(--ink);
-  background: radial-gradient(circle at top left, #e8f8f7 0%, #f7f2ea 45%, #fdfdfc 100%);
+  background:
+    radial-gradient(circle at 15% 10%, rgba(31, 185, 198, 0.18), transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(10, 92, 107, 0.16), transparent 45%),
+    radial-gradient(circle at 70% 80%, rgba(64, 211, 221, 0.18), transparent 45%),
+    linear-gradient(180deg, #e8fbf9 0%, #f2fbfb 55%, #ffffff 100%);
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -105,7 +112,7 @@ button {
 .orb-1 {
   width: 360px;
   height: 360px;
-  background: radial-gradient(circle at 30% 30%, #d9f7f3 0%, #bfe8e3 60%, transparent 100%);
+  background: radial-gradient(circle at 30% 30%, #d1f7f4 0%, #a9e3e1 60%, transparent 100%);
   top: -120px;
   right: -80px;
   animation: float 18s ease-in-out infinite;
@@ -114,7 +121,7 @@ button {
 .orb-2 {
   width: 260px;
   height: 260px;
-  background: radial-gradient(circle at 60% 40%, #ffe7c2 0%, #f7c97a 55%, transparent 100%);
+  background: radial-gradient(circle at 60% 40%, #c8f4f0 0%, #8fd6d2 55%, transparent 100%);
   bottom: 120px;
   left: -120px;
   animation: float 22s ease-in-out infinite;
@@ -123,7 +130,7 @@ button {
 .orb-3 {
   width: 320px;
   height: 320px;
-  background: radial-gradient(circle at 40% 30%, #e8f4ff 0%, #c2e0f5 60%, transparent 100%);
+  background: radial-gradient(circle at 40% 30%, #d9f4ff 0%, #a6d7ee 60%, transparent 100%);
   top: 52%;
   right: 15%;
   animation: float 20s ease-in-out infinite;
@@ -134,8 +141,8 @@ button {
   top: 0;
   z-index: 50;
   backdrop-filter: blur(14px);
-  background: rgba(255, 255, 255, 0.75);
-  border-bottom: 1px solid rgba(12, 27, 31, 0.08);
+  background: rgba(228, 250, 249, 0.82);
+  border-bottom: 1px solid rgba(31, 185, 198, 0.2);
 }
 
 .header-inner {
@@ -192,7 +199,7 @@ button {
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--ocean);
+  color: var(--aqua);
 }
 
 .nav-dropdown {
@@ -222,7 +229,7 @@ button {
   position: absolute;
   top: 100%;
   left: 0;
-  background: var(--white);
+  background: #f8fffe;
   border-radius: var(--radius-sm);
   padding: 10px;
   box-shadow: var(--shadow);
@@ -241,7 +248,7 @@ button {
 
 .dropdown-menu a:hover {
   background: var(--seafoam);
-  color: var(--ocean);
+  color: var(--aqua);
 }
 
 .nav-dropdown:hover .dropdown-menu,
@@ -293,9 +300,9 @@ button {
 }
 
 .btn-ghost {
-  border-color: rgba(12, 27, 31, 0.2);
+  border-color: rgba(10, 92, 107, 0.25);
   color: var(--ink-soft);
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(230, 251, 250, 0.6);
 }
 
 .eyebrow {
@@ -325,7 +332,7 @@ button {
   gap: 12px;
   padding: 8px 16px;
   border-radius: 999px;
-  background: var(--glass-strong);
+  background: var(--glass);
   box-shadow: var(--shadow);
   font-size: 0.9rem;
   margin-bottom: 20px;
@@ -362,10 +369,11 @@ button {
 }
 
 .highlight {
-  background: var(--glass);
+  background: var(--glass-strong);
   padding: 18px 20px;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow);
+  border: 1px solid rgba(31, 185, 198, 0.16);
 }
 
 .highlight span {
@@ -385,12 +393,24 @@ button {
   overflow: hidden;
   box-shadow: var(--shadow);
   position: relative;
+  border: 1px solid rgba(31, 185, 198, 0.18);
 }
 
 .image-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: relative;
+  z-index: 0;
+}
+
+.image-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 45%, rgba(6, 38, 44, 0.22) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .image-card .image-caption {
@@ -402,6 +422,7 @@ button {
   padding: 8px 14px;
   border-radius: 999px;
   font-size: 0.85rem;
+  z-index: 2;
 }
 
 .image-overlay {
@@ -414,6 +435,7 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  z-index: 2;
 }
 
 .image-overlay img {
@@ -433,7 +455,7 @@ button {
   padding: 16px 18px;
   border-radius: var(--radius-md);
   background: var(--glass-strong);
-  border: 1px solid rgba(12, 27, 31, 0.06);
+  border: 1px solid rgba(31, 185, 198, 0.18);
   box-shadow: var(--shadow);
 }
 
@@ -441,6 +463,19 @@ button {
   padding: 80px 0;
   position: relative;
   z-index: 1;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'><path fill='%23e6f7f5' d='M0,64C120,80,240,96,360,90.7C480,85,600,59,720,58.7C840,59,960,85,1080,80C1200,75,1320,37,1440,21.3L1440,0L0,0Z'/></svg>");
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.85;
 }
 
 .section-head {
@@ -518,7 +553,7 @@ button {
 }
 
 .split {
-  background: linear-gradient(135deg, #f6f2ea 0%, #eef8f7 100%);
+  background: linear-gradient(160deg, #e0f8f6 0%, #f5f0e6 100%);
 }
 
 .project-grid {
@@ -654,7 +689,7 @@ button {
 }
 
 .clinic {
-  background: linear-gradient(120deg, #e9f8f5, #fff4df);
+  background: linear-gradient(120deg, #daf7f4, #fef1dc);
 }
 
 .clinic-card {
@@ -726,9 +761,9 @@ button {
 }
 
 .filter-button.active {
-  background: var(--ink);
+  background: var(--ocean);
   color: var(--white);
-  border-color: var(--ink);
+  border-color: var(--ocean);
 }
 
 .contact {
