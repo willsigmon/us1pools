@@ -105,8 +105,20 @@
             <a class="btn btn-secondary" href="tel:9194410033">Call or Text</a>
             <a class="btn btn-ghost" href="mailto:us1pools@gmail.com">Email us</a>
           </div>
+          <div class="map-embed" style="margin-top: 2rem;">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3227.8951234567!2d-78.4567890!3d36.1234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDA3JzI0LjQiTiA3OMKwMjcnMjQuNCJX!5e0!3m2!1sen!2sus!4v1234567890"
+              width="100%"
+              height="300"
+              style="border:0; border-radius: 16px;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="US-1 Pools location map">
+            </iframe>
+          </div>
         </div>
-        <form class="contact-form">
+        <form class="contact-form" id="contactForm">
           <div class="form-grid">
             <label>
               Full name
@@ -163,7 +175,10 @@
             Tell us about your space
             <textarea name="details" rows="4" placeholder="Location, timeline, and goals"></textarea>
           </label>
-          <button class="btn btn-primary" type="submit">Send project details</button>
+          <!-- Honeypot field (hidden from users, catches bots) -->
+          <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off" />
+          <div id="formStatus" class="form-status" style="display:none;"></div>
+          <button class="btn btn-primary" type="submit" id="submitBtn">Send project details</button>
         </form>
       </div>
     </section>

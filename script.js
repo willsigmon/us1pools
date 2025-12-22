@@ -100,3 +100,140 @@ if (revealItems.length > 0) {
 
   revealItems.forEach((item) => observer.observe(item));
 }
+
+// Contact Form Submission
+const contactForm = document.getElementById("contactForm");
+if (contactForm) {
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const submitBtn = document.getElementById("submitBtn");
+    const formStatus = document.getElementById("formStatus");
+    const formData = new FormData(contactForm);
+    const data = Object.fromEntries(formData.entries());
+
+    // Update button state
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
+    formStatus.style.display = "none";
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        formStatus.className = "form-status success";
+        formStatus.textContent = result.message || "Thank you! We'll be in touch soon.";
+        formStatus.style.display = "block";
+        contactForm.reset();
+      } else {
+        throw new Error(result.error || "Something went wrong");
+      }
+    } catch (error) {
+      formStatus.className = "form-status error";
+      formStatus.textContent = error.message || "Failed to send. Please call us at (919) 880-4323.";
+      formStatus.style.display = "block";
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send project details";
+    }
+  });
+}
+
+// Gallery Lightbox
+const galleryImages = document.querySelectorAll(".image-card img");
+let currentImageIndex = 0;
+let lightboxImages = [];
+
+if (galleryImages.length > 0) {
+  // Create lightbox element
+  const lightbox = document.createElement("div");
+  lightbox.className = "lightbox";
+  lightbox.innerHTML = `
+    <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+    <button class="lightbox-prev" aria-label="Previous image">&lsaquo;</button>
+    <button class="lightbox-next" aria-label="Next image">&rsaquo;</button>
+    <img class="lightbox-image" alt="" />
+    <div class="lightbox-caption"></div>
+  `;
+  document.body.appendChild(lightbox);
+
+  const lightboxImage = lightbox.querySelector(".lightbox-image");
+  const lightboxCaption = lightbox.querySelector(".lightbox-caption");
+  const closeBtn = lightbox.querySelector(".lightbox-close");
+  const prevBtn = lightbox.querySelector(".lightbox-prev");
+  const nextBtn = lightbox.querySelector(".lightbox-next");
+
+  const showLightbox = (index) => {
+    currentImageIndex = index;
+    const img = lightboxImages[index];
+    lightboxImage.src = img.src;
+    lightboxImage.alt = img.alt;
+    lightboxCaption.textContent = img.alt || "";
+    lightbox.classList.add("active");
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeLightbox = () => {
+    lightbox.classList.remove("active");
+    document.body.style.overflow = "";
+  };
+
+  const showNext = () => {
+    currentImageIndex = (currentImageIndex + 1) % lightboxImages.length;
+    showLightbox(currentImageIndex);
+  };
+
+  const showPrev = () => {
+    currentImageIndex = (currentImageIndex - 1 + lightboxImages.length) % lightboxImages.length;
+    showLightbox(currentImageIndex);
+  };
+
+  galleryImages.forEach((img, index) => {
+    lightboxImages.push(img);
+    img.style.cursor = "pointer";
+    img.addEventListener("click", () => showLightbox(index));
+  });
+
+  closeBtn.addEventListener("click", closeLightbox);
+  nextBtn.addEventListener("click", showNext);
+  prevBtn.addEventListener("click", showPrev);
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (!lightbox.classList.contains("active")) return;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowRight") showNext();
+    if (e.key === "ArrowLeft") showPrev();
+  });
+}
+
+// Seasonal Messaging
+const updateSeasonalMessage = () => {
+  const now = new Date();
+  const month = now.getMonth(); // 0-11
+  const seasonalElements = document.querySelectorAll("[data-seasonal]");
+
+  let message = "Closed for winter — call for appointments";
+  let isWinter = month >= 10 || month <= 2; // Nov-Feb
+
+  if (!isWinter) {
+    // Spring/Summer/Fall hours
+    message = "Mon-Fri 10am-5pm, Sat 10am-2pm";
+  }
+
+  seasonalElements.forEach(el => {
+    el.textContent = message;
+  });
+};
+
+// Run on page load
+updateSeasonalMessage();

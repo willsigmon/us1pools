@@ -970,3 +970,166 @@ button {
     align-items: flex-start;
   }
 }
+
+/* Form Status Messages */
+.form-status {
+  padding: 16px 20px;
+  border-radius: var(--radius-sm);
+  margin: 16px 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.form-status.success {
+  background: rgba(31, 185, 198, 0.12);
+  color: var(--ocean);
+  border: 1px solid rgba(31, 185, 198, 0.3);
+}
+
+.form-status.error {
+  background: rgba(239, 107, 91, 0.12);
+  color: #c44230;
+  border: 1px solid rgba(239, 107, 91, 0.3);
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 38, 44, 0.95);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox-image {
+  max-width: 90%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+.lightbox-caption {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.92);
+  padding: 12px 24px;
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 500;
+  max-width: 80%;
+  text-align: center;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--ink);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: var(--white);
+  transform: scale(1.1);
+}
+
+.lightbox-close {
+  top: 20px;
+  right: 20px;
+}
+
+.lightbox-prev {
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox-next {
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Calculator Styles */
+.calculator {
+  background: var(--glass-strong);
+  border: 1px solid rgba(31, 185, 198, 0.18);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow);
+}
+
+.calculator-step {
+  display: none;
+}
+
+.calculator-step.active {
+  display: block;
+}
+
+.calculator-options {
+  display: grid;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.calculator-option {
+  padding: 20px 24px;
+  border: 2px solid rgba(31, 185, 198, 0.25);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.calculator-option:hover {
+  border-color: var(--aqua);
+  background: var(--seafoam);
+}
+
+.calculator-option.selected {
+  border-color: var(--ocean);
+  background: var(--seafoam);
+}
+
+.calculator-result {
+  background: linear-gradient(135deg, var(--ocean), var(--aqua));
+  color: var(--white);
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.calculator-result h3 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.calculator-result p {
+  opacity: 0.95;
+}
