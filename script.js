@@ -122,6 +122,14 @@
     document.body.appendChild(bubbleContainer);
   }
 
+  /* ── Stagger Children Setup (must run before observer) ── */
+  document.querySelectorAll("[data-stagger]").forEach((parent) => {
+    Array.from(parent.children).forEach((child, i) => {
+      child.classList.add("reveal");
+      child.classList.add("stagger-" + Math.min(i + 1, 6));
+    });
+  });
+
   /* ── Scroll Reveal Observer ────────────────────────────── */
   const revealItems = document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale");
 
@@ -139,15 +147,6 @@
     );
     revealItems.forEach((item) => revealObserver.observe(item));
   }
-
-  /* ── Stagger Children on Reveal ────────────────────────── */
-  document.querySelectorAll("[data-stagger]").forEach((parent) => {
-    const children = parent.children;
-    Array.from(children).forEach((child, i) => {
-      child.classList.add("reveal");
-      child.classList.add("stagger-" + Math.min(i + 1, 6));
-    });
-  });
 
   /* ── Counter Animation ─────────────────────────────────── */
   document.querySelectorAll("[data-count]").forEach((el) => {
