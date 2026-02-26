@@ -9,10 +9,10 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, email, phone, subject, message, budget, timeline, location } = req.body;
+  const { name, email, phone, subject, details, budget, timeline, location } = req.body;
 
   // Basic validation
-  if (!name || !email || !message) {
+  if (!name || !email || !details) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
@@ -42,7 +42,7 @@ ${timeline ? `Timeline: ${timeline}` : ''}
 ${location ? `Location: ${location}` : ''}
 
 Message:
-${message}
+${details}
 
 ---
 Submitted: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })}
@@ -83,7 +83,7 @@ Submitted: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }
   } catch (error) {
     console.error('Contact form error:', error);
     return res.status(500).json({
-      error: 'Failed to send message. Please call us at (919) 880-4323.'
+      error: 'Failed to send message. Please call us at (919) 441-0033.'
     });
   }
 }

@@ -219,16 +219,13 @@ if (galleryImages.length > 0) {
 // Seasonal Messaging
 const updateSeasonalMessage = () => {
   const now = new Date();
-  const month = now.getMonth(); // 0-11
+  const month = now.getMonth();
   const seasonalElements = document.querySelectorAll("[data-seasonal]");
 
-  let message = "Closed for winter — call for appointments";
-  let isWinter = month >= 10 || month <= 2; // Nov-Feb
-
-  if (!isWinter) {
-    // Spring/Summer/Fall hours
-    message = "Mon-Fri 10am-5pm, Sat 10am-2pm";
-  }
+  const isWinter = month >= 10 || month <= 1;
+  const message = isWinter
+    ? "Closed for winter — call for appointments"
+    : "M-Th 11am-3pm · Fri 11am-5pm · Sat 10am-5pm · Sun 12pm-3pm";
 
   seasonalElements.forEach(el => {
     el.textContent = message;

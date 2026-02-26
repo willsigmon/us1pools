@@ -2,41 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.us1pools.com/</loc>
+    <lastmod>2026-02-26</lastmod>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.us1pools.com/about.html</loc>
+    <lastmod>2026-02-26</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.us1pools.com/pools.html</loc>
+    <lastmod>2026-02-26</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.us1pools.com/above-ground.html</loc>
+    <lastmod>2026-02-26</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.us1pools.com/in-ground.html</loc>
+    <lastmod>2026-02-26</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.us1pools.com/hot-tubs.html</loc>
+    <lastmod>2026-02-26</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.us1pools.com/liners.html</loc>
+    <lastmod>2026-02-26</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.us1pools.com/gallery.html</loc>
+    <lastmod>2026-02-26</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.us1pools.com/videos.html</loc>
+    <lastmod>2026-02-26</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.us1pools.com/services.html</loc>
+    <lastmod>2026-02-26</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.us1pools.com/contact.html</loc>
+    <lastmod>2026-02-26</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.us1pools.com/faq.html</loc>
-  </url>
-  <url>
-    <loc>https://www.us1pools.com/calculator.html</loc>
-  </url>
-  <url>
-    <loc>https://www.us1pools.com/areas/raleigh.html</loc>
-  </url>
-  <url>
-    <loc>https://www.us1pools.com/guides/pool-care.html</loc>
+    <lastmod>2026-02-26</lastmod>
+    <priority>0.6</priority>
   </url>
 </urlset>
