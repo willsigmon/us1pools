@@ -126,38 +126,41 @@ button {
   margin: 0 auto;
 }
 
+/* ── Caustic Light Reflections ──────────────────────────── */
 .bg-orb {
   position: absolute;
-  border-radius: 999px;
-  opacity: 0.5;
+  border-radius: 40% 60% 55% 45% / 55% 40% 60% 45%;
+  opacity: 0.35;
   z-index: 0;
+  filter: blur(40px);
+  mix-blend-mode: soft-light;
 }
 
 .orb-1 {
-  width: 360px;
-  height: 360px;
-  background: radial-gradient(circle at 30% 30%, #d4e8f8 0%, #a3cde8 60%, transparent 100%);
-  top: -120px;
-  right: -80px;
-  animation: float 18s ease-in-out infinite;
+  width: 500px;
+  height: 350px;
+  background: radial-gradient(ellipse at 30% 40%, rgba(46, 150, 216, 0.3) 0%, rgba(90, 180, 232, 0.15) 50%, transparent 80%);
+  top: -80px;
+  right: -60px;
+  animation: caustic-1 16s ease-in-out infinite;
 }
 
 .orb-2 {
-  width: 260px;
-  height: 260px;
-  background: radial-gradient(circle at 60% 40%, #c8e4f6 0%, #8bc4e6 55%, transparent 100%);
-  bottom: 120px;
-  left: -120px;
-  animation: float 22s ease-in-out infinite;
+  width: 400px;
+  height: 300px;
+  background: radial-gradient(ellipse at 60% 30%, rgba(21, 101, 160, 0.25) 0%, rgba(46, 150, 216, 0.1) 50%, transparent 80%);
+  bottom: 200px;
+  left: -100px;
+  animation: caustic-2 20s ease-in-out infinite;
 }
 
 .orb-3 {
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(circle at 40% 30%, #dcedf8 0%, #a6cfe8 60%, transparent 100%);
-  top: 52%;
-  right: 15%;
-  animation: float 20s ease-in-out infinite;
+  width: 450px;
+  height: 280px;
+  background: radial-gradient(ellipse at 40% 50%, rgba(90, 180, 232, 0.2) 0%, rgba(227, 241, 251, 0.15) 50%, transparent 80%);
+  top: 48%;
+  right: 10%;
+  animation: caustic-3 24s ease-in-out infinite;
 }
 
 .site-header {
@@ -1151,13 +1154,20 @@ button {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.footer-inner > div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .site-footer .brand {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
+  justify-content: center;
 }
 
 .site-footer .brand img {
-  width: 120px;
-  height: 120px;
+  width: 280px;
+  height: auto;
   filter: invert(1) hue-rotate(180deg) drop-shadow(0 2px 12px rgba(90, 180, 232, 0.3));
 }
 
@@ -1169,6 +1179,7 @@ button {
   font-size: 0.95rem;
   line-height: 1.6;
   max-width: 280px;
+  text-align: center;
 }
 
 .footer-links {
@@ -1240,6 +1251,38 @@ button {
   50% {
     transform: translateY(-24px);
   }
+}
+
+@keyframes caustic-1 {
+  0%   { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.35; }
+  25%  { transform: translate(30px, 15px) scale(1.08) rotate(2deg); opacity: 0.28; }
+  50%  { transform: translate(-20px, 30px) scale(0.95) rotate(-1deg); opacity: 0.4; }
+  75%  { transform: translate(15px, -10px) scale(1.05) rotate(3deg); opacity: 0.3; }
+  100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.35; }
+}
+
+@keyframes caustic-2 {
+  0%   { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.3; }
+  30%  { transform: translate(-25px, 20px) scale(1.1) rotate(-2deg); opacity: 0.38; }
+  60%  { transform: translate(20px, -15px) scale(0.92) rotate(2deg); opacity: 0.25; }
+  100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.3; }
+}
+
+@keyframes caustic-3 {
+  0%   { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.28; }
+  20%  { transform: translate(15px, -20px) scale(1.06) rotate(1deg); opacity: 0.35; }
+  50%  { transform: translate(-30px, 10px) scale(0.97) rotate(-3deg); opacity: 0.22; }
+  80%  { transform: translate(10px, 25px) scale(1.03) rotate(2deg); opacity: 0.32; }
+  100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.28; }
+}
+
+@keyframes caustic-drift {
+  0%   { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.25; }
+  30%  { transform: translate(30px, -60px) scale(1.1) rotate(3deg); opacity: 0.35; }
+  60%  { transform: translate(-20px, -120px) scale(0.9) rotate(-2deg); opacity: 0.2; }
+  90%  { opacity: 0.1; }
+  100% { transform: translate(15px, -200px) scale(0.8) rotate(4deg); opacity: 0; }
 }
 
 @keyframes pulse-glow {
@@ -1622,30 +1665,29 @@ button {
 /* Footer Social */
 .footer-social {
   display: flex;
-  gap: 10px;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .footer-social a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  background: rgba(255, 255, 255, 0.08);
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 0;
   transition: all var(--transition);
 }
 
-.footer-social a::before {
-  font-size: 0.85rem;
-  font-weight: 700;
-  font-family: var(--font-body);
+.footer-social svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
 }
-
-.footer-social a[aria-label="Facebook"]::before { content: "f"; }
-.footer-social a[aria-label="YouTube"]::before { content: "▶"; }
 
 .footer-social a:hover {
   background: var(--aqua);
@@ -1715,31 +1757,19 @@ button {
   opacity: 0.08;
 }
 
-/* ── Floating Bubbles (particle system via JS) ─────────── */
-.bubble {
+/* ── Caustic Light Patches (particle system via JS) ────── */
+.caustic {
   position: fixed;
-  border-radius: 50%;
   pointer-events: none;
   z-index: 1;
-  background: radial-gradient(circle at 30% 30%,
-    rgba(255,255,255,0.6) 0%,
-    rgba(31,185,198,0.15) 40%,
-    rgba(31,185,198,0.05) 70%,
-    transparent 100%);
-  border: 1px solid rgba(255,255,255,0.3);
-  box-shadow:
-    inset 0 -2px 4px rgba(0,0,0,0.04),
-    inset 0 1px 3px rgba(255,255,255,0.5),
-    0 2px 8px rgba(31,185,198,0.1);
-  animation: bubble-rise linear infinite;
-}
-
-@keyframes bubble-rise {
-  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
-  10% { opacity: 0.7; }
-  50% { opacity: 0.5; }
-  90% { opacity: 0.2; }
-  100% { transform: translateY(-100vh) translateX(40px) scale(0.6); opacity: 0; }
+  border-radius: 40% 60% 50% 50% / 50% 40% 60% 50%;
+  background: radial-gradient(ellipse at 40% 40%,
+    rgba(46, 150, 216, 0.2) 0%,
+    rgba(90, 180, 232, 0.1) 40%,
+    transparent 70%);
+  filter: blur(20px);
+  mix-blend-mode: soft-light;
+  animation: caustic-drift ease-in-out infinite;
 }
 
 /* ── Morphing Background Orbs ──────────────────────────── */
@@ -2338,7 +2368,7 @@ button {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .bubble, .water-grain { display: none; }
+  .caustic, .water-grain { display: none; }
   .scroll-progress { display: none; }
 }
 
@@ -2495,8 +2525,8 @@ button {
     grid-template-columns: 1fr;
   }
 
-  /* Reduce bubble count on mobile for perf */
-  .bubble:nth-child(n+8) {
+  /* Reduce caustic count on mobile for perf */
+  .caustic:nth-child(n+8) {
     display: none;
   }
 

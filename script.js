@@ -105,27 +105,30 @@
   waterGrain.appendChild(waterRect);
   document.body.appendChild(waterGrain);
 
-  /* ── Bubble Particle System ────────────────────────────── */
+  /* ── Caustic Light Patches (pool floor refraction) ─────── */
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   if (!prefersReduced) {
-    const BUBBLE_COUNT = 12;
-    const bubbleContainer = document.createDocumentFragment();
+    const CAUSTIC_COUNT = 10;
+    const causticContainer = document.createDocumentFragment();
 
-    for (let i = 0; i < BUBBLE_COUNT; i++) {
-      const bubble = document.createElement("div");
-      bubble.className = "bubble";
-      const size = 4 + Math.random() * 14;
-      bubble.style.width = size + "px";
-      bubble.style.height = size + "px";
-      bubble.style.left = (Math.random() * 100) + "%";
-      bubble.style.bottom = "-20px";
-      bubble.style.animationDuration = (12 + Math.random() * 18) + "s";
-      bubble.style.animationDelay = (Math.random() * 10) + "s";
-      bubble.style.opacity = String(0.15 + Math.random() * 0.35);
-      bubbleContainer.appendChild(bubble);
+    for (let i = 0; i < CAUSTIC_COUNT; i++) {
+      const patch = document.createElement("div");
+      patch.className = "caustic";
+      const w = 80 + Math.random() * 180;
+      const h = 50 + Math.random() * 120;
+      patch.style.width = w + "px";
+      patch.style.height = h + "px";
+      patch.style.left = (Math.random() * 100) + "%";
+      patch.style.bottom = (-h) + "px";
+      patch.style.animationDuration = (18 + Math.random() * 24) + "s";
+      patch.style.animationDelay = (Math.random() * 14) + "s";
+      const hue = 190 + Math.random() * 30;
+      const lightness = 55 + Math.random() * 15;
+      patch.style.background = "radial-gradient(ellipse at " + (30 + Math.random() * 40) + "% " + (30 + Math.random() * 40) + "%, hsla(" + hue + ", 60%, " + lightness + "%, 0.2) 0%, hsla(" + hue + ", 50%, " + lightness + "%, 0.08) 40%, transparent 70%)";
+      causticContainer.appendChild(patch);
     }
-    document.body.appendChild(bubbleContainer);
+    document.body.appendChild(causticContainer);
   }
 
   /* ── Stagger Children Setup (must run before observer) ── */
