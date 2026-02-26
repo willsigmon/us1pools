@@ -165,16 +165,18 @@ button {
   top: 0;
   z-index: 50;
   backdrop-filter: blur(16px);
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.92);
   border-bottom: 1px solid rgba(15, 30, 45, 0.06);
+  transition: background 0.3s ease;
 }
 
 .header-inner {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 28px;
-  padding: 18px 0;
-  transition: padding 0.35s ease;
+  gap: 0 24px;
+  padding: 14px 0 0;
+  transition: padding 0.35s ease, gap 0.35s ease;
 }
 
 .brand {
@@ -184,14 +186,14 @@ button {
 }
 
 .brand img {
-  width: 140px;
-  height: 140px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
   transition: width 0.35s ease, height 0.35s ease, transform 0.3s ease;
 }
 
 .brand:hover img {
-  transform: rotate(-6deg) scale(1.05);
+  transform: rotate(-4deg) scale(1.04);
 }
 
 .brand-name {
@@ -217,16 +219,25 @@ button {
 }
 
 .nav-links {
+  display: contents;
+}
+
+.nav-actions {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 12px;
   margin-left: auto;
 }
 
 .nav-primary {
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 24px;
+  padding: 12px 0;
+  margin-top: 6px;
+  border-top: 1px solid rgba(15, 30, 45, 0.07);
+  transition: all 0.35s ease;
 }
 
 .nav-link {
@@ -342,12 +353,6 @@ button {
 .nav-dropdown:focus-within .dropdown-menu,
 .nav-dropdown.open .dropdown-menu {
   display: block;
-}
-
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
 }
 
 .nav-phone {
@@ -1247,7 +1252,17 @@ button {
 }
 
 @media (max-width: 960px) {
+  .header-inner {
+    flex-wrap: nowrap;
+    padding: 10px 0;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
   .nav-links {
+    display: flex;
     position: absolute;
     top: 72px;
     right: 5vw;
@@ -1271,12 +1286,17 @@ button {
   }
 
   .nav-primary {
+    width: auto;
+    border-top: none;
+    margin-top: 0;
+    padding: 0;
     flex-direction: column;
     align-items: flex-start;
   }
 
   .nav-actions {
     margin-top: 12px;
+    margin-left: 0;
     flex-direction: column;
     align-items: flex-start;
   }
@@ -1973,12 +1993,29 @@ button {
 }
 
 .site-header.scrolled .header-inner {
-  padding: 8px 0;
+  padding: 6px 0;
+  flex-wrap: nowrap;
+  gap: 0 20px;
 }
 
 .site-header.scrolled .brand img {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
+}
+
+.site-header.scrolled .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-left: auto;
+}
+
+.site-header.scrolled .nav-primary {
+  width: auto;
+  border-top: none;
+  margin-top: 0;
+  padding: 0;
+  gap: 18px;
 }
 
 /* ── Tilt Effect on Cards ──────────────────────────────── */
