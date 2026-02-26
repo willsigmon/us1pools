@@ -62,6 +62,14 @@
   progressBar.className = "scroll-progress";
   document.body.prepend(progressBar);
 
+  /* ── Scroll-Driven Water-to-Dry Background ────────────── */
+  const scrollBgWet = document.createElement("div");
+  scrollBgWet.className = "scroll-bg";
+  const scrollBgDry = document.createElement("div");
+  scrollBgDry.className = "scroll-bg-dry";
+  document.body.prepend(scrollBgDry);
+  document.body.prepend(scrollBgWet);
+
   /* ── Header Scroll Effect + Logo Parallax ─────────────── */
   const header = document.querySelector(".site-header");
   const brandLogo = header && header.querySelector(".brand img");
@@ -80,6 +88,13 @@
       const drift = Math.min(scrollY * 0.04, 6);
       brandLogo.style.transform = "translateY(" + drift + "px) rotate(" + (-drift * 0.3) + "deg)";
     }
+
+    /* Water → dry transition: wet fades out, dry fades in */
+    const dryStart = 0.4;
+    const dryEnd = 0.85;
+    const dryProgress = Math.min(Math.max((progress - dryStart) / (dryEnd - dryStart), 0), 1);
+    scrollBgWet.style.opacity = String(1 - dryProgress);
+    scrollBgDry.style.opacity = String(dryProgress);
   };
 
   window.addEventListener("scroll", onScroll, { passive: true });

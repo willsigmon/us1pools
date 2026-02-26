@@ -37,13 +37,55 @@ body {
   margin: 0;
   font-family: "Inter", sans-serif;
   color: var(--ink);
+  background: #e8f2fb;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Scroll-driven water → dry background */
+.scroll-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
   background:
     radial-gradient(circle at 15% 10%, rgba(46, 150, 216, 0.15), transparent 40%),
     radial-gradient(circle at 80% 0%, rgba(21, 101, 160, 0.12), transparent 45%),
     radial-gradient(circle at 70% 80%, rgba(90, 180, 232, 0.14), transparent 45%),
     linear-gradient(180deg, #e8f2fb 0%, #f2f7fc 55%, #ffffff 100%);
-  min-height: 100vh;
-  overflow-x: hidden;
+  transition: opacity 0.1s linear;
+}
+
+.scroll-bg-dry {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(245, 243, 237, 0.6), transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(246, 179, 93, 0.08), transparent 40%),
+    linear-gradient(180deg, #ffffff 0%, #f5f3ed 40%, #ede8dd 80%, #ddd5c5 100%);
+  opacity: 0;
+  transition: opacity 0.1s linear;
+}
+
+/* Water streak dividers between sections */
+.water-streak {
+  position: relative;
+  overflow: hidden;
+}
+
+.water-streak::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60'%3E%3Cpath d='M0,30 C240,50 480,10 720,30 C960,50 1200,10 1440,30 L1440,60 L0,60 Z' fill='%23ffffff' fill-opacity='0.4'/%3E%3Cpath d='M0,40 C360,55 720,20 1080,40 C1260,50 1380,35 1440,40 L1440,60 L0,60 Z' fill='%23ffffff' fill-opacity='0.25'/%3E%3C/svg%3E") no-repeat bottom center;
+  background-size: 100% 100%;
+  pointer-events: none;
+  z-index: 2;
 }
 
 a {
@@ -130,10 +172,9 @@ button {
 .bg-orb {
   position: absolute;
   border-radius: 40% 60% 55% 45% / 55% 40% 60% 45%;
-  opacity: 0.35;
+  opacity: 0.5;
   z-index: 0;
-  filter: blur(40px);
-  mix-blend-mode: soft-light;
+  filter: blur(30px);
 }
 
 .orb-1 {
@@ -1783,14 +1824,13 @@ button {
 .caustic {
   position: fixed;
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
   border-radius: 40% 60% 50% 50% / 50% 40% 60% 50%;
   background: radial-gradient(ellipse at 40% 40%,
-    rgba(46, 150, 216, 0.2) 0%,
-    rgba(90, 180, 232, 0.1) 40%,
-    transparent 70%);
-  filter: blur(20px);
-  mix-blend-mode: soft-light;
+    rgba(46, 150, 216, 0.18) 0%,
+    rgba(90, 180, 232, 0.08) 40%,
+    transparent 65%);
+  filter: blur(12px);
   animation: caustic-drift ease-in-out infinite;
 }
 
