@@ -74,8 +74,8 @@ h3 {
 
 p {
   margin: 0;
-  line-height: 1.65;
-  font-size: 0.98rem;
+  line-height: 1.7;
+  font-size: 0.95rem;
 }
 
 button {
@@ -367,8 +367,8 @@ button {
 }
 
 .hero-copy h1 {
-  font-size: clamp(2.8rem, 5vw, 4.5rem);
-  line-height: 1.05;
+  font-size: clamp(2.6rem, 4.8vw, 4.2rem);
+  line-height: 1.08;
   margin-bottom: 18px;
 }
 
@@ -536,14 +536,15 @@ button {
 .section-head {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 16px 48px;
   align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 36px;
+  margin-bottom: 40px;
 }
 
 .section-head h2 {
-  font-size: clamp(2rem, 3vw, 3rem);
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  max-width: 560px;
 }
 
 .section-sub {
