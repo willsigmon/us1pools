@@ -33,7 +33,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "DM Sans", sans-serif;
   color: var(--ink);
   background:
     radial-gradient(circle at 15% 10%, rgba(31, 185, 198, 0.18), transparent 40%),
@@ -57,11 +57,22 @@ img {
 h1, h2, h3, h4 {
   font-family: "Fraunces", serif;
   margin: 0;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+h3 {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
 }
 
 p {
   margin: 0;
-  line-height: 1.6;
+  line-height: 1.65;
+  font-size: 0.98rem;
 }
 
 button {
@@ -289,11 +300,8 @@ button {
 }
 
 .btn-primary:hover {
-  transform: translateY(-1px);
-}
-
-.btn-primary.is-glow {
-  animation: pulse-glow 6s ease-in-out infinite;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(10, 110, 130, 0.4);
 }
 
 .btn-secondary {
@@ -305,6 +313,14 @@ button {
   border-color: rgba(10, 92, 107, 0.25);
   color: var(--ink-soft);
   background: rgba(230, 251, 250, 0.6);
+  transition: all 0.25s ease;
+}
+
+.btn-ghost:hover {
+  background: var(--seafoam);
+  color: var(--ocean);
+  border-color: var(--aqua);
+  transform: translateY(-1px);
 }
 
 .eyebrow {
@@ -467,6 +483,10 @@ button {
   z-index: 1;
 }
 
+.section + .section {
+  padding-top: 40px;
+}
+
 .section::before {
   content: "";
   position: absolute;
@@ -477,7 +497,7 @@ button {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'><path fill='%23e6f7f5' d='M0,64C120,80,240,96,360,90.7C480,85,600,59,720,58.7C840,59,960,85,1080,80C1200,75,1320,37,1440,21.3L1440,0L0,0Z'/></svg>");
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: 0.85;
+  opacity: 0.5;
 }
 
 .section-head {
@@ -537,21 +557,24 @@ button {
 }
 
 .service-card {
-  padding: 24px;
+  padding: 26px;
   border-radius: var(--radius-lg);
   background: var(--white);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-soft);
   border: 1px solid rgba(12, 27, 31, 0.06);
-  transition: transform var(--transition);
-}
-
-.service-card:hover {
-  transform: translateY(-4px);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
 .service-card h3 {
-  margin-bottom: 12px;
-  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  color: var(--ink-soft);
+}
+
+.service-card .btn {
+  margin-top: 14px;
 }
 
 .split {
@@ -583,9 +606,9 @@ button {
 
 .content-grid {
   display: grid;
-  gap: 32px;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  align-items: start;
+  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: center;
 }
 
 .list-grid {
@@ -596,8 +619,17 @@ button {
 .list-card {
   background: var(--white);
   border-radius: var(--radius-md);
-  padding: 18px 20px;
-  box-shadow: var(--shadow);
+  padding: 20px 22px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(12, 27, 31, 0.05);
+}
+
+.list-card h3 {
+  margin-bottom: 6px;
+}
+
+.list-card p {
+  color: var(--ink-soft);
 }
 
 .stats-grid {
@@ -874,17 +906,6 @@ button {
 .footer-contact {
   font-size: 0.9rem;
   color: var(--ink-soft);
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 @keyframes float {
@@ -1323,93 +1344,7 @@ button {
   display: none;
 }
 
-/* ── Hero Video ─────────────────────────────────────────── */
-.hero-video-wrap {
-  position: relative;
-  border-radius: var(--radius-lg, 16px);
-  overflow: hidden;
-  aspect-ratio: 16/9;
-  background: rgba(0,20,50,.5);
-}
-.hero-video-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
-.video-caption {
-  position: absolute;
-  bottom: 10px; left: 12px;
-  background: rgba(0,0,0,.55);
-  backdrop-filter: blur(8px);
-  color: #fff;
-  font-size: .75rem;
-  padding: 4px 10px;
-  border-radius: 20px;
-  display: flex; align-items: center; gap: 6px;
-}
-.video-caption svg { width: 13px; height: 13px; flex-shrink: 0; }
-
-/* ── Google Rating Badge ────────────────────────────────── */
-.google-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: rgba(255,255,255,.1);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255,255,255,.18);
-  border-radius: 24px;
-  padding: 5px 14px;
-  font-size: .82rem;
-  font-weight: 600;
-  color: inherit;
-  text-decoration: none;
-  margin-top: 12px;
-  width: fit-content;
-}
-.google-badge .g-stars { color: #facc15; letter-spacing: .5px; }
-
-/* ── Financing Bar ──────────────────────────────────────── */
-.financing-bar {
-  padding: 32px 0;
-  border-top: 1px solid rgba(255,255,255,.07);
-  border-bottom: 1px solid rgba(255,255,255,.07);
-}
-.financing-inner { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
-.financing-label {
-  font-size: .75rem;
-  font-weight: 600;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  opacity: .5;
-  margin-right: 4px;
-}
-
-/* ── Map + Contact Section ──────────────────────────────── */
-.map-section { padding: 80px 0; }
-.map-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: start;
-}
-@media (max-width: 768px) { .map-grid { grid-template-columns: 1fr; } }
-.map-frame { border-radius: var(--radius-lg, 16px); overflow: hidden; aspect-ratio: 4/3; }
-.map-frame iframe { width: 100%; height: 100%; border: none; display: block; }
-.contact-block { display: flex; flex-direction: column; gap: 22px; }
-.contact-item { display: flex; flex-direction: column; gap: 3px; }
-.contact-item label {
-  font-size: .72rem;
-  font-weight: 600;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  opacity: .5;
-}
-.contact-item a { color: inherit; text-decoration: none; }
-.contact-item a:hover { text-decoration: underline; }
-.hours-table {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 3px 18px;
-  font-size: .88rem;
-}
-.h-day { opacity: .6; }
-.contact-btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+/* Orphaned styles cleaned up — Feb 2026 */
 
 /* ============================================================
    ANIMATIONS & INTERACTIONS — Adapted from WSM signature style
@@ -1632,14 +1567,12 @@ button {
   50% { box-shadow: 0 18px 36px rgba(10, 110, 130, 0.35), 0 0 20px 4px rgba(31, 185, 198, 0.15); }
 }
 
-.btn-primary {
+.hero-actions .btn-primary {
   animation: breathe 4s ease-in-out infinite;
 }
 
-.btn-primary:hover {
+.hero-actions .btn-primary:hover {
   animation: none;
-  transform: translateY(-2px);
-  box-shadow: 0 18px 36px rgba(10, 110, 130, 0.4);
 }
 
 /* ── Wave Divider Animation ────────────────────────────── */
@@ -1782,7 +1715,7 @@ button {
   bottom: 24px;
   right: 24px;
   z-index: 9000;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 
 .chat-toggle {
@@ -1876,7 +1809,7 @@ button {
 }
 
 .chat-header-info h4 {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 0.95rem;
   margin: 0;
   font-weight: 600;
