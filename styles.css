@@ -21,6 +21,8 @@
   --radius-sm: 12px;
   --transition: 0.3s ease;
   --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --font-display: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
 }
 
 html {
@@ -33,7 +35,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   color: var(--ink);
   background:
     radial-gradient(circle at 15% 10%, rgba(31, 185, 198, 0.18), transparent 40%),
@@ -55,10 +57,11 @@ img {
 }
 
 h1, h2, h3, h4 {
-  font-family: "Fraunces", serif;
+  font-family: "Playfair Display", serif;
   margin: 0;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  font-weight: 700;
 }
 
 h2 {
@@ -326,7 +329,8 @@ button {
 .eyebrow {
   text-transform: uppercase;
   font-size: 0.78rem;
-  letter-spacing: 0.22rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   color: var(--ocean);
   margin-bottom: 16px;
 }
@@ -475,6 +479,35 @@ button {
   background: var(--glass-strong);
   border: 1px solid rgba(31, 185, 198, 0.18);
   box-shadow: var(--shadow);
+  border-left: 3px solid var(--aqua);
+}
+
+.trust-item strong {
+  color: var(--ocean);
+}
+
+/* Testimonials */
+.testimonials-grid {
+  display: grid;
+  gap: 24px;
+  margin-top: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.testimonial-quote {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.testimonial-stars {
+  margin-top: 8px;
+  color: var(--sun);
+}
+
+.section-cta {
+  text-align: center;
+  margin-top: 32px;
 }
 
 .section {
@@ -562,9 +595,15 @@ button {
   background: var(--white);
   box-shadow: var(--shadow-soft);
   border: 1px solid rgba(12, 27, 31, 0.06);
-  transition: transform var(--transition), box-shadow var(--transition);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
   position: relative;
   overflow: hidden;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: rgba(31, 185, 198, 0.2);
 }
 
 .service-card::before {
@@ -1733,7 +1772,7 @@ button {
 
 /* ── Counter Animation ─────────────────────────────────── */
 .counter-value {
-  font-family: "Fraunces", serif;
+  font-family: "Playfair Display", serif;
   font-size: 2.4rem;
   font-weight: 700;
   color: var(--ocean);
@@ -1840,7 +1879,7 @@ button {
   bottom: 24px;
   right: 24px;
   z-index: 9000;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .chat-toggle {
@@ -1934,7 +1973,7 @@ button {
 }
 
 .chat-header-info h4 {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 0.95rem;
   margin: 0;
   font-weight: 600;
