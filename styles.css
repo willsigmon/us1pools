@@ -250,6 +250,18 @@ button {
   font-weight: 600;
 }
 
+.nav-highlight {
+  background: var(--seafoam);
+  padding: 6px 14px !important;
+  border-radius: 999px;
+  color: var(--ocean) !important;
+  font-weight: 600;
+}
+
+.nav-highlight::after {
+  display: none;
+}
+
 .nav-dropdown {
   position: relative;
   display: flex;
