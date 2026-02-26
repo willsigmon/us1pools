@@ -203,6 +203,10 @@ button {
   transition: font-size 0.35s ease;
 }
 
+.site-header .brand-name {
+  display: none;
+}
+
 .nav-toggle {
   display: none;
   margin-left: auto;
@@ -1924,10 +1928,6 @@ button {
 .site-header.scrolled .brand img {
   width: 44px;
   height: 44px;
-}
-
-.site-header.scrolled .brand-name {
-  font-size: 1.1rem;
 }
 
 /* ── Tilt Effect on Cards ──────────────────────────────── */
