@@ -115,7 +115,7 @@ h3, h4 {
 }
 
 h2 {
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
 }
 
 h3 {
@@ -465,7 +465,7 @@ button {
 }
 
 .hero {
-  padding: 90px 0 70px;
+  padding: 80px 0 40px;
   position: relative;
   z-index: 1;
 }
@@ -550,6 +550,8 @@ button {
 .image-card img {
   width: 100%;
   height: 100%;
+  min-height: 300px;
+  max-height: 400px;
   object-fit: cover;
   position: relative;
   z-index: 0;
@@ -600,7 +602,7 @@ button {
   display: grid;
   gap: 16px;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  margin-top: 28px;
+  margin-top: 20px;
 }
 
 .trust-item {
@@ -641,7 +643,7 @@ button {
 }
 
 .section {
-  padding: 80px 0;
+  padding: 56px 0;
   position: relative;
   z-index: 1;
 }
@@ -653,20 +655,20 @@ button {
 }
 
 .section + .section {
-  padding-top: 40px;
+  padding-top: 32px;
 }
 
 .section::before {
   content: "";
   position: absolute;
-  top: -40px;
+  top: -24px;
   left: 0;
   right: 0;
-  height: 40px;
+  height: 24px;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'><path fill='%23e3f1fb' d='M0,64C120,80,240,96,360,90.7C480,85,600,59,720,58.7C840,59,960,85,1080,80C1200,75,1320,37,1440,21.3L1440,0L0,0Z'/></svg>");
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 .section-head {
@@ -675,7 +677,7 @@ button {
   gap: 16px 48px;
   align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 
 .section-head h2 {
@@ -689,9 +691,13 @@ button {
 }
 
 .page-hero {
-  padding: 80px 0 40px;
+  padding: 64px 0 24px;
   position: relative;
   z-index: 1;
+}
+
+.page-hero + .section {
+  padding-top: 40px;
 }
 
 .page-hero h1 {
@@ -724,6 +730,7 @@ button {
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-auto-rows: 1fr;
 }
 
 .service-card {
@@ -924,7 +931,7 @@ button {
 .content-grid {
   display: grid;
   gap: 40px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr 1fr;
   align-items: center;
 }
 
@@ -1081,6 +1088,7 @@ button {
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-auto-rows: 1fr;
 }
 
 .gallery-card {
@@ -1093,7 +1101,7 @@ button {
 }
 
 .gallery-card img {
-  height: 200px;
+  height: 220px;
   width: 100%;
   object-fit: cover;
 }
@@ -1132,7 +1140,7 @@ button {
 }
 
 .contact {
-  padding-bottom: 120px;
+  padding-bottom: 64px;
 }
 
 .contact-grid {
@@ -1638,6 +1646,7 @@ button {
   display: grid;
   gap: 24px;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-auto-rows: 1fr;
 }
 
 .video-card {
@@ -2462,7 +2471,7 @@ button {
   }
 
   .page-hero {
-    padding: 60px 0 28px;
+    padding: 48px 0 16px;
   }
 
   .page-hero h1 {
