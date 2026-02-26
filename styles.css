@@ -175,22 +175,22 @@ button {
 
 .header-inner {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 0 24px;
-  padding: 14px 0 0;
-  transition: padding 0.35s ease, gap 0.35s ease;
+  gap: 0 28px;
+  padding: 10px 0;
+  transition: padding 0.35s ease;
 }
 
 .brand {
   display: flex;
   align-items: center;
   gap: 14px;
+  flex-shrink: 0;
 }
 
 .brand img {
-  width: 100px;
-  height: 100px;
+  width: 52px;
+  height: 52px;
   object-fit: contain;
   transition: width 0.35s ease, height 0.35s ease, transform 0.3s ease;
 }
@@ -222,25 +222,24 @@ button {
 }
 
 .nav-links {
-  display: contents;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-left: auto;
 }
 
 .nav-actions {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-left: auto;
+  margin-left: 24px;
+  flex-shrink: 0;
 }
 
 .nav-primary {
-  width: 100%;
   display: flex;
   align-items: center;
   gap: 24px;
-  padding: 12px 0;
-  margin-top: 6px;
-  border-top: 1px solid rgba(15, 30, 45, 0.07);
-  transition: all 0.35s ease;
 }
 
 .nav-link {
@@ -606,6 +605,12 @@ button {
   z-index: 1;
 }
 
+.section-tinted {
+  background: linear-gradient(180deg, rgba(227, 241, 251, 0.4) 0%, rgba(240, 248, 255, 0.2) 100%);
+  border-top: 1px solid rgba(46, 150, 216, 0.08);
+  border-bottom: 1px solid rgba(46, 150, 216, 0.08);
+}
+
 .section + .section {
   padding-top: 40px;
 }
@@ -777,27 +782,49 @@ button {
   text-align: center;
   padding: 32px 20px;
   border-radius: var(--radius-lg);
-  background: var(--white);
-  border: 1px solid rgba(15, 30, 45, 0.06);
-  transition: transform var(--transition), box-shadow var(--transition);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.95) 0%, rgba(227, 241, 251, 0.5) 100%);
+  border: 1px solid rgba(46, 150, 216, 0.12);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--aqua), var(--lagoon));
+  opacity: 0;
+  transition: opacity var(--transition);
 }
 
 .feature-item:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(21, 101, 160, 0.12);
+  border-color: rgba(46, 150, 216, 0.25);
+}
+
+.feature-item:hover::before {
+  opacity: 1;
 }
 
 .feature-icon {
   width: 72px;
   height: 72px;
-  border-radius: var(--radius-md);
+  border-radius: 50%;
   object-fit: cover;
   margin: 0 auto 16px;
   display: block;
+  box-shadow: 0 4px 16px rgba(21, 101, 160, 0.15);
+  border: 2px solid rgba(46, 150, 216, 0.15);
 }
 
 .feature-item h3 {
   margin-bottom: 8px;
+  color: var(--ocean);
 }
 
 .feature-item p {
@@ -1295,11 +1322,6 @@ button {
 }
 
 @media (max-width: 960px) {
-  .header-inner {
-    flex-wrap: nowrap;
-    padding: 10px 0;
-  }
-
   .nav-toggle {
     display: block;
   }
@@ -2024,28 +2046,11 @@ button {
 
 .site-header.scrolled .header-inner {
   padding: 6px 0;
-  flex-wrap: nowrap;
-  gap: 0 20px;
 }
 
 .site-header.scrolled .brand img {
-  width: 42px;
-  height: 42px;
-}
-
-.site-header.scrolled .nav-links {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-left: auto;
-}
-
-.site-header.scrolled .nav-primary {
-  width: auto;
-  border-top: none;
-  margin-top: 0;
-  padding: 0;
-  gap: 18px;
+  width: 38px;
+  height: 38px;
 }
 
 /* ── Tilt Effect on Cards ──────────────────────────────── */
@@ -2257,6 +2262,34 @@ button {
   color: var(--ink);
   align-self: flex-start;
   border-bottom-left-radius: 4px;
+}
+
+.chat-msg.bot strong {
+  color: var(--ocean);
+}
+
+.chat-msg.bot ul {
+  margin: 6px 0;
+  padding-left: 16px;
+  list-style: none;
+}
+
+.chat-msg.bot li {
+  position: relative;
+  padding-left: 12px;
+  margin-bottom: 4px;
+}
+
+.chat-msg.bot li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--aqua);
+  font-weight: 700;
+}
+
+.chat-msg.bot p {
+  margin: 4px 0;
 }
 
 .chat-msg.user {

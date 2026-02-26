@@ -77,8 +77,8 @@
     }
 
     if (brandLogo) {
-      const drift = Math.min(scrollY * 0.08, 14);
-      brandLogo.style.transform = "translateY(" + drift + "px) rotate(" + (-drift * 0.5) + "deg)";
+      const drift = Math.min(scrollY * 0.04, 6);
+      brandLogo.style.transform = "translateY(" + drift + "px) rotate(" + (-drift * 0.3) + "deg)";
     }
   };
 
@@ -482,10 +482,25 @@
     if (chatOpen) chatInput.focus();
   });
 
+  const formatBotText = (text) => {
+    return text
+      .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+      .replace(/^• /gm, "<li>")
+      .replace(/^- /gm, "<li>")
+      .replace(/\n{2,}/g, "</p><p>")
+      .replace(/\n/g, "<br>")
+      .replace(/(<li>.*?)(?=<li>|<\/p>|<br>|$)/gs, "<ul>$&</ul>")
+      .replace(/<\/ul><ul>/g, "");
+  };
+
   const addMessage = (text, role) => {
     const msg = document.createElement("div");
     msg.className = "chat-msg " + role;
-    msg.textContent = text;
+    if (role === "bot") {
+      msg.innerHTML = formatBotText(text);
+    } else {
+      msg.textContent = text;
+    }
     chatMessages.appendChild(msg);
     chatMessages.scrollTop = chatMessages.scrollHeight;
   };
