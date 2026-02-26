@@ -646,7 +646,11 @@ button {
 }
 
 .service-card {
-  padding: 30px;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 0 14px;
+  align-items: start;
+  padding: 28px;
   border-radius: var(--radius-lg);
   background: var(--white);
   box-shadow: var(--shadow-soft);
@@ -680,9 +684,10 @@ button {
 }
 
 .service-icon {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 16px;
+  grid-row: 1;
+  grid-column: 1;
+  width: 56px;
+  height: 56px;
   border-radius: var(--radius-md);
   overflow: hidden;
   transition: transform var(--transition);
@@ -695,19 +700,30 @@ button {
 }
 
 .service-card:hover .service-icon {
-  transform: translateY(-3px) scale(1.06);
+  transform: scale(1.06);
 }
 
 .service-card h3 {
-  margin-bottom: 10px;
+  grid-row: 1;
+  grid-column: 2;
+  align-self: center;
+  margin-bottom: 0;
 }
 
 .service-card p {
+  grid-column: 1 / -1;
   color: var(--ink-soft);
+  margin-top: 12px;
+}
+
+.service-card .model-list {
+  grid-column: 1 / -1;
 }
 
 .service-card .btn {
-  margin-top: 16px;
+  grid-column: 1 / -1;
+  margin-top: 12px;
+  justify-self: start;
 }
 
 .list-grid .btn {
@@ -715,10 +731,11 @@ button {
 }
 
 .list-icon {
-  width: 44px;
-  height: 44px;
+  grid-row: 1;
+  grid-column: 1;
+  width: 38px;
+  height: 38px;
   flex-shrink: 0;
-  margin-bottom: 10px;
   border-radius: var(--radius-sm);
   overflow: hidden;
 }
@@ -769,19 +786,28 @@ button {
 }
 
 .list-card {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 0 12px;
+  align-items: start;
   background: var(--white);
   border-radius: var(--radius-md);
-  padding: 20px 22px;
+  padding: 18px 20px;
   box-shadow: var(--shadow-soft);
   border: 1px solid rgba(15, 30, 45, 0.05);
 }
 
 .list-card h3 {
-  margin-bottom: 6px;
+  grid-row: 1;
+  grid-column: 2;
+  align-self: center;
+  margin-bottom: 0;
 }
 
 .list-card p {
+  grid-column: 2;
   color: var(--ink-soft);
+  margin-top: 4px;
 }
 
 .stats-grid {
@@ -2281,9 +2307,14 @@ button {
   }
 
   .service-icon {
-    width: 64px;
-    height: 64px;
-    margin-bottom: 12px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .service-card {
+    grid-template-columns: 44px 1fr;
+    gap: 0 10px;
+    padding: 20px;
   }
 
   /* Stat grid mobile */
