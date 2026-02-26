@@ -1147,11 +1147,18 @@ button {
 }
 
 .site-footer .brand {
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.site-footer .brand img {
+  width: 80px;
+  height: 80px;
+  filter: invert(1) hue-rotate(180deg) drop-shadow(0 2px 12px rgba(90, 180, 232, 0.3));
 }
 
 .site-footer .brand-name {
   color: var(--white);
+  font-size: 1.2rem;
 }
 
 .site-footer .footer-tagline {
