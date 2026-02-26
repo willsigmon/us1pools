@@ -156,33 +156,41 @@ button {
   position: sticky;
   top: 0;
   z-index: 50;
-  backdrop-filter: blur(14px);
-  background: rgba(228, 250, 249, 0.82);
-  border-bottom: 1px solid rgba(31, 185, 198, 0.2);
+  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.88);
+  border-bottom: 1px solid rgba(6, 38, 44, 0.06);
 }
 
 .header-inner {
   display: flex;
   align-items: center;
-  gap: 24px;
-  padding: 18px 0;
+  gap: 28px;
+  padding: 14px 0;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .brand img {
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.brand:hover img {
+  transform: rotate(-6deg) scale(1.05);
 }
 
 .brand-name {
-  font-weight: 600;
-  letter-spacing: 0.3px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--ink);
+  letter-spacing: -0.01em;
 }
 
 .nav-toggle {
@@ -208,14 +216,38 @@ button {
 }
 
 .nav-link {
-  font-size: 0.95rem;
+  font-size: 0.88rem;
+  font-weight: 500;
   color: var(--ink-soft);
+  padding: 6px 0;
+  position: relative;
   transition: color var(--transition);
 }
 
-.nav-link:hover,
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--aqua);
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+
+.nav-link:hover {
+  color: var(--ocean);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+
 .nav-link.active {
-  color: var(--aqua);
+  color: var(--ocean);
+  font-weight: 600;
 }
 
 .nav-dropdown {
@@ -281,7 +313,17 @@ button {
 
 .nav-phone {
   font-weight: 600;
-  color: var(--ink-soft);
+  font-size: 0.9rem;
+  color: var(--ocean);
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--seafoam);
+  transition: all var(--transition);
+}
+
+.nav-phone:hover {
+  background: var(--ocean);
+  color: var(--white);
 }
 
 .btn {
@@ -449,15 +491,16 @@ button {
 
 .image-overlay {
   position: absolute;
-  top: 18px;
-  right: 18px;
-  background: rgba(255, 255, 255, 0.9);
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.92);
   padding: 8px 14px;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   z-index: 2;
+  backdrop-filter: blur(8px);
 }
 
 .image-overlay img {
@@ -652,7 +695,11 @@ button {
 }
 
 .service-card .btn {
-  margin-top: 14px;
+  margin-top: 16px;
+}
+
+.list-grid .btn {
+  margin-top: 8px;
 }
 
 .list-icon {
@@ -752,7 +799,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 20px;
+  margin-top: 24px;
 }
 
 .badge {
@@ -831,12 +878,17 @@ button {
 }
 
 .clinic-details ul {
-  margin: 0 0 16px 0;
+  margin: 0 0 20px 0;
   padding-left: 20px;
 }
 
 .clinic-details li {
   margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.clinic-details .btn {
+  margin-top: 4px;
 }
 
 .gallery-grid {
@@ -1796,16 +1848,21 @@ button {
 
 /* ── Header Scroll Effect ──────────────────────────────── */
 .site-header {
-  transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .site-header.scrolled {
-  background: rgba(228, 250, 249, 0.95);
-  box-shadow: 0 4px 20px rgba(6, 38, 44, 0.1);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 2px 16px rgba(6, 38, 44, 0.08);
 }
 
 .site-header.scrolled .header-inner {
-  padding: 12px 0;
+  padding: 10px 0;
+}
+
+.site-header.scrolled .brand img {
+  width: 40px;
+  height: 40px;
 }
 
 /* ── Tilt Effect on Cards ──────────────────────────────── */

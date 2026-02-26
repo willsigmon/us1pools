@@ -62,8 +62,9 @@
   progressBar.className = "scroll-progress";
   document.body.prepend(progressBar);
 
-  /* ── Header Scroll Effect ──────────────────────────────── */
+  /* ── Header Scroll Effect + Logo Parallax ─────────────── */
   const header = document.querySelector(".site-header");
+  const brandLogo = header && header.querySelector(".brand img");
 
   const onScroll = () => {
     const scrollY = window.scrollY;
@@ -73,6 +74,11 @@
 
     if (header) {
       header.classList.toggle("scrolled", scrollY > 40);
+    }
+
+    if (brandLogo) {
+      const drift = Math.min(scrollY * 0.04, 6);
+      brandLogo.style.transform = "translateY(" + drift + "px) rotate(" + (-drift * 0.8) + "deg)";
     }
   };
 
