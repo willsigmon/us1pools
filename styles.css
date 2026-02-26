@@ -585,32 +585,22 @@ button {
 }
 
 .service-icon {
-  width: 56px;
-  height: 56px;
+  width: 80px;
+  height: 80px;
   margin-bottom: 16px;
-  color: var(--lagoon);
-  background: linear-gradient(135deg, rgba(31,185,198,0.12), rgba(15,125,138,0.06));
   border-radius: var(--radius-md);
-  padding: 12px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform var(--transition), color var(--transition);
+  overflow: hidden;
+  transition: transform var(--transition);
 }
 
-.service-icon svg {
+.service-icon img {
   width: 100%;
   height: 100%;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  object-fit: cover;
 }
 
 .service-card:hover .service-icon {
-  color: var(--aqua-bright);
-  transform: translateY(-2px) scale(1.08);
+  transform: translateY(-3px) scale(1.06);
 }
 
 .service-card h3 {
@@ -626,21 +616,18 @@ button {
 }
 
 .list-icon {
-  width: 36px;
-  height: 36px;
-  color: var(--lagoon);
+  width: 44px;
+  height: 44px;
   flex-shrink: 0;
   margin-bottom: 10px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
 }
 
-.list-icon svg {
+.list-icon img {
   width: 100%;
   height: 100%;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  object-fit: cover;
 }
 
 .split {
@@ -2117,9 +2104,8 @@ button {
   }
 
   .service-icon {
-    width: 48px;
-    height: 48px;
-    padding: 10px;
+    width: 64px;
+    height: 64px;
     margin-bottom: 12px;
   }
 
