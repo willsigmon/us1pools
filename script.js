@@ -77,8 +77,8 @@
     }
 
     if (brandLogo) {
-      const drift = Math.min(scrollY * 0.04, 6);
-      brandLogo.style.transform = "translateY(" + drift + "px) rotate(" + (-drift * 0.8) + "deg)";
+      const drift = Math.min(scrollY * 0.08, 14);
+      brandLogo.style.transform = "translateY(" + drift + "px) rotate(" + (-drift * 0.5) + "deg)";
     }
   };
 
