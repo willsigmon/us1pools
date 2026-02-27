@@ -324,11 +324,7 @@ button {
 }
 
 .nav-highlight::before {
-  content: "▶";
-  font-size: 0.55em;
-  margin-right: 5px;
-  color: var(--aqua);
-  vertical-align: 1px;
+  content: none;
 }
 
 .nav-highlight::after {
@@ -364,6 +360,33 @@ button {
 .dropdown-toggle svg {
   width: 16px;
   height: 16px;
+}
+
+/* Unified dropdown trigger: nav-link + chevron in one button */
+button.nav-link.dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  cursor: pointer;
+  position: relative;
+}
+
+.dropdown-chevron {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.nav-dropdown.open .dropdown-chevron {
+  transform: rotate(180deg);
 }
 
 .dropdown-menu {
