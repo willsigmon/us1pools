@@ -283,7 +283,7 @@
         formStatus.style.display = "block";
       } finally {
         submitBtn.disabled = false;
-        submitBtn.textContent = "Send project details";
+        submitBtn.textContent = "Get a Free Quote";
       }
     });
   }
