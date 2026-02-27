@@ -756,6 +756,11 @@ button.nav-link.dropdown-toggle {
   grid-auto-rows: 1fr;
 }
 
+/* Services page: 3-column grid for even rows (6 cards = 3+3) */
+[data-page="services"] .card-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .service-card {
   display: grid;
   grid-template-columns: 56px 1fr;
