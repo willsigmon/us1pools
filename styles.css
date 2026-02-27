@@ -1213,6 +1213,11 @@ button.nav-link.dropdown-toggle {
   color: var(--ink-soft);
 }
 
+.required {
+  color: var(--coral);
+  font-weight: 700;
+}
+
 .contact-form input,
 .contact-form textarea,
 .contact-form select {
