@@ -538,19 +538,38 @@ button.nav-link.dropdown-toggle {
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 8px 16px;
+  gap: 14px;
+  padding: 10px 22px;
   border-radius: 999px;
-  background: var(--glass);
-  box-shadow: var(--shadow);
-  font-size: 0.9rem;
+  background: linear-gradient(135deg, rgba(246, 179, 93, 0.18), var(--glass-strong));
+  border: 1.5px solid rgba(246, 179, 93, 0.45);
+  box-shadow:
+    0 0 20px rgba(246, 179, 93, 0.25),
+    0 0 60px rgba(246, 179, 93, 0.08),
+    var(--shadow);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--ink);
   margin-bottom: 20px;
+  animation: badge-glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes badge-glow {
+  0% { box-shadow: 0 0 20px rgba(246, 179, 93, 0.25), 0 0 60px rgba(246, 179, 93, 0.08), var(--shadow); }
+  100% { box-shadow: 0 0 28px rgba(246, 179, 93, 0.35), 0 0 80px rgba(246, 179, 93, 0.12), var(--shadow); }
 }
 
 .hero-badge img {
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(246, 179, 93, 0.4));
+}
+
+.hero-badge strong {
+  color: var(--sun);
+  font-weight: 700;
 }
 
 .hero-copy h1 {
