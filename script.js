@@ -230,139 +230,6 @@
     });
   }
 
-  /* ── Gallery Filter ────────────────────────────────────── */
-  const filterButtons = document.querySelectorAll("[data-filter]");
-  const galleryItems = document.querySelectorAll("[data-category]");
-
-  if (filterButtons.length && galleryItems.length) {
-    filterButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const filter = button.dataset.filter;
-        filterButtons.forEach((btn) => btn.classList.remove("active"));
-        button.classList.add("active");
-        galleryItems.forEach((item) => {
-          const categories = item.dataset.category?.split(" ") || [];
-          const isMatch = filter === "all" || categories.includes(filter);
-          item.classList.toggle("is-hidden", !isMatch);
-        });
-      });
-    });
-  }
-
-  /* ── Contact Form ──────────────────────────────────────── */
-  const contactForm = document.getElementById("contactForm");
-  if (contactForm) {
-    contactForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const submitBtn = document.getElementById("submitBtn");
-      const formStatus = document.getElementById("formStatus");
-      const data = Object.fromEntries(new FormData(contactForm).entries());
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Sending...";
-      formStatus.style.display = "none";
-
-      try {
-        const response = await fetch("/api/contact", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        });
-        const result = await response.json();
-        if (response.ok) {
-          formStatus.className = "form-status success";
-          formStatus.textContent = result.message || "Thank you! We'll be in touch soon.";
-          formStatus.style.display = "block";
-          contactForm.reset();
-        } else {
-          throw new Error(result.error || "Something went wrong");
-        }
-      } catch (err) {
-        formStatus.className = "form-status error";
-        formStatus.textContent = err.message || "Failed to send. Please call us at (919) 441-0033.";
-        formStatus.style.display = "block";
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Get a Free Quote";
-      }
-    });
-  }
-
-  /* ── Gallery Lightbox ──────────────────────────────────── */
-  const galleryImages = document.querySelectorAll(".image-card img");
-  let currentImageIndex = 0;
-  const lightboxImages = [];
-
-  if (galleryImages.length > 0) {
-    const lightbox = document.createElement("div");
-    lightbox.className = "lightbox";
-
-    const closeBtn = document.createElement("button");
-    closeBtn.className = "lightbox-close";
-    closeBtn.setAttribute("aria-label", "Close lightbox");
-    closeBtn.textContent = "\u00D7";
-
-    const prevBtn = document.createElement("button");
-    prevBtn.className = "lightbox-prev";
-    prevBtn.setAttribute("aria-label", "Previous image");
-    prevBtn.textContent = "\u2039";
-
-    const nextBtn = document.createElement("button");
-    nextBtn.className = "lightbox-next";
-    nextBtn.setAttribute("aria-label", "Next image");
-    nextBtn.textContent = "\u203A";
-
-    const lbImage = document.createElement("img");
-    lbImage.className = "lightbox-image";
-    lbImage.alt = "";
-
-    const lbCaption = document.createElement("div");
-    lbCaption.className = "lightbox-caption";
-
-    lightbox.appendChild(closeBtn);
-    lightbox.appendChild(prevBtn);
-    lightbox.appendChild(nextBtn);
-    lightbox.appendChild(lbImage);
-    lightbox.appendChild(lbCaption);
-    document.body.appendChild(lightbox);
-
-    const showLightbox = (idx) => {
-      currentImageIndex = idx;
-      const img = lightboxImages[idx];
-      lbImage.src = img.src;
-      lbImage.alt = img.alt;
-      lbCaption.textContent = img.alt || "";
-      lightbox.classList.add("active");
-      document.body.style.overflow = "hidden";
-    };
-
-    const closeLightbox = () => {
-      lightbox.classList.remove("active");
-      document.body.style.overflow = "";
-    };
-
-    const showNext = () => showLightbox((currentImageIndex + 1) % lightboxImages.length);
-    const showPrev = () => showLightbox((currentImageIndex - 1 + lightboxImages.length) % lightboxImages.length);
-
-    galleryImages.forEach((img, i) => {
-      lightboxImages.push(img);
-      img.style.cursor = "pointer";
-      img.addEventListener("click", () => showLightbox(i));
-    });
-
-    closeBtn.addEventListener("click", closeLightbox);
-    nextBtn.addEventListener("click", showNext);
-    prevBtn.addEventListener("click", showPrev);
-    lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
-
-    document.addEventListener("keydown", (e) => {
-      if (!lightbox.classList.contains("active")) return;
-      if (e.key === "Escape") closeLightbox();
-      if (e.key === "ArrowRight") showNext();
-      if (e.key === "ArrowLeft") showPrev();
-    });
-  }
-
   /* ── Seasonal Messaging ────────────────────────────────── */
   const updateSeasonalMessage = () => {
     const month = new Date().getMonth();
@@ -395,6 +262,8 @@
   const chatToggleBtn = document.createElement("button");
   chatToggleBtn.className = "chat-toggle";
   chatToggleBtn.setAttribute("aria-label", "Open chat assistant");
+  chatToggleBtn.setAttribute("aria-expanded", "false");
+  chatToggleBtn.setAttribute("aria-controls", "chatPanel");
 
   const pulse = document.createElement("span");
   pulse.className = "chat-toggle-pulse";
@@ -411,6 +280,9 @@
   // Build panel
   const chatPanel = document.createElement("div");
   chatPanel.className = "chat-panel";
+  chatPanel.id = "chatPanel";
+  chatPanel.setAttribute("role", "dialog");
+  chatPanel.setAttribute("aria-hidden", "true");
 
   // Header
   const chatHeader = document.createElement("div");
@@ -421,9 +293,11 @@
   const headerInfo = document.createElement("div");
   headerInfo.className = "chat-header-info";
   const headerTitle = document.createElement("h4");
+  headerTitle.id = "chatPanelTitle";
   headerTitle.textContent = "US-1 Pools Assistant";
   const headerSub = document.createElement("p");
   headerSub.textContent = "Ask about pools, spas, or services";
+  chatPanel.setAttribute("aria-labelledby", "chatPanelTitle");
   headerInfo.appendChild(headerTitle);
   headerInfo.appendChild(headerSub);
   chatHeader.appendChild(avatar);
@@ -434,6 +308,9 @@
   const chatMessages = document.createElement("div");
   chatMessages.className = "chat-messages";
   chatMessages.id = "chatMessages";
+  chatMessages.setAttribute("role", "log");
+  chatMessages.setAttribute("aria-live", "polite");
+  chatMessages.setAttribute("aria-relevant", "additions text");
   const welcomeMsg = document.createElement("div");
   welcomeMsg.className = "chat-msg bot";
   welcomeMsg.textContent = "Hey! I'm the US-1 Pools assistant. Ask me about our pools, hot tubs, services, or anything else. How can I help?";
@@ -452,6 +329,7 @@
   ];
   quickData.forEach(([msg, label]) => {
     const btn = document.createElement("button");
+    btn.type = "button";
     btn.className = "chat-quick-btn";
     btn.dataset.msg = msg;
     btn.textContent = label;
@@ -468,7 +346,9 @@
   chatInput.type = "text";
   chatInput.placeholder = "Ask anything...";
   chatInput.autocomplete = "off";
+  chatInput.maxLength = 500;
   const chatSendBtn = document.createElement("button");
+  chatSendBtn.type = "button";
   chatSendBtn.className = "chat-send";
   chatSendBtn.id = "chatSend";
   chatSendBtn.setAttribute("aria-label", "Send message");
@@ -489,30 +369,64 @@
 
   let chatOpen = false;
   const conversationHistory = [];
+  let chatRequestInFlight = false;
 
   chatToggleBtn.addEventListener("click", () => {
     chatOpen = !chatOpen;
     chatPanel.classList.toggle("open", chatOpen);
     chatToggleBtn.classList.toggle("open", chatOpen);
+    chatToggleBtn.setAttribute("aria-expanded", String(chatOpen));
+    chatPanel.setAttribute("aria-hidden", String(!chatOpen));
+    chatToggleBtn.setAttribute("aria-label", chatOpen ? "Close chat assistant" : "Open chat assistant");
     if (chatOpen) chatInput.focus();
   });
 
-  const formatBotText = (text) => {
-    return text
-      .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-      .replace(/^• /gm, "<li>")
-      .replace(/^- /gm, "<li>")
-      .replace(/\n{2,}/g, "</p><p>")
-      .replace(/\n/g, "<br>")
-      .replace(/(<li>.*?)(?=<li>|<\/p>|<br>|$)/gs, "<ul>$&</ul>")
-      .replace(/<\/ul><ul>/g, "");
+  const appendInlineFormattedText = (parent, text) => {
+    const segments = String(text ?? "").split(/(\*\*[^*]+\*\*)/g).filter(Boolean);
+    segments.forEach((segment) => {
+      if (segment.startsWith("**") && segment.endsWith("**")) {
+        const strong = document.createElement("strong");
+        strong.textContent = segment.slice(2, -2);
+        parent.appendChild(strong);
+      } else {
+        parent.appendChild(document.createTextNode(segment));
+      }
+    });
+  };
+
+  const appendFormattedMessage = (container, text) => {
+    String(text ?? "")
+      .split(/\n{2,}/)
+      .map((block) => block.split("\n").filter(Boolean))
+      .filter((lines) => lines.length > 0)
+      .forEach((lines) => {
+        if (lines.every((line) => /^([•-])\s+/.test(line))) {
+          const list = document.createElement("ul");
+          lines.forEach((line) => {
+            const item = document.createElement("li");
+            appendInlineFormattedText(item, line.replace(/^([•-])\s+/, ""));
+            list.appendChild(item);
+          });
+          container.appendChild(list);
+          return;
+        }
+
+        const paragraph = document.createElement("p");
+        lines.forEach((line, index) => {
+          appendInlineFormattedText(paragraph, line);
+          if (index < lines.length - 1) {
+            paragraph.appendChild(document.createElement("br"));
+          }
+        });
+        container.appendChild(paragraph);
+      });
   };
 
   const addMessage = (text, role) => {
     const msg = document.createElement("div");
     msg.className = "chat-msg " + role;
     if (role === "bot") {
-      msg.innerHTML = formatBotText(text);
+      appendFormattedMessage(msg, text);
     } else {
       msg.textContent = text;
     }
@@ -520,10 +434,37 @@
     chatMessages.scrollTop = chatMessages.scrollHeight;
   };
 
+  const pushConversationEntry = (role, content) => {
+    conversationHistory.push({ role, content });
+    if (conversationHistory.length > 12) {
+      conversationHistory.splice(0, conversationHistory.length - 12);
+    }
+  };
+
+  const updateChatPendingState = (isPending) => {
+    chatRequestInFlight = isPending;
+    chatSendBtn.disabled = isPending;
+    chatInput.disabled = isPending;
+    quickActions.querySelectorAll(".chat-quick-btn").forEach((button) => {
+      button.disabled = isPending;
+    });
+  };
+
+  const readResponsePayload = async (response) => {
+    const contentType = response.headers.get("content-type") || "";
+    if (contentType.includes("application/json")) {
+      return response.json();
+    }
+
+    const text = await response.text();
+    return { error: text.trim() };
+  };
+
   const showTyping = () => {
     const typing = document.createElement("div");
     typing.className = "chat-msg bot typing";
     typing.id = "typingIndicator";
+    typing.setAttribute("aria-hidden", "true");
     const dots = document.createElement("div");
     dots.className = "typing-dots";
     for (let i = 0; i < 3; i++) dots.appendChild(document.createElement("span"));
@@ -538,40 +479,59 @@
   };
 
   const sendChatMessage = async (text) => {
-    if (!text.trim()) return;
-    addMessage(text, "user");
+    const trimmedText = text.trim().slice(0, 500);
+    if (!trimmedText || chatRequestInFlight) return;
+
+    addMessage(trimmedText, "user");
     chatInput.value = "";
     quickActions.style.display = "none";
-    conversationHistory.push({ role: "user", content: text });
+    pushConversationEntry("user", trimmedText);
 
     showTyping();
+    updateChatPendingState(true);
 
     try {
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text, history: conversationHistory.slice(-10) }),
+        body: JSON.stringify({ message: trimmedText, history: conversationHistory.slice(-10) }),
       });
-
-      removeTyping();
+      const data = await readResponsePayload(response);
 
       if (response.ok) {
-        const data = await response.json();
         const reply = data.reply || "Sorry, I couldn't process that. Call us at 919.441.0033!";
         addMessage(reply, "bot");
-        conversationHistory.push({ role: "assistant", content: reply });
+        pushConversationEntry("assistant", reply);
       } else {
-        addMessage("Something went wrong. Give us a call at 919.441.0033 and we'll help you out!", "bot");
+        addMessage(data.error || "Something went wrong. Give us a call at 919.441.0033 and we'll help you out!", "bot");
       }
     } catch (err) {
-      removeTyping();
       addMessage("I'm having trouble connecting. Feel free to call us at 919.441.0033!", "bot");
+    } finally {
+      removeTyping();
+      updateChatPendingState(false);
+      if (chatOpen) chatInput.focus();
     }
   };
 
   chatSendBtn.addEventListener("click", () => sendChatMessage(chatInput.value));
   chatInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") sendChatMessage(chatInput.value);
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendChatMessage(chatInput.value);
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && chatOpen) {
+      chatOpen = false;
+      chatPanel.classList.remove("open");
+      chatToggleBtn.classList.remove("open");
+      chatToggleBtn.setAttribute("aria-expanded", "false");
+      chatPanel.setAttribute("aria-hidden", "true");
+      chatToggleBtn.setAttribute("aria-label", "Open chat assistant");
+      chatToggleBtn.focus();
+    }
   });
 
   quickActions.querySelectorAll(".chat-quick-btn").forEach((btn) => {

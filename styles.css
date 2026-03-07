@@ -535,6 +535,13 @@ button.nav-link.dropdown-toggle {
   align-items: center;
 }
 
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
 .hero-badge {
   display: inline-flex;
   align-items: center;
@@ -551,7 +558,6 @@ button.nav-link.dropdown-toggle {
   font-weight: 500;
   letter-spacing: 0.01em;
   color: var(--ink);
-  margin-bottom: 20px;
   animation: badge-glow 3s ease-in-out infinite alternate;
 }
 
@@ -1708,6 +1714,113 @@ button.nav-link.dropdown-toggle {
 
 .calculator-result p {
   opacity: 0.95;
+}
+
+.container-narrow {
+  max-width: 700px;
+}
+
+.container-article {
+  max-width: 800px;
+}
+
+.calculator-result-step .eyebrow {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.calculator-result-note {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.calculator-result-actions {
+  margin-top: 24px;
+  justify-content: center;
+}
+
+.calculator-notes {
+  margin-top: 48px;
+  padding: 24px;
+  background: var(--seafoam);
+  border-radius: var(--radius-lg);
+}
+
+.calculator-note-list {
+  margin: 16px 0;
+  padding-left: 20px;
+}
+
+.guide-article ul,
+.guide-article ol {
+  margin: 16px 0;
+  line-height: 1.8;
+}
+
+.guide-article ol {
+  padding-left: 24px;
+}
+
+.guide-highlight {
+  margin: 16px 0;
+}
+
+.guide-highlight ul {
+  margin-top: 12px;
+}
+
+.guide-note {
+  margin-top: 12px;
+}
+
+.guide-problem {
+  margin: 24px 0;
+}
+
+.guide-closing-note {
+  margin-top: 24px;
+}
+
+.guide-cta {
+  margin-top: 48px;
+}
+
+.service-area-list {
+  margin-top: 12px;
+}
+
+.drive-time-note {
+  margin-top: 16px;
+}
+
+.feature-grid {
+  display: grid;
+  gap: 24px;
+  margin-top: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.map-embed {
+  margin-top: 2rem;
+}
+
+.map-embed iframe,
+.map-embed-frame {
+  width: 100%;
+  height: 300px;
+  border: 0;
+  border-radius: 16px;
+}
+
+.honeypot-field {
+  display: none;
+}
+
+.footer-quote-btn {
+  margin-top: 4px;
+}
+
+.footer-pay-link {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 /* Video Embeds */
