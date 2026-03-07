@@ -10,6 +10,9 @@
   <meta property="og:image" content="https://www.us1pools.com/assets/images/hero.webp" />
   <meta property="og:url" content="https://www.us1pools.com/calculator.html" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pool Cost Calculator | US-1 Pools" />
+  <meta name="twitter:description" content="Estimate your pool installation cost in minutes." />
+  <meta name="twitter:image" content="https://www.us1pools.com/assets/images/hero.webp" />
   <link rel="canonical" href="https://www.us1pools.com/calculator.html" />
   <link rel="icon" type="image/png" href="assets/images/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,7 +29,7 @@
   <header class="site-header" id="top">
     <div class="container header-inner">
       <a class="brand" href="index.html">
-        <img src="assets/images/logo.png" alt="US-1 Pools logo" />
+        <img src="assets/images/logo.png" alt="US-1 Pools logo" width="2500" height="1029" />
         <span class="brand-name">US-1 Pools</span>
       </a>
             <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
@@ -70,7 +73,7 @@
     </section>
 
     <section class="section">
-      <div class="container" style="max-width: 700px;">
+      <div class="container container-narrow">
         <div class="calculator" id="poolCalculator">
           <!-- Step 1: Pool Type -->
           <div class="calculator-step active" data-step="1">
@@ -116,7 +119,7 @@
                 <p>24+ ft diameter (above-ground) or 18x36+ ft (in-ground)</p>
               </div>
             </div>
-            <button class="btn btn-ghost" onclick="previousStep()">← Back</button>
+            <button class="btn btn-ghost" type="button" data-calculator-back>← Back</button>
           </div>
 
           <!-- Step 3: Features -->
@@ -138,7 +141,7 @@
                 <p><strong>+$8,000 - $12,000</strong></p>
               </div>
             </div>
-            <button class="btn btn-ghost" onclick="previousStep()">← Back</button>
+            <button class="btn btn-ghost" type="button" data-calculator-back>← Back</button>
           </div>
 
           <!-- Step 4: Timeline -->
@@ -162,30 +165,30 @@
                 <p>Researching options for future install.</p>
               </div>
             </div>
-            <button class="btn btn-ghost" onclick="previousStep()">← Back</button>
+            <button class="btn btn-ghost" type="button" data-calculator-back>← Back</button>
           </div>
 
           <!-- Result -->
-          <div class="calculator-step" data-step="result" style="display:none;">
-            <div class="calculator-result">
-              <p class="eyebrow" style="color: rgba(255,255,255,0.9);">Estimated Cost Range</p>
-              <h3 id="calculatorResult">$0 - $0</h3>
+          <div class="calculator-step calculator-result-step" data-step="result">
+            <div class="calculator-result" role="status" aria-live="polite">
+              <p class="eyebrow">Estimated Cost Range</p>
+              <h3 id="calculatorResult" aria-atomic="true">$0 - $0</h3>
               <p id="calculatorDetails">Based on your selections</p>
             </div>
-            <div style="margin-top: 24px; text-align: center;">
+            <div class="calculator-result-note">
               <p><strong>Ready to get an exact quote?</strong></p>
               <p>Every project is unique. Contact us for a detailed estimate based on your specific site and needs.</p>
-              <div class="hero-actions" style="margin-top: 24px; justify-content: center;">
+              <div class="hero-actions calculator-result-actions">
                 <a class="btn btn-primary" href="contact.html">Get a Free Quote</a>
-                <button class="btn btn-ghost" onclick="resetCalculator()">Start Over</button>
+                <button class="btn btn-ghost" type="button" data-calculator-reset>Start Over</button>
               </div>
             </div>
           </div>
         </div>
 
-        <div style="margin-top: 48px; padding: 24px; background: var(--seafoam); border-radius: var(--radius-lg);">
+        <div class="calculator-notes">
           <h3>Important Notes:</h3>
-          <ul style="margin: 16px 0; padding-left: 20px;">
+          <ul class="calculator-note-list">
             <li>These are rough estimates based on typical projects.</li>
             <li>Actual costs depend on site conditions, access, permits, and local requirements.</li>
             <li>Pricing does not include site prep, electrical, fencing, or landscaping.</li>
@@ -201,7 +204,7 @@
       <div class="footer-inner">
         <div>
           <div class="brand">
-            <img src="assets/images/logo.png" alt="US-1 Pools logo" />
+            <img src="assets/images/logo.png" alt="US-1 Pools logo" width="2500" height="1029" />
             <span class="brand-name">US-1 Pools</span>
           </div>
           <p class="footer-tagline">Sales, service, and installation for above-ground, in-ground, and fiberglass pools across the Triangle.</p>
@@ -228,121 +231,19 @@
             <div><a href="mailto:us1pools@gmail.com">us1pools@gmail.com</a></div>
             <div data-seasonal>M-Th 11-3 &middot; Fri 11-5 &middot; Sat 10-5 &middot; Sun 12-3</div>
           </div>
-          <a class="btn btn-primary" href="contact.html" style="margin-top:4px">Get a Free Quote</a>
+          <a class="btn btn-primary footer-quote-btn" href="contact.html">Get a Free Quote</a>
         </div>
       </div>
       <div class="footer-bottom">
         <span>&copy; 2026 US-1 Pools. All rights reserved.</span>
-        <a href="https://buy.stripe.com/5kA4iY3xm30agFObII" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.5)">Pay Online</a>
+        <a href="https://buy.stripe.com/5kA4iY3xm30agFObII" target="_blank" rel="noopener noreferrer" class="footer-pay-link">Pay Online</a>
       </div>
     </div>
   </footer>
 
+  <script defer data-domain="us1pools.com" src="https://plausible.io/js/script.js"></script>
   <script src="script.js"></script>
-  <script>
-    let selections = {};
-    let currentStep = 1;
-
-    document.querySelectorAll('.calculator-option').forEach(option => {
-      option.addEventListener('click', function() {
-        const step = this.closest('.calculator-step');
-        const stepNum = step.dataset.step;
-
-        // Clear previous selection in this step
-        step.querySelectorAll('.calculator-option').forEach(opt => opt.classList.remove('selected'));
-        this.classList.add('selected');
-
-        // Store selection
-        selections['step' + stepNum] = {
-          value: this.dataset.value,
-          cost: this.dataset.cost,
-          multiplier: parseFloat(this.dataset.multiplier) || 1,
-          addition: parseInt(this.dataset.addition) || 0
-        };
-
-        // Auto-advance after short delay
-        setTimeout(() => nextStep(), 400);
-      });
-    });
-
-    function nextStep() {
-      const currentStepEl = document.querySelector(`[data-step="${currentStep}"]`);
-      currentStepEl.classList.remove('active');
-      currentStep++;
-
-      if (currentStep === 5) {
-        calculateResult();
-        return;
-      }
-
-      const nextStepEl = document.querySelector(`[data-step="${currentStep}"]`);
-      nextStepEl.classList.add('active');
-      nextStepEl.style.display = 'block';
-    }
-
-    function previousStep() {
-      const currentStepEl = document.querySelector(`[data-step="${currentStep}"]`);
-      currentStepEl.classList.remove('active');
-      currentStepEl.style.display = 'none';
-      currentStep--;
-      const prevStepEl = document.querySelector(`[data-step="${currentStep}"]`);
-      prevStepEl.classList.add('active');
-      prevStepEl.style.display = 'block';
-    }
-
-    function calculateResult() {
-      // Get base cost from step 1
-      const baseCostRange = selections.step1?.cost?.split('-') || ['0', '0'];
-      let lowEstimate = parseInt(baseCostRange[0]);
-      let highEstimate = parseInt(baseCostRange[1]);
-
-      // Apply size multiplier from step 2
-      const multiplier = selections.step2?.multiplier || 1;
-      lowEstimate *= multiplier;
-      highEstimate *= multiplier;
-
-      // Add features from step 3
-      const addition = selections.step3?.addition || 0;
-      lowEstimate += addition;
-      highEstimate += addition;
-
-      // Format and display
-      const resultEl = document.getElementById('calculatorResult');
-      resultEl.textContent = `$${lowEstimate.toLocaleString()} - $${highEstimate.toLocaleString()}`;
-
-      const detailsEl = document.getElementById('calculatorDetails');
-      const typeLabels = {
-        'above-ground': 'Above-ground pool',
-        'in-ground-vinyl': 'In-ground vinyl liner pool',
-        'in-ground-fiberglass': 'In-ground fiberglass pool',
-        'spa': 'Hot tub / spa'
-      };
-      const sizeLabels = { 'small': 'small', 'medium': 'medium', 'large': 'large' };
-      const featureLabels = { 'basic': 'basic', 'mid': 'mid-level', 'premium': 'premium' };
-
-      detailsEl.textContent = `${sizeLabels[selections.step2?.value] || ''} ${typeLabels[selections.step1?.value] || ''} with ${featureLabels[selections.step3?.value] || ''} features`;
-
-      // Show result
-      document.querySelectorAll('.calculator-step').forEach(step => {
-        step.classList.remove('active');
-        step.style.display = 'none';
-      });
-      const resultStep = document.querySelector('[data-step="result"]');
-      resultStep.style.display = 'block';
-    }
-
-    function resetCalculator() {
-      selections = {};
-      currentStep = 1;
-      document.querySelectorAll('.calculator-step').forEach(step => {
-        step.classList.remove('active');
-        step.style.display = 'none';
-      });
-      document.querySelectorAll('.calculator-option').forEach(opt => opt.classList.remove('selected'));
-      document.querySelector('[data-step="1"]').classList.add('active');
-      document.querySelector('[data-step="1"]').style.display = 'block';
-    }
-  </script>
+  <script src="calculator.js"></script>
   <script type="application/ld+json">
     {
           "@context": "https://schema.org",

@@ -29,7 +29,7 @@
   <header class="site-header" id="top">
     <div class="container header-inner">
       <a class="brand" href="index.html">
-        <img src="assets/images/logo.png" alt="US-1 Pools logo" />
+        <img src="assets/images/logo.png" alt="US-1 Pools logo" width="2500" height="1029" />
         <span class="brand-name">US-1 Pools</span>
       </a>
             <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
@@ -90,7 +90,7 @@
             </div>
             <div>
               <h4>Phone</h4>
-              <p><a href="tel:9194410033">919.441.0033</a><br /><a href="tel:9198804323">919.880.4323</a></p>
+              <p><a href="tel:9194410033">919.441.0033</a><br /><a href="tel:9198640277">919.864.0277</a></p>
             </div>
             <div>
               <h4>Email</h4>
@@ -105,12 +105,10 @@
             <a class="btn btn-secondary" href="tel:9194410033">Call or Text</a>
             <a class="btn btn-ghost" href="mailto:us1pools@gmail.com">Email us</a>
           </div>
-          <div class="map-embed" style="margin-top: 2rem;">
+          <div class="map-embed">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3227.8951234567!2d-78.4567890!3d36.1234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDA3JzI0LjQiTiA3OMKwMjcnMjQuNCJX!5e0!3m2!1sen!2sus!4v1234567890"
-              width="100%"
-              height="300"
-              style="border:0; border-radius: 16px;"
+              class="map-embed-frame"
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
@@ -122,23 +120,23 @@
           <div class="form-grid">
             <label>
               Full name <span class="required" aria-hidden="true">*</span>
-              <input type="text" name="name" placeholder="Your name" required />
+              <input type="text" name="name" placeholder="Your name" autocomplete="name" required />
             </label>
             <label>
               Email address <span class="required" aria-hidden="true">*</span>
-              <input type="email" name="email" placeholder="you@email.com" required />
+              <input type="email" name="email" placeholder="you@email.com" autocomplete="email" required />
             </label>
             <label>
               Phone number <span class="required" aria-hidden="true">*</span>
-              <input type="tel" name="phone" placeholder="(919) 555-1234" required />
+              <input type="tel" name="phone" placeholder="(919) 555-1234" autocomplete="tel" inputmode="tel" required />
             </label>
             <label>
               City or ZIP
-              <input type="text" name="location" placeholder="Wake Forest, 27587" />
+              <input type="text" name="location" placeholder="Wake Forest, 27587" autocomplete="postal-code" />
             </label>
             <label>
               Installation address (if different)
-              <input type="text" name="install_address" placeholder="Street address for the pool site" />
+              <input type="text" name="install_address" placeholder="Street address for the pool site" autocomplete="street-address" />
             </label>
           </div>
           <label>
@@ -180,8 +178,8 @@
             <textarea name="details" rows="4" placeholder="Location, timeline, and goals"></textarea>
           </label>
           <!-- Honeypot field (hidden from users, catches bots) -->
-          <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off" />
-          <div id="formStatus" class="form-status" style="display:none;"></div>
+          <input type="text" name="website" class="honeypot-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <div id="formStatus" class="form-status" hidden aria-live="polite" role="status"></div>
           <button class="btn btn-primary" type="submit" id="submitBtn">Get a Free Quote</button>
         </form>
       </div>
@@ -193,7 +191,7 @@
       <div class="footer-inner">
         <div>
           <div class="brand">
-            <img src="assets/images/logo.png" alt="US-1 Pools logo" />
+            <img src="assets/images/logo.png" alt="US-1 Pools logo" width="2500" height="1029" />
             <span class="brand-name">US-1 Pools</span>
           </div>
           <p class="footer-tagline">Sales, service, and installation for above-ground, in-ground, and fiberglass pools across the Triangle.</p>
@@ -220,17 +218,19 @@
             <div><a href="mailto:us1pools@gmail.com">us1pools@gmail.com</a></div>
             <div data-seasonal>M-Th 11-3 &middot; Fri 11-5 &middot; Sat 10-5 &middot; Sun 12-3</div>
           </div>
-          <a class="btn btn-primary" href="contact.html" style="margin-top:4px">Get a Free Quote</a>
+          <a class="btn btn-primary footer-quote-btn" href="contact.html">Get a Free Quote</a>
         </div>
       </div>
       <div class="footer-bottom">
         <span>&copy; 2026 US-1 Pools. All rights reserved.</span>
-        <a href="https://buy.stripe.com/5kA4iY3xm30agFObII" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.5)">Pay Online</a>
+        <a href="https://buy.stripe.com/5kA4iY3xm30agFObII" target="_blank" rel="noopener noreferrer" class="footer-pay-link">Pay Online</a>
       </div>
     </div>
   </footer>
 
+  <script defer data-domain="us1pools.com" src="https://plausible.io/js/script.js"></script>
   <script src="script.js"></script>
+  <script src="contact-form.js"></script>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",

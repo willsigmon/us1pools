@@ -1,3 +1,11 @@
+import {
+  enforceRateLimit,
+  isAllowedOrigin,
+  jsonError,
+  normalizeText,
+  setApiHeaders,
+} from "./_utils.js";
+
 const SYSTEM_PROMPT = `You are the US-1 Pools virtual assistant. You help customers learn about pools, hot tubs, services, and getting started.
 
 ABOUT US-1 POOLS:
@@ -66,56 +74,81 @@ GUIDELINES:
 - If you don't know something specific, direct them to call 919.441.0033
 - Never make up specific prices, inventory counts, or availability`;
 
+const MAX_HISTORY_ITEMS = 10;
+const MAX_MESSAGE_LENGTH = 500;
+
 export default async function handler(req, res) {
+  setApiHeaders(res);
+
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
+    return jsonError(res, 405, "Method not allowed");
+  }
+
+  if (!isAllowedOrigin(req)) {
+    return jsonError(res, 403, "Forbidden");
+  }
+
+  const rateLimit = enforceRateLimit(req, res, {
+    namespace: "chat",
+    windowMs: 10 * 60 * 1000,
+    maxRequests: 25,
+  });
+  if (!rateLimit.allowed) {
+    return jsonError(res, 429, "Too many chat requests. Please wait a minute and try again.");
+  }
+
+  const body = req.body && typeof req.body === "object" ? req.body : {};
+  const message = normalizeText(body.message, MAX_MESSAGE_LENGTH);
+  const history = Array.isArray(body.history) ? body.history : [];
+
+  if (!message) {
+    return jsonError(res, 400, "Message is required");
   }
 
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
-    return res.status(500).json({ error: "Chat service not configured" });
+    return jsonError(res, 500, "Chat service not configured");
   }
 
-  const { message, history } = req.body;
-  if (!message || typeof message !== "string") {
-    return res.status(400).json({ error: "Message is required" });
-  }
-
-  const contents = [];
-
-  if (history && Array.isArray(history)) {
-    history.forEach((msg) => {
-      if (msg.role === "user") {
-        contents.push({ role: "user", parts: [{ text: msg.content }] });
-      } else if (msg.role === "assistant") {
-        contents.push({ role: "model", parts: [{ text: msg.content }] });
-      }
-    });
-  }
+  const contents = history
+    .slice(-MAX_HISTORY_ITEMS)
+    .map((msg) => {
+      if (!msg || typeof msg !== "object") return null;
+      const role = msg.role === "user" ? "user" : null;
+      const content = normalizeText(msg.content, MAX_MESSAGE_LENGTH);
+      if (!role || !content) return null;
+      return { role, parts: [{ text: content }] };
+    })
+    .filter(Boolean);
 
   contents.push({ role: "user", parts: [{ text: message }] });
 
   try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
+    const modelName = process.env.GEMINI_MODEL || "gemini-3.1-pro-preview";
     const response = await fetch(
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key=" + apiKey,
+      `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        signal: controller.signal,
         body: JSON.stringify({
           systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
           contents,
           generationConfig: {
             temperature: 0.7,
-            maxOutputTokens: 1024,
+            maxOutputTokens: 512,
             topP: 0.9,
           },
         }),
       }
-    );
+    ).finally(() => clearTimeout(timeout));
 
     if (!response.ok) {
       const errorData = await response.text();
-      return res.status(502).json({ error: "AI service error", details: errorData });
+      console.error("AI service error:", errorData);
+      return jsonError(res, 502, "AI service error");
     }
 
     const data = await response.json();
@@ -123,6 +156,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ reply });
   } catch (err) {
-    return res.status(500).json({ error: "Failed to reach AI service" });
+    console.error("Chat API error:", err);
+    return jsonError(res, 500, "Failed to reach AI service");
   }
 }
