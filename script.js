@@ -554,4 +554,34 @@
   document.querySelectorAll(".clinic-card").forEach((card) => {
     card.classList.add("tilt-card");
   });
+
+/* ── Cookie Consent Banner ─────────────────────────────── */
+const cookieBanner = document.createElement("div");
+cookieBanner.className = "cookie-banner";
+cookieBanner.setAttribute("role", "region");
+cookieBanner.setAttribute("aria-label", "Cookie consent");
+
+const cookieText = document.createElement("p");
+cookieText.innerHTML = 'We use minimal cookies for payment processing. We use <a href="https://plausible.io" target="_blank" rel="noopener noreferrer">Plausible Analytics</a> which is cookie-free. <a href="privacy-policy.html">Privacy Policy</a>';
+
+const cookieActions = document.createElement("div");
+cookieActions.className = "cookie-banner-actions";
+
+const acceptBtn = document.createElement("button");
+acceptBtn.type = "button";
+acceptBtn.className = "btn-accept";
+acceptBtn.textContent = "Got it";
+acceptBtn.addEventListener("click", () => {
+  localStorage.setItem("us1pools_cookie_consent", "accepted");
+  cookieBanner.classList.remove("is-visible");
+});
+
+cookieActions.appendChild(acceptBtn);
+cookieBanner.appendChild(cookieText);
+cookieBanner.appendChild(cookieActions);
+document.body.appendChild(cookieBanner);
+
+if (!localStorage.getItem("us1pools_cookie_consent")) {
+  setTimeout(() => cookieBanner.classList.add("is-visible"), 1500);
+}
 })();
