@@ -72,7 +72,8 @@
 
   /* ── Header Scroll Effect + Logo Parallax ─────────────── */
   const header = document.querySelector(".site-header");
-  const brandLogo = header && header.querySelector(".brand img");
+  const brand = header && header.querySelector(".brand");
+  const brandLogo = brand && brand.querySelector("img");
 
   const onScroll = () => {
     const scrollY = window.scrollY;
@@ -86,7 +87,8 @@
 
     if (brandLogo) {
       const drift = Math.min(scrollY * 0.04, 6);
-      brandLogo.style.transform = "translateY(" + drift + "px) rotate(" + (-drift * 0.3) + "deg)";
+      brandLogo.style.setProperty("--logo-scroll-y", drift + "px");
+      brandLogo.style.setProperty("--logo-scroll-rotate", (-drift * 0.3) + "deg");
     }
 
     /* Water → dry transition: wet fades out, dry fades in */
@@ -122,6 +124,30 @@
 
   /* ── Caustic Light Patches (pool floor refraction) ─────── */
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (brand && brandLogo && !prefersReduced) {
+    brand.addEventListener("pointermove", (event) => {
+      const bounds = brand.getBoundingClientRect();
+      const offsetX = event.clientX - bounds.left - bounds.width / 2;
+      const offsetY = event.clientY - bounds.top - bounds.height / 2;
+      const translateX = Math.max(Math.min(offsetX * 0.08, 10), -10);
+      const translateY = Math.max(Math.min(offsetY * 0.08, 8), -8);
+      const rotateY = Math.max(Math.min(offsetX * 0.08, 8), -8);
+      const rotateX = Math.max(Math.min(offsetY * -0.08, 8), -8);
+
+      brandLogo.style.setProperty("--logo-hover-x", translateX + "px");
+      brandLogo.style.setProperty("--logo-hover-y", translateY + "px");
+      brandLogo.style.setProperty("--logo-hover-rotate-x", rotateX + "deg");
+      brandLogo.style.setProperty("--logo-hover-rotate-y", rotateY + "deg");
+    });
+
+    brand.addEventListener("pointerleave", () => {
+      brandLogo.style.setProperty("--logo-hover-x", "0px");
+      brandLogo.style.setProperty("--logo-hover-y", "0px");
+      brandLogo.style.setProperty("--logo-hover-rotate-x", "0deg");
+      brandLogo.style.setProperty("--logo-hover-rotate-y", "0deg");
+    });
+  }
 
   if (!prefersReduced) {
     const CAUSTIC_COUNT = 10;

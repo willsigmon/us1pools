@@ -44,9 +44,10 @@
     lowEstimate *= multiplier;
     highEstimate *= multiplier;
 
-    const addition = selections.step3?.addition || 0;
-    lowEstimate += addition;
-    highEstimate += addition;
+    const additionLow = selections.step3?.additionLow ?? 0;
+    const additionHigh = selections.step3?.additionHigh ?? additionLow;
+    lowEstimate += additionLow;
+    highEstimate += additionHigh;
 
     const resultEl = document.getElementById("calculatorResult");
     resultEl.textContent = `$${lowEstimate.toLocaleString()} - $${highEstimate.toLocaleString()}`;
@@ -93,7 +94,8 @@
         value: option.dataset.value,
         cost: option.dataset.cost,
         multiplier: Number.parseFloat(option.dataset.multiplier) || 1,
-        addition: Number.parseInt(option.dataset.addition || "0", 10),
+        additionLow: Number.parseInt(option.dataset.additionLow || option.dataset.addition || "0", 10),
+        additionHigh: Number.parseInt(option.dataset.additionHigh || option.dataset.additionLow || option.dataset.addition || "0", 10),
       };
 
       window.setTimeout(nextStep, 400);
@@ -108,4 +110,3 @@
     button.addEventListener("click", resetCalculator);
   });
 })();
-
