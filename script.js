@@ -184,18 +184,32 @@
   const revealItems = document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale");
 
   if (revealItems.length > 0) {
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            revealObserver.unobserve(entry.target);
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      );
+      revealItems.forEach((item) => revealObserver.observe(item));
+
+      /* Fallback: if items are still hidden after 3s, force them visible */
+      setTimeout(() => {
+        revealItems.forEach((item) => {
+          if (!item.classList.contains("is-visible")) {
+            item.classList.add("is-visible");
           }
         });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-    );
-    revealItems.forEach((item) => revealObserver.observe(item));
+      }, 3000);
+    } else {
+      /* No IntersectionObserver support — show everything immediately */
+      revealItems.forEach((item) => item.classList.add("is-visible"));
+    }
   }
 
   /* ── Counter Animation ─────────────────────────────────── */
