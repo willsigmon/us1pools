@@ -1,4 +1,29 @@
 User-agent: *
 Allow: /
 
+# AI Crawlers — allow indexing for AI Overviews
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: GPTBot
+Allow: /
+
 Sitemap: https://www.us1pools.com/sitemap.xml

@@ -9,6 +9,7 @@
   <meta property="og:description" content="Answers to common questions about installs, service, and financing." />
   <meta property="og:image" content="https://www.us1pools.com/assets/images/hero.webp" />
   <meta property="og:url" content="https://www.us1pools.com/faq.html" />
+  <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="FAQ | US-1 Pools" />
   <meta name="twitter:description" content="Answers to common questions about installs, service, and financing." />
@@ -105,8 +106,26 @@
         </details>
         <details>
           <summary>What are your seasonal hours?</summary>
-          <p>We are closed for winter; call us to schedule appointments or service needs.</p>
+          <p data-seasonal>Current hours: M-Th 11am-3pm · Fri 11am-5pm · Sat 10am-5pm · Sun 12pm-3pm. Hours change seasonally — call to confirm.</p>
         </details>
+      </div>
+    </section>
+
+    <section class="section clinic reveal">
+      <div class="container clinic-card">
+        <div>
+          <p class="eyebrow">Still have questions?</p>
+          <h2>We are happy to help.</h2>
+          <p class="section-sub">Call, text, or stop by the showroom. Our team can walk you through options, pricing, and scheduling.</p>
+        </div>
+        <div class="clinic-details">
+          <ul>
+            <li>Call us at <a href="tel:9194410033">919.441.0033</a></li>
+            <li>Email <a href="mailto:us1pools@gmail.com">us1pools@gmail.com</a></li>
+            <li>3453 US Hwy 1 South, Franklinton, NC 27525</li>
+          </ul>
+          <a class="btn btn-secondary" href="contact.html">Contact Us</a>
+        </div>
       </div>
     </section>
   </main>
@@ -161,6 +180,10 @@
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".page-hero", ".faq-list"]
+      },
       "mainEntity": [
         {
           "@type": "Question",
@@ -207,8 +230,27 @@
           "name": "What are your seasonal hours?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We are closed for winter; call us to schedule appointments or service needs."
+            "text": "Current hours: M-Th 11am-3pm, Fri 11am-5pm, Sat 10am-5pm, Sun 12pm-3pm. Hours change seasonally — call to confirm."
           }
+        }
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.us1pools.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "FAQ"
         }
       ]
     }

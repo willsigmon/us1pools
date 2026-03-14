@@ -880,6 +880,10 @@ button.nav-link.dropdown-toggle {
   grid-auto-rows: 1fr;
 }
 
+.card-grid--2col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 /* Services page: 3-column grid for even rows (6 cards = 3+3) */
 [data-page="services"] .card-grid {
   grid-template-columns: repeat(3, 1fr);
@@ -1091,6 +1095,9 @@ button.nav-link.dropdown-toggle {
   gap: 40px;
   grid-template-columns: 1fr 1fr;
   align-items: center;
+}
+.content-grid--reverse > .image-card {
+  order: -1;
 }
 
 .list-grid {
@@ -2858,6 +2865,9 @@ button.nav-link.dropdown-toggle {
   .content-grid {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+  .content-grid--reverse > .image-card {
+    order: 0;
   }
 
   .video-grid {
