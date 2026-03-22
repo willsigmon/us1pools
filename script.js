@@ -75,6 +75,8 @@
   const brand = header && header.querySelector(".brand");
   const brandLogo = brand && brand.querySelector("img");
 
+  const floatingCta = document.getElementById("floatingCta");
+
   const onScroll = () => {
     const scrollY = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -83,6 +85,11 @@
 
     if (header) {
       header.classList.toggle("scrolled", scrollY > 40);
+    }
+
+    if (floatingCta) {
+      const showAfter = window.innerHeight * 0.8;
+      floatingCta.classList.toggle("visible", scrollY > showAfter);
     }
 
     if (brandLogo) {
