@@ -2,3 +2,6 @@
 node_modules
 legacy/
 .vercel
+.claude/
+.letta/
+.playwright-mcp/
