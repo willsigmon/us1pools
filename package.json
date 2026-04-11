@@ -1,0 +1,16 @@
+{
+  "name": "us1pools-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "US1 Pools static marketing site quality checks",
+  "scripts": {
+    "check:json": "node scripts/check-json.mjs",
+    "check:syntax": "node scripts/check-syntax.mjs",
+    "check": "npm run check:syntax && npm run check:json",
+    "ci": "npm run check"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
