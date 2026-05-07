@@ -8,6 +8,7 @@
     "check:json": "node scripts/check-json.mjs",
     "check:syntax": "node scripts/check-syntax.mjs",
     "check": "npm run check:syntax && npm run check:json",
+    "build:llms": "node scripts/build-llms-txt.mjs",
     "ci": "npm run check"
   },
   "engines": {

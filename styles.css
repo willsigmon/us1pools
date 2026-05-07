@@ -21,7 +21,8 @@
   --radius-sm: 12px;
   --transition: 0.3s ease;
   --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  --font-display: "Playfair Display", serif;
+  --font-display: "Fraunces", "Playfair Display", Georgia, serif;
+  --ink-glow: rgba(31, 185, 198, 0.35);
   --font-body: "Inter", sans-serif;
 }
 
@@ -35,7 +36,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   color: var(--ink);
   background: #e8fbf9;
   min-height: 100vh;
@@ -2747,7 +2748,7 @@ button.nav-link.dropdown-toggle {
   bottom: 24px;
   right: 24px;
   z-index: 9000;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 .chat-toggle {
@@ -2841,7 +2842,7 @@ button.nav-link.dropdown-toggle {
 }
 
 .chat-header-info h4 {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-size: 0.95rem;
   margin: 0;
   font-weight: 600;
@@ -3358,5 +3359,270 @@ button.nav-link.dropdown-toggle {
 
   .btn-primary:active {
     transform: scale(0.97);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────
+ * 2026-05-07 Glam facelift — breadcrumbs, marquee, shimmer, tilts
+ * ───────────────────────────────────────────────────────────────── */
+
+/* Breadcrumbs ─ on area pages and any subpage */
+.breadcrumbs {
+  margin: 24px auto 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+.breadcrumbs ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.breadcrumbs li:not(:last-child)::after {
+  content: "›";
+  margin-left: 8px;
+  color: var(--lagoon);
+  opacity: 0.6;
+}
+.breadcrumbs a {
+  color: var(--lagoon);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.breadcrumbs a:hover {
+  color: var(--ocean);
+  text-decoration: underline;
+}
+.breadcrumbs [aria-current="page"] {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Partner marquee ─ infinite-scroll brand strip */
+.partner-marquee {
+  position: relative;
+  margin: 0;
+  padding: 28px 0;
+  background: linear-gradient(180deg, rgba(231, 251, 250, 0.6) 0%, rgba(255, 255, 255, 0.4) 100%);
+  border-block: 1px solid rgba(15, 125, 138, 0.08);
+  overflow: hidden;
+}
+.partner-marquee::before,
+.partner-marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+.partner-marquee::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--white) 0%, transparent 100%);
+}
+.partner-marquee::after {
+  right: 0;
+  background: linear-gradient(-90deg, var(--white) 0%, transparent 100%);
+}
+.partner-marquee-label {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--lagoon);
+  opacity: 0.7;
+  z-index: 3;
+}
+.partner-marquee-track {
+  display: flex;
+  gap: 56px;
+  width: max-content;
+  animation: partner-scroll 32s linear infinite;
+  will-change: transform;
+}
+.partner-marquee:hover .partner-marquee-track {
+  animation-play-state: paused;
+}
+.partner-item {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  opacity: 0.78;
+  transition: opacity 0.3s ease;
+}
+.partner-item:hover {
+  opacity: 1;
+}
+.partner-item::after {
+  content: "·";
+  margin-left: 56px;
+  color: var(--aqua);
+  opacity: 0.5;
+}
+@keyframes partner-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Hero image shimmer ─ subtle caustic sweep */
+.hero-media .image-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.hero-media .image-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(231, 251, 250, 0.18) 45%,
+    rgba(64, 211, 221, 0.22) 50%,
+    rgba(231, 251, 250, 0.18) 55%,
+    transparent 70%
+  );
+  background-size: 250% 250%;
+  background-position: 200% 0;
+  animation: hero-shimmer 12s ease-in-out infinite;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 1;
+}
+@keyframes hero-shimmer {
+  0%, 20%   { background-position: 200% 0; opacity: 0; }
+  30%       { opacity: 1; }
+  60%       { background-position: -100% 0; opacity: 1; }
+  70%, 100% { opacity: 0; }
+}
+
+/* Card 3D tilt ─ gentle hover lift on service & area cards */
+.service-card,
+.area-card {
+  transform-style: preserve-3d;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .service-card:hover {
+    transform: perspective(900px) rotateX(2deg) rotateY(-3deg) translateY(-4px);
+    box-shadow: 0 30px 60px -20px rgba(6, 38, 44, 0.18);
+  }
+  .area-card:hover {
+    transform: perspective(900px) rotateX(1.5deg) rotateY(-2deg) translateY(-3px);
+    box-shadow: 0 20px 40px -16px rgba(6, 38, 44, 0.16);
+  }
+}
+
+/* Shiny-text accent ─ for award badges and hero highlights */
+.shiny-text {
+  background: linear-gradient(
+    100deg,
+    var(--ink) 30%,
+    var(--aqua-bright) 50%,
+    var(--ink) 70%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shiny-sweep 6s ease-in-out infinite;
+}
+@keyframes shiny-sweep {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* Border beam ─ animated conic ring on primary CTA hover */
+.btn-primary {
+  position: relative;
+  isolation: isolate;
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: conic-gradient(
+      from var(--beam-angle, 0deg),
+      transparent 0deg,
+      transparent 320deg,
+      var(--aqua-bright) 350deg,
+      var(--coral) 360deg,
+      transparent 360deg
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .btn-primary:hover::before {
+    opacity: 1;
+    animation: beam-rotate 2.4s linear infinite;
+  }
+}
+@property --beam-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes beam-rotate {
+  to { --beam-angle: 360deg; }
+}
+
+/* Hero h1 aquatic glow */
+.hero h1 {
+  text-shadow: 0 0 40px var(--ink-glow);
+}
+
+/* Coral focus ring on form inputs (was teal) */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(239, 107, 91, 0.15);
+}
+
+/* ── Reduced motion safety net ───────────────────────────
+ * Master rule — applied last so it overrides all motion above. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .hero-media .image-card::after,
+  .partner-marquee-track,
+  .shiny-text {
+    animation: none !important;
+  }
+  .service-card:hover,
+  .area-card:hover {
+    transform: translateY(-2px) !important;
   }
 }
