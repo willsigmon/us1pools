@@ -1,6 +1,6 @@
 # US-1 Pools — Full Site Content
 
-> Plain-text corpus of every public page on us1pools.com. Generated for AI crawlers and language models. Last build: 2026-05-07
+> Plain-text corpus of every public page on us1pools.com. Generated for AI crawlers and language models. Last build: 2026-05-08
 
 ## Home
 Source: https://www.us1pools.com/
@@ -37,7 +37,7 @@ Sales, installs, maintenance, and retail equipment in one place.
 
 
 
-Custom in-ground pool project
+Backyard pool at sunset
 
 
 
@@ -94,7 +94,7 @@ Oxygen Pools
 Pools & Spas
 Find your perfect pool.
 
-Above-ground, in-ground, and hot tubs backed by trusted brands like Imagine Fiberglass, Pools by Genesis, Tranquility, and Garden Leisure.
+Above-ground, fiberglass, in-ground, and hot tub options backed by trusted brands like Imagine Fiberglass, Pools by Genesis, Tranquility, and Garden Leisure.
 
 
 
@@ -368,7 +368,7 @@ Source: https://www.us1pools.com/about.html
 
 About Us
 Family-owned, locally focused.
-US-1 Pools was started in 2015 by Shayne and Cathy Parrish. Shayne has been in the pool business since 1986, bringing decades of hands-on experience to every project.
+US-1 Pools was started in 2015 by Shayne and Cathy Parrish. Shayne has been in the pool business since 1986, bringing decades of experience to pool design, service, and equipment decisions.
 
 Founded 2015
 Since 1986
@@ -390,7 +390,7 @@ Water Care Experts
 
 
 
-Owners on every job
+Family owned and locally run
 
 
 
@@ -411,15 +411,15 @@ Owner · CPO certified · Pool industry experience since 1986. Hands-on with eve
 
 
 Cathy Parrish
-Owner · Operations support · Customer care lead. Keeps the showroom running and customers informed.
+Owner · CPO certified · Operations support. Helps guide customers through pool care, product decisions, and project planning.
 
 
 Tonni Deitch
-Operations · Service scheduling · Retail support. The voice behind most service calls and showroom visits.
+Customer care · Service scheduling · Retail support. The voice behind most service calls and showroom visits.
 
 
 Alan Deitch
-Operations · Field coordination · Logistics. On-site presence ensuring installs and service run on schedule.
+Operations · Retail support · Logistics. Helps coordinate schedules, products, and customer support from the shop side.
 
 
 
@@ -447,7 +447,7 @@ Source: https://www.us1pools.com/pools.html
 
 Pools & Spas
 Find the right pool for how you live outside.
-US-1 Pools offers above-ground installs, fiberglass in-ground builds, and hot tubs with brands like Imagine Fiberglass, Pools by Genesis, Tranquility, and Garden Leisure.
+US-1 Pools offers above-ground, fiberglass, in-ground, and hot tub options with brands like Imagine Fiberglass, Pools by Genesis, Tranquility, and Garden Leisure.
 
 Above Ground
 In-Ground
@@ -600,9 +600,9 @@ Ultimate
 
 
 
-Steel pools
+Steel wall options
 Coral Seas, Distinction, Eclipse, Serena, and Southport.
-Steel wall pools bring strong structure with flexible liner options.
+Steel-wall availability can vary by supplier, so we confirm current model details before quoting.
 
 Coral Seas
 Distinction
@@ -973,7 +973,7 @@ Delivery and support for regular chemical needs — never run out mid-season.
 
 
 
-Equipment partners
+Equipment systems
 Pentair & Maytronics dealer installs.
 Upgrade pumps, filters, and heaters with proven Pentair equipment. We are also an authorized Maytronics dealer and service center for Dolphin robotic pool cleaners.
 
@@ -993,7 +993,7 @@ Maytronics Dolphin automatic cleaners — sales, setup, and warranty service.
 
 
 
-Pentair & Maytronics equipment
+Pump, filter & equipment system
 
 
 
@@ -1020,7 +1020,7 @@ Source: https://www.us1pools.com/gallery.html
 
 Gallery
 Projects built for light, water, and long weekends.
-Explore recent builds, renovations, and spa installs across Franklin and surrounding counties. Filter by project type to find what fits your goals.
+Explore recent builds, renovations, and backyard water-care projects across Franklin and surrounding counties. Filter by project type to find what fits your goals.
 
 
 
@@ -1030,9 +1030,13 @@ Explore recent builds, renovations, and spa installs across Franklin and surroun
 All
 New builds
 Renovations
-Spas
+Water care
 
 
+
+
+
+Backyard pool at sunset
 
 
 
@@ -1056,7 +1060,7 @@ Pool renovation project
 
 
 
-Hot tub and spa setup
+Finished in-ground pool
 
 
 
@@ -1080,7 +1084,7 @@ New pool installation
 
 
 
-Spa installation complete
+Finished pool project
 
 
 

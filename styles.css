@@ -28,6 +28,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 * {
@@ -3270,9 +3271,10 @@ button.nav-link.dropdown-toggle {
     display: none;
   }
 
-  /* Smaller orbs */
+  /* Decorative light orbs are desktop-only; their off-canvas positions can
+     create hidden side-scroll on narrow phones. */
   .bg-orb {
-    transform: scale(0.6);
+    display: none;
   }
 }
 
@@ -3406,9 +3408,11 @@ button.nav-link.dropdown-toggle {
   position: relative;
   margin: 0;
   padding: 28px 0;
+  max-width: 100vw;
   background: linear-gradient(180deg, rgba(231, 251, 250, 0.6) 0%, rgba(255, 255, 255, 0.4) 100%);
   border-block: 1px solid rgba(15, 125, 138, 0.08);
   overflow: hidden;
+  contain: paint;
 }
 .partner-marquee::before,
 .partner-marquee::after {
