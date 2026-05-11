@@ -1,6 +1,6 @@
 # US-1 Pools — Full Site Content
 
-> Plain-text corpus of every public page on us1pools.com. Generated for AI crawlers and language models. Last build: 2026-05-08
+> Plain-text corpus of every public page on us1pools.com. Generated for AI crawlers and language models. Last build: 2026-05-11
 
 ## Home
 Source: https://www.us1pools.com/
@@ -37,7 +37,7 @@ Sales, installs, maintenance, and retail equipment in one place.
 
 
 
-Backyard pool at sunset
+Finished vinyl liner pool at sunset
 
 
 
@@ -183,7 +183,7 @@ See all services
 
 
 
-Fiberglass shell installation
+Pump, filter & equipment system
 
 
 
@@ -472,6 +472,7 @@ Explore above-ground
 
 
 
+Above-ground pool with deck package
 
 
 
@@ -490,6 +491,7 @@ Explore in-ground
 
 
 
+Fiberglass in-ground shell
 
 
 
@@ -499,7 +501,7 @@ Explore in-ground
 
 Hot Tubs & Spas
 Relaxation-ready hot tubs.
-Tranquility and Garden Leisure spas are available with delivery, setup, and ongoing service.
+Tranquility and Garden Leisure spas are available with delivery, setup, and showroom water-care support.
 
 Tranquility
 Garden Leisure
@@ -508,6 +510,7 @@ Explore Spas
 
 
 
+Showroom spa care support
 
 
 
@@ -527,6 +530,7 @@ Explore liners
 
 
 
+Finished vinyl liner pool
 
 
 
@@ -576,6 +580,7 @@ Discovery
 
 
 
+Above-ground pool with deck package
 
 
 
@@ -594,6 +599,7 @@ Ultimate
 
 
 
+Round above-ground installation
 
 
 
@@ -614,6 +620,7 @@ Southport
 
 
 
+Above-ground pool equipment system
 
 
 
@@ -662,6 +669,7 @@ Pools by Genesis
 
 
 
+Fiberglass shell installation
 
 
 
@@ -679,6 +687,7 @@ Latham
 
 
 
+Finished vinyl liner pool
 
 
 
@@ -706,6 +715,7 @@ LED and specialty lighting for night swims.
 
 
 
+LED lighting for night swims
 
 
 
@@ -746,7 +756,7 @@ Service support
 
 Spa options
 Standalone or integrated installs.
-Choose a dedicated spa or integrate with an existing pool build. We handle delivery, setup, and start-up water balancing.
+Choose a dedicated spa or integrate with an existing pool build. We handle delivery, setup, start-up water balancing, and in-store care products.
 
 Tranquility
 Garden Leisure
@@ -754,6 +764,7 @@ Garden Leisure
 
 
 
+Showroom spa care products
 
 
 
@@ -781,6 +792,7 @@ Priority scheduling for equipment issues.
 
 
 
+Service supplies and water-care support
 
 
 
@@ -839,6 +851,7 @@ GLI also makes mesh and solid safety covers for winter protection — custom-fit
 
 
 
+Vinyl liner replacement in progress
 
 
 
@@ -862,6 +875,7 @@ Latham's premium liner material with enhanced durability and stain resistance fo
 
 
 
+Finished vinyl liner pool
 
 
 
@@ -880,6 +894,7 @@ GLI
 
 
 
+Patterned vinyl liner finish
 
 
 
