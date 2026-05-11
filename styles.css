@@ -152,17 +152,18 @@ button {
 
 .skip-link {
   position: absolute;
-  left: -999px;
+  left: 16px;
   top: 16px;
   padding: 8px 16px;
   background: var(--white);
   border-radius: 999px;
   box-shadow: var(--shadow);
+  transform: translateX(calc(-100% - 32px));
   z-index: 1000;
 }
 
 .skip-link:focus {
-  left: 16px;
+  transform: translateX(0);
 }
 
 .container {
@@ -184,7 +185,7 @@ button {
   height: 350px;
   background: radial-gradient(ellipse at 30% 40%, rgba(31, 185, 198, 0.3) 0%, rgba(64, 211, 221, 0.15) 50%, transparent 80%);
   top: -80px;
-  right: -60px;
+  right: 0;
   animation: caustic-1 16s ease-in-out infinite;
 }
 
@@ -193,7 +194,7 @@ button {
   height: 300px;
   background: radial-gradient(ellipse at 60% 30%, rgba(10, 92, 107, 0.25) 0%, rgba(31, 185, 198, 0.1) 50%, transparent 80%);
   bottom: 200px;
-  left: -100px;
+  left: 0;
   animation: caustic-2 20s ease-in-out infinite;
 }
 
@@ -2109,6 +2110,10 @@ button.nav-link.dropdown-toggle {
   margin-top: 48px;
 }
 
+.guide-cta .clinic-card {
+  width: 100%;
+}
+
 .service-area-list {
   margin-top: 12px;
 }
@@ -2486,6 +2491,50 @@ button.nav-link.dropdown-toggle {
 .reveal-scale.is-visible {
   opacity: 1;
   transform: scale(1);
+  filter: blur(0);
+}
+
+/* Keep content visible if JavaScript fails, then opt into reveal motion only
+   after script.js marks the document as animation-ready. */
+.reveal,
+.reveal-left,
+.reveal-right,
+.reveal-scale {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+.reveal-ready .reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(6px);
+}
+
+.reveal-ready .reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  filter: blur(6px);
+}
+
+.reveal-ready .reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  filter: blur(6px);
+}
+
+.reveal-ready .reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  filter: blur(6px);
+}
+
+.reveal-ready .reveal.is-visible,
+.reveal-ready .reveal-left.is-visible,
+.reveal-ready .reveal-right.is-visible,
+.reveal-ready .reveal-scale.is-visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
   filter: blur(0);
 }
 

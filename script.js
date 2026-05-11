@@ -6,6 +6,8 @@
 (() => {
   "use strict";
 
+  document.documentElement.classList.add("reveal-ready");
+
   /* ── Navigation ────────────────────────────────────────── */
   const navToggle = document.querySelector(".nav-toggle");
   const navLinks = document.querySelector(".nav-links");
