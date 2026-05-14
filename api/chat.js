@@ -18,6 +18,7 @@ ABOUT US-1 POOLS:
 PRODUCTS WE SELL:
 Above-Ground Pools:
 - Resin/current options: Genesis, Nakoma, Discovery (availability can change)
+- Hybrid options: Aquasport and Oasis (Oasis can only be recessed 27–30 inches; confirm current availability)
 - Steel options: Coral Seas, Distinction, Eclipse, Serena, Southport
 - Vinyl Liners: Cardinal and Latham
 
@@ -25,7 +26,7 @@ In-Ground Pools:
 - Fiberglass shells: Imagine Fiberglass
 - Vinyl liner pools: steel/polymer wall systems with replaceable vinyl liner surfaces
 - Equipment: Pentair pumps, filters, heaters, automation
-- Upgrades: salt/oxygen sanitation, LED lighting, automation panels
+- Upgrades: salt/oxygen sanitation, equipment controls, automation panels
 
 Hot Tubs & Swim Spas:
 - Tranquility spas
@@ -33,7 +34,7 @@ Hot Tubs & Swim Spas:
 - Delivery, setup, and ongoing service included
 
 Pool Liners:
-- GLI Pool Products (vinyl liners, safety covers)
+- GLI Pool Products (vinyl liners, in-ground mesh safety covers, solid safety covers)
 - Latham Pools (liners and covers)
 - Cardinal Systems (liners)
 
