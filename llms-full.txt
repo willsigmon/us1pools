@@ -1,6 +1,6 @@
 # US-1 Pools — Full Site Content
 
-> Plain-text corpus of every public page on us1pools.com. Generated for AI crawlers and language models. Last build: 2026-05-11
+> Plain-text corpus of every public page on us1pools.com. Generated for AI crawlers and language models. Last build: 2026-05-14
 
 ## Home
 Source: https://www.us1pools.com/
@@ -37,11 +37,11 @@ Sales, installs, maintenance, and retail equipment in one place.
 
 
 
-Finished vinyl liner pool at sunset
+Steel wall in-ground pool at sunset
 
 
 
-Above-ground pool with deck package
+Hybrid Oasis with deck package
 
 
 
@@ -71,7 +71,7 @@ Authorized dealer for
 Latham Pools
 GLI Pool Products
 Imagine Fiberglass
-Pools by Genesis
+Genesis
 Tranquility Spas
 Garden Leisure
 Maytronics Dolphin
@@ -79,7 +79,7 @@ Oxygen Pools
 Latham Pools
 GLI Pool Products
 Imagine Fiberglass
-Pools by Genesis
+Genesis
 Tranquility Spas
 Garden Leisure
 Maytronics Dolphin
@@ -103,7 +103,7 @@ Above-ground systems, fiberglass in-ground shells, vinyl liner replacements, and
 
 
 Above Ground
-Vinyl liner and resin systems with optional deck packages.
+Vinyl liner, resin, and hybrid options with optional deck packages; current model availability is confirmed before quoting.
 
 Genesis
 Nakoma
@@ -115,11 +115,10 @@ Explore Above Ground
 
 
 
-Fiberglass In-Ground
-Factory-molded fiberglass shells with modern finishes and smart systems.
+In-Ground Pools
+Steel wall, vinyl liner, and Imagine Fiberglass options with clear material guidance.
 
 Imagine Fiberglass
-Pools by Genesis
 
 Explore In-Ground
 
@@ -447,10 +446,10 @@ Source: https://www.us1pools.com/pools.html
 
 Pools & Spas
 Find the right pool for how you live outside.
-US-1 Pools separates the choice clearly: above-ground systems, fiberglass in-ground shells, vinyl liner replacement, and hot tubs or swim spas.
+US-1 Pools separates the choice clearly: above-ground systems, in-ground steel wall, vinyl liner and fiberglass options, and hot tubs or swim spas.
 
 Above Ground
-Fiberglass Shells
+In-Ground
 Vinyl Liners
 Hot Tubs
 
@@ -461,8 +460,8 @@ Hot Tubs
 
 
 Above Ground
-Fast installs with steel, resin, or hybrid wall systems.
-Above-ground pools use visible wall and frame systems with a replaceable vinyl liner inside. We help match the structure, liner style, and deck package to your yard.
+Fast installs with steel, resin, and hybrid options.
+Above-ground pools use visible wall and frame systems with a replaceable vinyl liner inside. Model availability changes, so we match the structure, liner style, Aquasport or Oasis hybrid option, and deck package to your yard during the quote.
 
 Genesis
 Nakoma
@@ -472,7 +471,7 @@ Explore above-ground
 
 
 
-Above-ground pool with deck package
+Hybrid Oasis with deck package
 
 
 
@@ -480,18 +479,19 @@ Above-ground pool with deck package
 
 
 
-Fiberglass In-Ground
-Factory-molded fiberglass shells with modern finishes.
-Choose from Imagine Fiberglass and Pools by Genesis shells, with molded steps, benches, ledges, and equipment packages from Pentair dealers.
+In-Ground Pools
+Steel wall, vinyl liner, and fiberglass options.
+We separate steel wall in-ground builds, vinyl liner replacements, and fiberglass shell options during the quote so the material choice stays clear.
 
+Steel wall
+Vinyl liner
 Imagine Fiberglass
-Pools by Genesis
 
 Explore in-ground
 
 
 
-Fiberglass in-ground shell
+In-ground pool with splash pad
 
 
 
@@ -510,7 +510,7 @@ Explore Spas
 
 
 
-Showroom spa care support
+Showroom water-care supplies
 
 
 
@@ -530,7 +530,7 @@ Explore liners
 
 
 
-Finished vinyl liner pool
+Steel wall in-ground pool
 
 
 
@@ -557,7 +557,7 @@ Source: https://www.us1pools.com/above-ground.html
 
 Above Ground
 Fast installs with clean, modern profiles.
-US-1 Pools installs above-ground pools with vinyl liner, resin, hybrid, and steel options plus decks, stairs, and start-up service.
+US-1 Pools installs above-ground pools with vinyl liner, resin, steel, and Aquasport or Oasis hybrid options plus decks, stairs, and start-up service.
 
 Vinyl liner
 Resin systems
@@ -570,8 +570,8 @@ Hybrid + steel
 
 
 Resin pools
-Genesis, Nakoma, and Discovery.
-Resin options hold up in humid summers and deliver clean lines with minimal upkeep. Project photos here show representative above-ground installs; exact wall materials are confirmed before quoting.
+Genesis, Nakoma, Discovery, and current options.
+Resin options hold up in humid summers and deliver clean lines with minimal upkeep. Some model lines change over time, so we confirm current availability before quoting.
 
 Genesis
 Nakoma
@@ -580,7 +580,7 @@ Discovery
 
 
 
-Representative above-ground deck package
+Above-ground pool with retaining wall
 
 
 
@@ -589,17 +589,17 @@ Representative above-ground deck package
 
 
 Hybrid pools
-AquaSport, Oasis, and Ultimate.
-Hybrid construction blends strength and style while keeping installs efficient. We confirm the specific frame and wall package during the quote.
+Aquasport and Oasis hybrid above-ground pools.
+Aquasport and Oasis are hybrid options to ask about when you want a stronger above-ground package with a clean finished profile. Oasis can only be recessed 27–30 inches in the ground.
 
-AquaSport
+Aquasport
 Oasis
-Ultimate
+27–30 in. max recess
 
 
 
 
-Representative round above-ground install
+Hybrid Oasis with deck package
 
 
 
@@ -642,34 +642,35 @@ Get a Free Quote
 
 ---
 
-## In-Ground and Fiberglass Pools
+## In-Ground Pools
 Source: https://www.us1pools.com/in-ground.html
 
-In-Ground Materials
-Fiberglass shells and vinyl liner pools, clearly separated.
-US-1 Pools helps customers compare fiberglass in-ground shells, vinyl liner replacements, and the equipment upgrades that support both pool types.
+In-Ground Pools
+Steel wall, vinyl liner, and fiberglass options — clearly separated.
+US-1 Pools helps customers compare steel wall in-ground builds, vinyl liner replacements, fiberglass shell options, and the equipment that supports each pool type.
 
-Fiberglass shells
+Steel wall
 Vinyl liners
-Pentair systems
-
-
-
-
-
-
-
-Fiberglass shells
-Imagine Fiberglass + Pools by Genesis.
-These fiberglass pool brands use factory-molded shells with smooth gelcoat surfaces and integrated ledges, benches, steps, and swim zones.
-
 Imagine Fiberglass
-Pools by Genesis
 
 
 
 
-Fiberglass shell installation
+
+
+
+In-ground planning
+Steel wall, vinyl liner, and fiberglass options.
+We separate steel wall in-ground builds, vinyl liner replacements, and Imagine Fiberglass shell options during the quote. Features like splash pads are planned around the site.
+
+Steel wall
+Vinyl liner
+Imagine Fiberglass
+
+
+
+
+In-ground pool with splash pad
 
 
 
@@ -687,7 +688,7 @@ Latham
 
 
 
-Finished vinyl liner pool
+Steel wall in-ground pool at sunset
 
 
 
@@ -708,14 +709,14 @@ Salt or oxygen
 Alternative sanitation options for softer water.
 
 
-Lighting
-LED and specialty lighting for night swims.
+Upgrade planning
+Equipment options are planned around how you actually use the pool.
 
 
 
 
 
-LED lighting for night swims
+Evening poolside setting
 
 
 
@@ -754,9 +755,9 @@ Service support
 
 
 
-Spa care support
-Water-care products for the spa you choose.
-Choose a dedicated spa or integrated setup, then rely on the showroom for start-up water balancing, filters, chemicals, and care products.
+Water-care support
+Showroom guidance for clean, balanced water.
+Choose a dedicated spa or integrated setup, then rely on the team for start-up water balancing guidance, maintenance support, and the right care routine.
 
 Tranquility
 Garden Leisure
@@ -764,7 +765,7 @@ Garden Leisure
 
 
 
-Showroom spa care products
+Showroom water-care supplies
 
 
 
@@ -841,11 +842,11 @@ Overlap, beaded, and unibead styles in 20-mil and 25-mil thickness. Dozens of pa
 
 
 In-ground liners
-Custom-measured to your pool dimensions. 20-mil standard or 28-mil heavy-duty with wall foam backing.
+Custom-measured to your pool dimensions. 20-mil standard or 28-mil heavy-duty options. Wall foam can be requested as an add-on.
 
 
-Safety covers
-GLI also makes mesh and solid safety covers for winter protection — custom-fit to any pool shape.
+In-ground mesh safety covers
+GLI in-ground mesh safety covers are custom-fit for winter protection. Solid cover options are available when appropriate.
 
 
 
@@ -875,7 +876,7 @@ Latham's premium liner material with enhanced durability and stain resistance fo
 
 
 
-Finished vinyl liner pool
+Steel wall in-ground pool at sunset
 
 
 
@@ -1036,7 +1037,7 @@ Source: https://www.us1pools.com/gallery.html
 
 Gallery
 Projects built for light, water, and long weekends.
-Explore recent builds, liner replacements, fiberglass shells, above-ground installs, and lighting upgrades across Franklin and surrounding counties. Filter by material type so the photos stay accurate.
+Explore recent builds, liner replacements, steel wall in-ground pools, above-ground installs, hybrid pools, and construction progress across Franklin and surrounding counties. Filter by material type so the photos stay accurate.
 
 
 
@@ -1044,29 +1045,29 @@ Explore recent builds, liner replacements, fiberglass shells, above-ground insta
 
 
 All
-Fiberglass
+In-ground
 Vinyl liner
 Above-ground
+Hybrid
 Construction
-Lighting
 
 
 
 
 
-Fiberglass in-ground shell
+In-ground pool with splash pad
 
 
 
-Finished vinyl liner pool at sunset
+Steel wall in-ground pool at sunset
 
 
 
-In-ground pool project
+In-ground pool with splash pad under construction
 
 
 
-Finished in-ground pool with deck
+Steel wall in-ground pool with deck
 
 
 
@@ -1078,7 +1079,15 @@ Above-ground equipment setup
 
 
 
-Above-ground deck and patio project
+Hybrid Oasis — 27–30 in. max recess
+
+
+
+Aquasport hybrid above-ground pool
+
+
+
+Above-ground pool with retaining wall
 
 
 
@@ -1086,15 +1095,7 @@ Finished vinyl liner pool
 
 
 
-Round above-ground installation
-
-
-
-Finished vinyl liner pool
-
-
-
-LED lighting for night swims
+Evening poolside setting
 
 
 
@@ -1106,7 +1107,7 @@ Residential pool installation
 
 
 
-Finished above-ground pool
+Aquasport hybrid above-ground pool
 
 
 
@@ -1332,7 +1333,7 @@ Standard pump, filter, and ladder/stairs.
 
 
 Mid-Level
-+ LED lighting, upgraded filter, heater.
++ upgraded filter, heater, automation-ready controls.
 +$3,000 - $5,000
 
 
@@ -1541,7 +1542,7 @@ Yes. We provide seasonal openings and closings, including water balancing and eq
 
 
 What pool brands do you carry?
-We offer Imagine Fiberglass and Pools by Genesis for in-ground builds, plus Cardinal and Latham vinyl liners and above-ground systems like Genesis, Nakoma, and Discovery.
+We offer Imagine Fiberglass for fiberglass in-ground builds, Cardinal and Latham for vinyl liner work, and above-ground systems such as Genesis, Nakoma, and Discovery when available.
 
 
 Can I bring in water for testing?

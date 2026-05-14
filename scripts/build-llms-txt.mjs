@@ -14,7 +14,7 @@ const PAGES = [
   { file: "about.html", url: "/about.html", title: "About" },
   { file: "pools.html", url: "/pools.html", title: "Pools and Spas Overview" },
   { file: "above-ground.html", url: "/above-ground.html", title: "Above-Ground Pools" },
-  { file: "in-ground.html", url: "/in-ground.html", title: "In-Ground and Fiberglass Pools" },
+  { file: "in-ground.html", url: "/in-ground.html", title: "In-Ground Pools" },
   { file: "hot-tubs.html", url: "/hot-tubs.html", title: "Hot Tubs and Swim Spas" },
   { file: "liners.html", url: "/liners.html", title: "Vinyl Liners" },
   { file: "services.html", url: "/services.html", title: "Services" },
