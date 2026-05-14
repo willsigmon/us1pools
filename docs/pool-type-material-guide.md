@@ -47,7 +47,7 @@ Purpose: keep site copy, captions, gallery filters, and client photo placement f
 | Asset | Working classification | Confidence | Recommended use |
 | --- | --- | ---: | --- |
 | `assets/images/customer-pool-sunset.webp` | Steel wall in-ground pool | High; Cathy flagged this class of photos as steel wall in-ground | Home hero/general in-ground, liner-adjacent pages, not fiberglass brand sections |
-| `assets/images/gallery-04.webp` | In-ground pool with splash pad | High; Cathy flagged it as in-ground with splash pad | In-ground pages/gallery, not fiberglass brand sections |
+| `assets/images/gallery-04.webp` | Fiberglass in-ground pool with splash pad | High; Cathy corrected this to fiberglass | Fiberglass/in-ground pages and gallery |
 | `assets/images/gallery-06.webp` | Vinyl liner replacement in progress | High; client flagged as liner change | Liner replacement/process only |
 | `assets/images/pool-03.jpg` | Vinyl liner replacement in progress | High; same visible project as `gallery-06.webp` | Liner replacement/process only |
 | `assets/images/pool-06.jpg` | Aquasport hybrid above-ground pool | High; Cathy flagged as Aquasport hybrid | Above-ground hybrid page/gallery |
@@ -59,7 +59,7 @@ Purpose: keep site copy, captions, gallery filters, and client photo placement f
 | `assets/images/pool-07.jpg` | Above-ground round pool | High visual evidence | Above-ground pages/gallery |
 | `assets/images/gallery-02.webp` | Steel wall in-ground construction | Medium visual evidence | Construction/gallery, not fiberglass |
 | `assets/images/gallery-01.webp` | In-ground construction, material not fully confirmed | Medium visual evidence | Neutral construction unless client confirms |
-| `assets/images/pool-01.jpg` | In-ground pool with splash pad under construction | High; Cathy flagged the finished project as in-ground with splash pad | In-ground/gallery |
+| `assets/images/pool-01.jpg` | Fiberglass in-ground pool with splash pad under construction | High; Cathy corrected this to fiberglass | Fiberglass/in-ground construction gallery |
 | `assets/images/pool-02.jpg` | Steel wall in-ground pool with deck | High; Cathy flagged this class of photos as steel wall in-ground | In-ground/gallery |
 | `assets/images/pool-12.jpg` | Aquasport hybrid above-ground pool | High; Cathy flagged as Aquasport hybrid | Above-ground hybrid pages/gallery |
 | `assets/images/pool-09.jpg` | Evening in-ground poolside scene | Low material confidence | Gallery only; do not use as LED-lighting proof |
