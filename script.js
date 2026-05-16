@@ -134,6 +134,24 @@
   /* ── Caustic Light Patches (pool floor refraction) ─────── */
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ── Lightweight Haptic Feedback ───────────────────────── */
+  const HAPTIC_PATTERNS = {
+    light: [8],
+    medium: [14],
+    success: [8, 30, 12],
+    nudge: [6, 20, 6],
+    error: [12, 40, 12, 40, 12],
+  };
+
+  window.__us1HapticsInitialized = true;
+
+  document.addEventListener("click", (event) => {
+    const target = event.target.closest("[data-haptic]");
+    if (!target || !navigator.vibrate) return;
+    const pattern = HAPTIC_PATTERNS[target.getAttribute("data-haptic") || "light"] || HAPTIC_PATTERNS.light;
+    navigator.vibrate(pattern);
+  });
+
   if (brand && brandLogo && !prefersReduced) {
     brand.addEventListener("pointermove", (event) => {
       const bounds = brand.getBoundingClientRect();

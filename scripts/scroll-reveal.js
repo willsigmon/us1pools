@@ -85,6 +85,8 @@
   }
 
   function initHaptics() {
+    if (window.__us1HapticsInitialized) return;
+    window.__us1HapticsInitialized = true;
     document.addEventListener("click", function (e) {
       var target = e.target.closest("[data-haptic]");
       if (target) {
