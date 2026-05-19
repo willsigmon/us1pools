@@ -31,10 +31,10 @@
 
   if (galleryImages.length === 0) return;
 
-  const lightbox = document.createElement("div");
+  const lightbox = document.createElement("dialog");
   lightbox.className = "lightbox";
-  lightbox.setAttribute("role", "dialog");
-  lightbox.setAttribute("aria-modal", "true");
+  lightbox.id = "gallery-lightbox";
+  lightbox.setAttribute("closedby", "any");
   lightbox.setAttribute("aria-label", "Image viewer");
 
   const closeBtn = document.createElement("button");
@@ -71,33 +71,6 @@
   lightbox.appendChild(lbCaption);
   document.body.appendChild(lightbox);
 
-  let inertedElements = [];
-  const setBackgroundInert = (isInert) => {
-    if (isInert) {
-      inertedElements = Array.from(document.body.children).filter((element) => element !== lightbox);
-      inertedElements.forEach((element) => { element.inert = true; });
-      return;
-    }
-
-    inertedElements.forEach((element) => { element.inert = false; });
-    inertedElements = [];
-  };
-
-  const trapLightboxFocus = (e) => {
-    if (e.key !== "Tab" || !lightbox.classList.contains("active")) return;
-    const focusable = [closeBtn, prevBtn, nextBtn].filter((element) => !element.disabled);
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-
-    if (e.shiftKey && document.activeElement === first) {
-      e.preventDefault();
-      last.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
-      e.preventDefault();
-      first.focus();
-    }
-  };
-
   const showLightbox = (idx, sourceImage) => {
     currentImageIndex = idx;
     lastFocusedImage = sourceImage || lightboxImages[idx];
@@ -105,18 +78,23 @@
     lbImage.src = img.src;
     lbImage.alt = img.alt;
     lbCaption.textContent = img.alt || "";
-    lightbox.classList.add("active");
+    if (!lightbox.open) {
+      lightbox.showModal();
+    }
     document.body.style.overflow = "hidden";
-    setBackgroundInert(true);
     closeBtn.focus();
   };
 
   const closeLightbox = () => {
-    lightbox.classList.remove("active");
-    document.body.style.overflow = "";
-    setBackgroundInert(false);
-    lastFocusedImage?.focus();
+    if (lightbox.open) {
+      lightbox.close();
+    }
   };
+
+  lightbox.addEventListener("close", () => {
+    document.body.style.overflow = "";
+    lastFocusedImage?.focus();
+  });
 
   const showNext = () => showLightbox((currentImageIndex + 1) % lightboxImages.length);
   const showPrev = () => showLightbox((currentImageIndex - 1 + lightboxImages.length) % lightboxImages.length);
@@ -139,16 +117,16 @@
   closeBtn.addEventListener("click", closeLightbox);
   nextBtn.addEventListener("click", showNext);
   prevBtn.addEventListener("click", showPrev);
+  
+  // Backdrop click handler for Safari/older browser compatibility
   lightbox.addEventListener("click", (e) => {
     if (e.target === lightbox) closeLightbox();
   });
 
   document.addEventListener("keydown", (e) => {
-    if (!lightbox.classList.contains("active")) return;
-    if (e.key === "Escape") closeLightbox();
+    if (!lightbox.open) return;
     if (e.key === "ArrowRight") showNext();
     if (e.key === "ArrowLeft") showPrev();
-    trapLightboxFocus(e);
   });
 })();
 

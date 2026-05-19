@@ -1610,7 +1610,7 @@ button.nav-link.dropdown-toggle {
   border-radius: 10px;
   padding: 12px 14px;
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .contact-form button {
@@ -1912,17 +1912,27 @@ button.nav-link.dropdown-toggle {
 .lightbox {
   position: fixed;
   inset: 0;
-  background: rgba(6, 38, 44, 0.95);
-  backdrop-filter: blur(8px);
+  background: transparent;
+  border: none;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100vw;
+  height: 100vh;
   z-index: 10000;
   display: none;
   align-items: center;
   justify-content: center;
   padding: 20px;
+  box-sizing: border-box;
 }
 
-.lightbox.active {
+.lightbox[open] {
   display: flex;
+}
+
+.lightbox::backdrop {
+  background: rgba(6, 38, 44, 0.95);
+  backdrop-filter: blur(8px);
 }
 
 .lightbox-image {
@@ -3017,7 +3027,7 @@ button.nav-link.dropdown-toggle {
   border-radius: 999px;
   padding: 10px 16px;
   font-family: inherit;
-  font-size: 0.9rem;
+  font-size: 1rem;
   outline: none;
   transition: border-color 0.2s ease;
 }
