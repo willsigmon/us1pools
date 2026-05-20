@@ -2020,8 +2020,15 @@ button.nav-link.dropdown-toggle {
 
 .calculator-options {
   display: grid;
+  grid-template-columns: 1fr;
   gap: 16px;
   margin: 24px 0;
+}
+
+@media (min-width: 576px) {
+  .calculator-options {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
 }
 
 .calculator-option {
@@ -2036,6 +2043,12 @@ button.nav-link.dropdown-toggle {
 .calculator-option:hover {
   border-color: var(--aqua);
   background: var(--seafoam);
+}
+
+.calculator-option:focus-visible {
+  outline: 3px solid var(--ocean);
+  outline-offset: 2px;
+  border-color: var(--ocean);
 }
 
 .calculator-option.selected {

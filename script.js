@@ -12,6 +12,7 @@
   const webmcpScript = document.createElement("script");
   webmcpScript.src = "/webmcp-agent.js";
   webmcpScript.defer = true;
+  webmcpScript.async = true;
   document.head.appendChild(webmcpScript);
 
   /* ── Navigation ────────────────────────────────────────── */
@@ -870,7 +871,7 @@ cookieBanner.setAttribute("role", "region");
 cookieBanner.setAttribute("aria-label", "Cookie consent");
 
 const cookieText = document.createElement("p");
-cookieText.innerHTML = 'We use minimal cookies for payment processing. We use <a href="https://plausible.io" target="_blank" rel="noopener noreferrer">Plausible Analytics</a> which is cookie-free. <a href="privacy-policy.html">Privacy Policy</a>';
+cookieText.innerHTML = 'We use minimal cookies for payment processing. We use <a href="https://plausible.io" target="_blank" rel="noopener noreferrer">Plausible Analytics</a> which is cookie-free. <a href="/privacy-policy.html">Privacy Policy</a>';
 
 const cookieActions = document.createElement("div");
 cookieActions.className = "cookie-banner-actions";

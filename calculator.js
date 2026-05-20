@@ -82,7 +82,7 @@
   };
 
   calculatorOptions.forEach((option) => {
-    option.addEventListener("click", () => {
+    const handleSelect = () => {
       const step = option.closest(".calculator-step");
       const stepNum = step?.dataset.step;
       if (!stepNum) return;
@@ -99,6 +99,15 @@
       };
 
       window.setTimeout(nextStep, 400);
+    };
+
+    option.addEventListener("click", handleSelect);
+
+    option.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        handleSelect();
+      }
     });
   });
 

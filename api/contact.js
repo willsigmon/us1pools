@@ -78,8 +78,12 @@ export default async function handler(req, res) {
   const cleanedName = normalizeText(name, 100);
   const cleanedEmail = normalizeText(email, 320).toLowerCase();
   const cleanedPhone = normalizeText(phone, 40);
-  const cleanedProject = normalizeText(project, 80);
-  const cleanedDetails = normalizeMultilineText(details, 3000);
+  // Default to "Service / maintenance" if project is missing or empty
+  const rawProject = project ? String(project).trim() : "Service / maintenance";
+  const cleanedProject = normalizeText(rawProject, 80);
+  // Support either details or message fields
+  const rawDetails = details || body.message || "";
+  const cleanedDetails = normalizeMultilineText(rawDetails, 3000);
   const cleanedBudget = normalizeText(budget, 40);
   const cleanedTimeline = normalizeText(timeline, 40);
   const cleanedLocation = normalizeText(location, 120);
