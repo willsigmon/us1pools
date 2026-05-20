@@ -128,5 +128,13 @@
     if (e.key === "ArrowRight") showNext();
     if (e.key === "ArrowLeft") showPrev();
   });
+
+  // Listen for agentic custom window events to open lightbox programmatically
+  window.addEventListener("us1-pools-open-lightbox", (e) => {
+    const idx = e.detail && typeof e.detail.index === "number" ? e.detail.index : 0;
+    if (idx >= 0 && idx < lightboxImages.length) {
+      showLightbox(idx);
+    }
+  });
 })();
 

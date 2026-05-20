@@ -8,6 +8,12 @@
 
   document.documentElement.classList.add("reveal-ready");
 
+  // Load WebMCP Agent Tools
+  const webmcpScript = document.createElement("script");
+  webmcpScript.src = "/webmcp-agent.js";
+  webmcpScript.defer = true;
+  document.head.appendChild(webmcpScript);
+
   /* ── Navigation ────────────────────────────────────────── */
   const navToggle = document.querySelector(".nav-toggle");
   const navLinks = document.querySelector(".nav-links");
@@ -438,6 +444,130 @@
   const conversationHistory = [];
   let chatRequestInFlight = false;
 
+  // Local Chrome Gemini Nano integration
+  let nanoSession = null;
+  let nanoAvailable = "no";
+
+  const SYSTEM_PROMPT = `You are the US-1 Pools virtual assistant. You help customers learn about pools, hot tubs, services, and getting started.
+
+ABOUT US-1 POOLS:
+- Family-owned pool store in Franklinton, NC (3453 US Hwy 1 South, Franklinton, NC 27525)
+- Phone: 919.441.0033
+- Email: us1pools@gmail.com
+- Hours: Mon-Thu 11am-3pm, Fri 11am-5pm, Sat 10am-5pm, Sun 12pm-3pm
+- Closed for winter (Nov-Feb) — call for appointments during winter
+
+PRODUCTS WE SELL:
+Above-Ground Pools:
+- Resin/current options: Genesis, Nakoma, Discovery (availability can change)
+- Hybrid options: Aquasport and Oasis (Oasis can only be recessed 27–30 inches; confirm current availability)
+- Steel options: Coral Seas, Distinction, Eclipse, Serena, Southport
+- Vinyl Liners: Cardinal and Latham
+
+In-Ground Pools:
+- Fiberglass shells: Imagine Fiberglass
+- Vinyl liner pools: steel/polymer wall systems with replaceable vinyl liner surfaces
+- Equipment: Pentair pumps, filters, heaters, automation
+- Upgrades: salt/oxygen sanitation, equipment controls, automation panels
+
+Hot Tubs & Swim Spas:
+- Tranquility spas
+- Garden Leisure spas
+- Delivery, setup, and ongoing service included
+
+Pool Liners:
+- GLI Pool Products (vinyl liners, in-ground mesh safety covers, solid safety covers)
+- Latham Pools (liners and covers)
+- Cardinal Systems (liners)
+
+Water Treatment:
+- Oxygen Pools (alternative to chlorine)
+- Salt systems
+- Traditional chemical treatment
+- Free water testing in-store
+
+SERVICES:
+- Pool installation (above-ground and in-ground)
+- Hot tub delivery and setup
+- Liner replacement
+- Equipment repair and upgrades
+- Water testing and chemical balancing
+- Opening and closing services
+- Service memberships available
+
+FORMATTING:
+- Use markdown-style formatting in your responses for readability
+- Use **bold** for product names and key terms
+- Use bullet points (• ) for lists of products, features, or options
+- Keep paragraphs short — 1-2 sentences max per paragraph
+- Add line breaks between sections for breathing room
+- Never output a wall of text — always structure your response
+
+SALES APPROACH:
+- Always end with a soft call-to-action nudging toward contact or a visit
+- Examples: "Want me to have Shayne reach out with options?" or "Drop by the showroom and we'll walk you through it!"
+- If someone asks about a product, mention we can do a free quote
+- If someone seems interested, offer to pass their info to the team
+- Be warm and genuine — not pushy, but always helpfully steering toward next steps
+- Mention specific pages when relevant: pools.html, hot-tubs.html, above-ground.html, in-ground.html, liners.html, videos.html, contact.html
+
+GUIDELINES:
+- Be friendly, helpful, and knowledgeable
+- Keep pool terminology precise: in-ground is a placement category; fiberglass, vinyl liner, and concrete/gunite are material/construction categories
+- Do not call a vinyl liner pool fiberglass, a fiberglass shell a liner pool, or Genesis a fiberglass product
+- If asked about pricing, say we offer free quotes and they should contact us or visit
+- If you don't know something specific, direct them to call 919.441.0033
+- Never make up specific prices, inventory counts, or availability
+
+TOOL CALLING CAPABILITIES:
+- If the user wants a price, calculation, estimate, or quote, output a block starting with [CALCULATE: poolType, poolSize, features] so the frontend can execute it natively. Values must be:
+  - poolType: 'above-ground', 'in-ground-vinyl', 'in-ground-fiberglass', or 'spa'
+  - poolSize: 'small', 'medium', or 'large'
+  - features: 'basic', 'mid', or 'premium'
+- If the user wants to submit their contact info or lead, output [CONTACT: name, email, phone, message] so we can submit it programmatically.
+- If the user wants to view photos/images or open the gallery lightbox, output [GALLERY: index] where index is 0 to 11.
+- Make sure to output these tag commands clearly on their own line at the very end of your response, e.g. [CALCULATE: in-ground-fiberglass, medium, premium]`;
+
+  const checkNanoAvailability = async () => {
+    try {
+      if (typeof window !== "undefined" && typeof window.LanguageModel !== "undefined") {
+        const availability = await window.LanguageModel.availability();
+        nanoAvailable = availability.available;
+      } else if (typeof window !== "undefined" && window.ai && window.ai.languageModel) {
+        const availability = await window.ai.languageModel.availability();
+        nanoAvailable = availability.available;
+      }
+    } catch (e) {
+      console.warn("LanguageModel detection error:", e);
+    }
+  };
+
+  const initNanoSession = async () => {
+    if (nanoSession) return nanoSession;
+    if (nanoAvailable === "no") return null;
+
+    try {
+      const options = {
+        initialPrompts: [
+          { role: "system", content: SYSTEM_PROMPT }
+        ]
+      };
+
+      if (typeof window.LanguageModel !== "undefined") {
+        nanoSession = await window.LanguageModel.create(options);
+      } else if (window.ai && window.ai.languageModel) {
+        nanoSession = await window.ai.languageModel.create(options);
+      }
+      return nanoSession;
+    } catch (err) {
+      console.error("Failed to create local Gemini Nano session:", err);
+      return null;
+    }
+  };
+
+  // Run availability check
+  checkNanoAvailability();
+
   chatToggleBtn.addEventListener("click", () => {
     chatOpen = !chatOpen;
     chatPanel.classList.toggle("open", chatOpen);
@@ -445,7 +575,11 @@
     chatToggleBtn.setAttribute("aria-expanded", String(chatOpen));
     chatPanel.setAttribute("aria-hidden", String(!chatOpen));
     chatToggleBtn.setAttribute("aria-label", chatOpen ? "Close chat assistant" : "Open chat assistant");
-    if (chatOpen) chatInput.focus();
+    if (chatOpen) {
+      chatInput.focus();
+      // Warm up Gemini Nano session when chat toggle is clicked
+      if (nanoAvailable !== "no") initNanoSession();
+    }
   });
 
   const appendInlineFormattedText = (parent, text) => {
@@ -545,6 +679,74 @@
     if (el) el.remove();
   };
 
+  // Helper to parse and execute agentic commands from response
+  const executeAgenticCommands = (reply) => {
+    // 1. Calculate Command Parser
+    const calculateMatch = reply.match(/\[CALCULATE:\s*([^,]+),\s*([^,]+),\s*([^\]]+)\]/i);
+    if (calculateMatch) {
+      const poolType = calculateMatch[1].trim().toLowerCase();
+      const poolSize = calculateMatch[2].trim().toLowerCase();
+      const features = calculateMatch[3].trim().toLowerCase();
+      
+      if (window.US1PoolsMCP) {
+        try {
+          const calc = window.US1PoolsMCP.calculatePoolPricing(poolType, poolSize, features);
+          setTimeout(() => {
+            const card = document.createElement("div");
+            card.className = "chat-calculation-card";
+            card.innerHTML = `
+              <div class="chat-calc-title">🏊 Estimated Price Range</div>
+              <div class="chat-calc-desc">${calc.description}</div>
+              <div class="chat-calc-price">${calc.formattedEstimate}</div>
+              <div class="chat-calc-footnote">This is a rough estimate. For an accurate quote, drop by our showroom or click below!</div>
+              <a href="/contact.html" class="chat-calc-btn">Request a Final Quote</a>
+            `;
+            chatMessages.appendChild(card);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+          }, 800);
+        } catch (e) {
+          console.error("Local calculation failed:", e);
+        }
+      }
+    }
+
+    // 2. Gallery Lightbox Opener Parser
+    const galleryMatch = reply.match(/\[GALLERY:\s*(\d+)\]/i);
+    if (galleryMatch) {
+      const index = parseInt(galleryMatch[1], 10);
+      setTimeout(() => {
+        window.dispatchEvent(new CustomEvent("us1-pools-open-lightbox", { detail: { index } }));
+        addMessage("✨ Opened the gallery lightbox for you!", "bot");
+      }, 800);
+    }
+
+    // 3. Contact Lead Submission Parser
+    const contactMatch = reply.match(/\[CONTACT:\s*([^,]+),\s*([^,]+),\s*([^,]+),\s*([^\]]+)\]/i);
+    if (contactMatch) {
+      const name = contactMatch[1].trim();
+      const email = contactMatch[2].trim();
+      const phone = contactMatch[3].trim();
+      const message = contactMatch[4].trim();
+      
+      if (window.US1PoolsMCP) {
+        try {
+          addMessage("📝 Submitting your quote request to our sales team...", "bot");
+          window.US1PoolsMCP.submitContactRequest({ name, email, phone, message }).then(result => {
+            setTimeout(() => {
+              if (result.success) {
+                addMessage("✅ Inquiry submitted successfully! Shayne or the team will get in touch with you shortly.", "bot");
+              } else {
+                 addMessage(`❌ Submission failed: ${result.message}. Please call us at 919.441.0033!`, "bot");
+              }
+            }, 800);
+          });
+        } catch (e) {
+          console.error("Local contact submit failed:", e);
+        }
+      }
+    }
+  };
+
   const sendChatMessage = async (text) => {
     const trimmedText = text.trim().slice(0, 500);
     if (!trimmedText || chatRequestInFlight) return;
@@ -557,6 +759,45 @@
     showTyping();
     updateChatPendingState(true);
 
+    // Dynamic Route: Built-in Chrome Gemini Nano (Local) vs Vercel Serverless Fallback (Cloud)
+    if (nanoAvailable !== "no") {
+      try {
+        const session = await initNanoSession();
+        if (session) {
+          // Construct conversational context history
+          let fullPrompt = trimmedText;
+          if (conversationHistory.length > 0) {
+            const historyText = conversationHistory
+              .map((h) => `${h.role === "user" ? "User" : "Assistant"}: ${h.content}`)
+              .join("\n");
+            fullPrompt = `${historyText}\nUser: ${trimmedText}\nAssistant:`;
+          }
+
+          const rawReply = await session.prompt(fullPrompt);
+          removeTyping();
+          updateChatPendingState(false);
+
+          if (rawReply) {
+            // Clean commands out of the visible bot message
+            const cleanReply = rawReply.replace(/\[(CALCULATE|CONTACT|GALLERY):[^\]]+\]/g, "").trim();
+            addMessage(cleanReply || "Sure, let me help you with that!", "bot");
+            pushConversationEntry("assistant", cleanReply || "Helpful guidance");
+            
+            // Execute any embedded agentic command
+            executeAgenticCommands(rawReply);
+          } else {
+            throw new Error("Empty local LLM reply");
+          }
+          
+          if (chatOpen) chatInput.focus();
+          return; // Skip cloud fallback
+        }
+      } catch (err) {
+        console.warn("Local Gemini Nano execution failed, falling back to API:", err);
+      }
+    }
+
+    // Cloud Fallback pathway
     try {
       const response = await fetch("/api/chat", {
         method: "POST",

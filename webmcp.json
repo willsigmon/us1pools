@@ -1,0 +1,62 @@
+{
+  "$schema": "https://webmcp.org/schemas/v1/webmcp.json",
+  "name": "US-1 Pools Agent Portal",
+  "description": "Programmatic interface for AI browser agents to discover and interact with US-1 Pools calculator, contact capture, and FAQ databases.",
+  "version": "1.0.0",
+  "tools": [
+    {
+      "name": "calculatePoolEstimate",
+      "description": "Calculate an estimated price range for pool or spa installation based on pool type, size, and additional features.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "poolType": {
+            "type": "string",
+            "enum": ["above-ground", "in-ground-vinyl", "in-ground-fiberglass", "spa"],
+            "description": "The type of pool or spa to estimate."
+          },
+          "poolSize": {
+            "type": "string",
+            "enum": ["small", "medium", "large"],
+            "description": "The desired size range of the pool/spa."
+          },
+          "features": {
+            "type": "string",
+            "enum": ["basic", "mid", "premium"],
+            "description": "The level of features, accessories, and sanitization systems."
+          }
+        },
+        "required": ["poolType", "poolSize", "features"]
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "lowEstimate": { "type": "number", "description": "Lower bound price in USD." },
+          "highEstimate": { "type": "number", "description": "Upper bound price in USD." },
+          "description": { "type": "string", "description": "Natural language summary of the selected configuration." }
+        }
+      }
+    },
+    {
+      "name": "submitContactRequest",
+      "description": "Submit a customer lead or general inquiry to US-1 Pools for a free on-site quote or spa consultation.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "Full name of the contact person." },
+          "email": { "type": "string", "format": "email", "description": "Email address for correspondence." },
+          "phone": { "type": "string", "description": "Phone number for direct callback." },
+          "message": { "type": "string", "description": "Specific details, questions, or requirements for the pool/spa project." }
+        },
+        "required": ["name", "email", "phone", "message"]
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "success": { "type": "boolean", "description": "True if submitted successfully." },
+          "message": { "type": "string", "description": "Response status from the server." }
+        }
+      }
+    }
+  ]
+}
