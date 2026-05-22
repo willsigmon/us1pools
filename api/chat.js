@@ -117,7 +117,7 @@ export default async function handler(req, res) {
     .slice(-MAX_HISTORY_ITEMS)
     .map((msg) => {
       if (!msg || typeof msg !== "object") return null;
-      const role = msg.role === "user" ? "user" : null;
+      const role = msg.role === "user" ? "user" : (msg.role === "assistant" || msg.role === "model" ? "model" : null);
       const content = normalizeText(msg.content, MAX_MESSAGE_LENGTH);
       if (!role || !content) return null;
       return { role, parts: [{ text: content }] };
