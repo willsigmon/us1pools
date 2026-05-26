@@ -31,7 +31,20 @@
 
   const setActiveStep = (stepKey) => {
     calculatorSteps.forEach((step) => {
-      step.classList.toggle("active", step.dataset.step === String(stepKey));
+      const isActive = step.dataset.step === String(stepKey);
+      step.classList.toggle("active", isActive);
+      if (isActive) {
+        const firstOption = step.querySelector(".calculator-option");
+        if (firstOption) {
+          window.setTimeout(() => firstOption.focus(), 50);
+        } else {
+          const firstHeading = step.querySelector("h3, h2");
+          if (firstHeading) {
+            firstHeading.setAttribute("tabindex", "-1");
+            window.setTimeout(() => firstHeading.focus(), 50);
+          }
+        }
+      }
     });
   };
 
