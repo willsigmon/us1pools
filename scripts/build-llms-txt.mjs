@@ -1,12 +1,14 @@
 #!/usr/bin/env node
-// Build llms-full.txt from every HTML page's body content.
+// Build public/llms-full.txt from every exported HTML page's body content.
 // Strips chrome (header, footer, nav, scripts, styles, JSON-LD).
-// Run after content changes: `node scripts/build-llms-txt.mjs`
+// Pages now live in app/ (Next.js), so this reads the static export:
+// run `npm run build` first, then `node scripts/build-llms-txt.mjs`.
 
 import { readFile, writeFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
 
 const ROOT = new URL("..", import.meta.url).pathname;
+const SRC = join(ROOT, "out");
 const SITE = "https://www.us1pools.com";
 
 const PAGES = [
@@ -27,7 +29,7 @@ const PAGES = [
 ];
 
 async function findAreaPages() {
-  const dir = join(ROOT, "areas");
+  const dir = join(SRC, "areas");
   const files = await readdir(dir).catch(() => []);
   return files
     .filter((f) => f.endsWith(".html"))
@@ -40,6 +42,8 @@ async function findAreaPages() {
 
 function htmlToText(html) {
   let text = html
+    .replace(/<\/(p|h[1-6]|li|ul|ol|section|article|blockquote|figcaption)>/gi, "$&\n")
+    .replace(/<br\s*\/?>/gi, "\n")
     .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "")
     .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, "")
     .replace(/<header\b[^<]*(?:(?!<\/header>)<[^<]*)*<\/header>/gi, "")
@@ -53,6 +57,8 @@ function htmlToText(html) {
     .replace(/&gt;/g, ">")
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
+    .replace(/&#x27;/gi, "'")
+    .replace(/&#x2F;/gi, "/")
     .replace(/&middot;/g, "·")
     .replace(/&mdash;/g, "—")
     .replace(/&ndash;/g, "–")
@@ -76,7 +82,7 @@ async function main() {
 
   for (const page of allPages) {
     try {
-      const html = await readFile(join(ROOT, page.file), "utf8");
+      const html = await readFile(join(SRC, page.file), "utf8");
       const bodyMatch = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
       const source = bodyMatch ? bodyMatch[1] : html;
       const text = htmlToText(source);
@@ -93,7 +99,7 @@ async function main() {
     }
   }
 
-  await writeFile(join(ROOT, "llms-full.txt"), sections.join("\n"));
+  await writeFile(join(ROOT, "public", "llms-full.txt"), sections.join("\n"));
   console.log(`Wrote llms-full.txt (${allPages.length} pages)`);
 }
 

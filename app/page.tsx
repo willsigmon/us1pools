@@ -1,0 +1,570 @@
+import type { Metadata } from "next";
+import type { CSSProperties } from "react";
+import { BgOrbs } from "@/components/bg-orbs";
+import { BodyPage } from "@/components/body-page";
+import { JsonLd } from "@/components/json-ld";
+import { SiteFooter } from "@/components/site-footer";
+
+const TITLE = "US-1 Pools | Sales, Service & Installation";
+const DESCRIPTION = "Sales, Service & Installation — US-1 Pools does it all. Pool sales, installs, service, and retail across Franklin and surrounding counties.";
+const OG_IMAGE =
+  "https://www.us1pools.com/api/og?title=US-1+Pools+%7C+Sales%2C+Service+%26+Installation&subtitle=Sales%2C+Service+%26+Installation+%E2%80%94+US-1+Pools+does+it+all.+Pool+sales%2C+installs%2C+service%2C+and+retail+across+Franklin+and+surrounding+counties.&eyebrow=Sales+%E2%80%A2+service+%E2%80%A2+installation";
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: {
+    canonical: "https://www.us1pools.com/",
+    types: { "text/markdown": "https://www.us1pools.com/llms-full.txt" },
+  },
+  openGraph: {
+    siteName: "US-1 Pools",
+    type: "website",
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "https://www.us1pools.com/",
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: `${TITLE} social preview` }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [{ url: OG_IMAGE, alt: `${TITLE} social preview` }],
+  },
+  other: { "ai-content-declaration": "human-authored, human-edited" },
+};
+
+export default function HomePage() {
+  return (
+    <>
+      <BodyPage page="home" />
+      <BgOrbs orbs={[1, 2, 3]} />
+      <link rel="preload" as="image" href="/assets/images/customer-pool-sunset.webp" />
+      <main id="main">
+        <section className="hero">
+          <div className="container hero-grid">
+            <div className="hero-copy">
+              <div className="hero-badges" aria-label="Best of the Best awards">
+                <div className="hero-badge">
+                  <img src="/assets/images/award.png" alt="2023 Best of the Best award" width={726} height={732} />
+                  <span><strong className="shiny-text">2023</strong> Best of the Best</span>
+                </div>
+                <div className="hero-badge">
+                  <img src="/assets/images/award.png" alt="2025 Best of the Best award" width={726} height={732} />
+                  <span><strong className="shiny-text">2025</strong> Best of the Best</span>
+                </div>
+              </div>
+              <p className="eyebrow">Sales • Service • Installs • Maintenance • Retail</p>
+              <h1>Aquatic experts for Franklin and surrounding counties.</h1>
+              <p className="lead">US-1 Pools does it all — from above-ground installs and custom in-ground builds to service plans, retail support, water care, and permitting guidance.</p>
+              <div className="hero-actions">
+                <a className="btn btn-primary is-glow" data-haptic="nudge" href="/contact.html">Get a Free Quote</a>
+                <a className="btn btn-ghost" href="/pools.html">Explore Pools</a>
+              </div>
+              <div className="hero-highlights">
+                <div className="highlight">
+                  <span>Family owned</span>
+                  <p>Local team focused on honest service and clean installs.</p>
+                </div>
+                <div className="highlight">
+                  <span>NC licensed</span>
+                  <p>Certified professionals with experience across residential and commercial work.</p>
+                </div>
+                <div className="highlight">
+                  <span>Full-service shop</span>
+                  <p>Sales, installs, maintenance, and retail equipment in one place.</p>
+                </div>
+              </div>
+            </div>
+            <div className="hero-media" aria-hidden="true">
+              <figure className="image-card">
+                <img src="/assets/images/customer-pool-sunset.webp" alt="Steel wall in-ground pool at sunset installed by US-1 Pools" loading="eager" fetchPriority="high" width={1800} height={1350} />
+                <span className="image-caption">Steel wall in-ground pool at sunset</span>
+              </figure>
+              <figure className="image-card">
+                <img src="/assets/images/gallery-05.webp" alt="Hybrid Oasis above-ground pool with wraparound deck installed by US-1 Pools" loading="lazy" width={2500} height={1215} decoding="async" />
+                <span className="image-caption">Hybrid Oasis with deck package</span>
+              </figure>
+            </div>
+          </div>
+          <div className="container trust-bar" data-stagger="">
+            <div className="trust-item">
+              <strong>Quality guaranteed</strong>
+              <p>Thoughtful installs backed by a team that answers the phone.</p>
+            </div>
+            <div className="trust-item">
+              <strong>In-house permitting</strong>
+              <p>We help customers navigate permit paperwork and county coordination.</p>
+            </div>
+            <div className="trust-item">
+              <strong>Financing options</strong>
+              <p>Ask about LightStream and HFS programs.</p>
+            </div>
+            <div className="trust-item">
+              <strong>Service area</strong>
+              <p>Franklin and surrounding counties.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="partner-marquee" aria-label="Authorized brand partners">
+          <span className="partner-marquee-label">Authorized dealer for</span>
+          <div className="partner-marquee-track" aria-hidden="true">
+            <span className="partner-item">Latham Pools</span>
+            <span className="partner-item">GLI Pool Products</span>
+            <span className="partner-item">Imagine Fiberglass</span>
+            <span className="partner-item">Genesis</span>
+            <span className="partner-item">Tranquility Spas</span>
+            <span className="partner-item">Garden Leisure</span>
+            <span className="partner-item">Maytronics Dolphin</span>
+            <span className="partner-item">Oxygen Pools</span>
+            <span className="partner-item">Latham Pools</span>
+            <span className="partner-item">GLI Pool Products</span>
+            <span className="partner-item">Imagine Fiberglass</span>
+            <span className="partner-item">Genesis</span>
+            <span className="partner-item">Tranquility Spas</span>
+            <span className="partner-item">Garden Leisure</span>
+            <span className="partner-item">Maytronics Dolphin</span>
+            <span className="partner-item">Oxygen Pools</span>
+          </div>
+        </section>
+
+        <section className="section reveal" id="pools">
+          <div className="container">
+            <div className="section-head">
+              <div>
+                <p className="eyebrow">Pools & Spas</p>
+                <h2>Find your perfect pool.</h2>
+              </div>
+              <p className="section-sub">Above-ground systems, fiberglass in-ground shells, vinyl liner replacements, and hot tub options backed by trusted brand partners.</p>
+            </div>
+
+            <div className="card-grid" data-stagger="">
+              <article className="service-card">
+                <div className="service-icon">
+                  <svg aria-hidden="true" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" >
+ <path d="m35.417 966.945-12.5 8.334v41.666c0 2.084 2.083 4.167 4.166 4.167h45.834c2.083 0 4.166-2.083 4.166-4.167V975.28l-12.5-8.334zm4.166 8.334h20.834l8.333 4.166v8.334h-37.5v-8.334zm-4.166 29.166a4.158 4.158 0 0 1 4.166 4.167 4.158 4.158 0 0 1-4.166 4.167 4.158 4.158 0 0 1-4.167-4.167 4.158 4.158 0 0 1 4.167-4.167zm29.166 0a4.158 4.158 0 0 1 4.167 4.167 4.158 4.158 0 0 1-4.167 4.167 4.158 4.158 0 0 1-4.166-4.167 4.158 4.158 0 0 1 4.166-4.167zM50 1025.28l-22.917 12.5h45.834z" style={{ color: "currentColor", fill: "currentColor", fillOpacity: "1", fillRule: "nonzero", stroke: "none", strokeWidth: "2", marker: "none", visibility: "visible", display: "inline", overflow: "visible", enableBackground: "accumulate" } as CSSProperties} transform="translate(0 -952.362)"/>
+</svg>
+                </div>
+                <h3>Above Ground</h3>
+                <p>Vinyl liner, resin, and hybrid options with optional deck packages; current model availability is confirmed before quoting.</p>
+                <div className="model-list">
+                  <span className="model-chip">Genesis</span>
+                  <span className="model-chip">Nakoma</span>
+                  <span className="model-chip">Discovery</span>
+                </div>
+                <a className="btn btn-ghost" href="/above-ground.html">Explore Above Ground</a>
+              </article>
+              <article className="service-card">
+                <div className="service-icon">
+                  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96"><path fill="currentColor" fillRule="evenodd" d="M84,57c-6,0-6-3-12-3c-1.215,0-2.177,0.127-3,0.323V27
+		c0-4.97,4.03-9,9-9c4.97,0,9,4.03,9,9c0,0.828,0.672,1.5,1.5,1.5c0.828,0,1.5-0.672,1.5-1.5c0-6.627-5.373-12-12-12
+		s-12,5.373-12,12v6H36v-6c0-4.97,4.03-9,9-9c4.97,0,9,4.03,9,9c0,0.828,0.672,1.5,1.5,1.5c0.828,0,1.5-0.672,1.5-1.5
+		c0-6.627-5.373-12-12-12s-12,5.373-12,12v6v3v9v3v8.677C29.761,55.904,28.785,54,24,54c-6,0-6,3-12,3c-6,0-6-3-12-3v3c6,0,6,3,12,3
+		c6,0,6-3,12-3s6,3,12,3c6,0,6-3,12-3c6,0,6,3,12,3c6,0,6-3,12-3c6,0,6,3,12,3s6-3,12-3v-3C90,54,90,57,84,57z M36,36h30v9H36V36z
+		 M48,54c-6,0-6,3-12,3v-9h30v7.5c-1.5,0.75-3,1.5-6,1.5C54,57,54,54,48,54z M0,78c6,0,6,3,12,3c6,0,6-3,12-3s6,3,12,3c6,0,6-3,12-3
+		c6,0,6,3,12,3s6-3,12-3s6,3,12,3s6-3,12-3v3c-6,0-6,3-12,3s-6-3-12-3s-6,3-12,3s-6-3-12-3c-6,0-6,3-12,3c-6,0-6-3-12-3s-6,3-12,3
+		c-6,0-6-3-12-3V78z M0,66c6,0,6,3,12,3c6,0,6-3,12-3s6,3,12,3c6,0,6-3,12-3c6,0,6,3,12,3s6-3,12-3s6,3,12,3s6-3,12-3v3
+		c-6,0-6,3-12,3s-6-3-12-3s-6,3-12,3s-6-3-12-3c-6,0-6,3-12,3c-6,0-6-3-12-3s-6,3-12,3c-6,0-6-3-12-3V66z" clipRule="evenodd"/></svg>
+                </div>
+                <h3>In-Ground Pools</h3>
+                <p>Steel wall, vinyl liner, and Imagine Fiberglass options with clear material guidance.</p>
+                <div className="model-list">
+                  <span className="model-chip">Imagine Fiberglass</span>
+                </div>
+                <a className="btn btn-ghost" href="/in-ground.html">Explore In-Ground</a>
+              </article>
+              <article className="service-card">
+                <div className="service-icon">
+                  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><circle fill="currentColor" cx="7" cy="6" r="2"/><path fill="currentColor" d="M17.42 7.21c.57.62.82 1.41.67 2.2l-.11.59h1.91l.06-.43c.21-1.36-.27-2.71-1.3-3.71l-.07-.07c-.57-.62-.82-1.41-.67-2.2L18 3h-1.89l-.06.43c-.2 1.36.27 2.71 1.3 3.72l.07.06zM11.15 12c-.31-.22-.59-.46-.82-.72l-1.4-1.55c-.19-.21-.43-.38-.69-.5-.29-.14-.62-.23-.96-.23h-.03C6.01 9 5 10.01 5 11.25V12H2v8c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-8H11.15zM7 20H5v-6h2v6zm4 0H9v-6h2v6zm4 0h-2v-6h2v6zm4 0h-2v-6h2v6zM13.42 7.21c.57.62.82 1.41.67 2.2l-.11.59h1.91l.06-.43c.21-1.36-.27-2.71-1.3-3.71l-.07-.07c-.57-.62-.82-1.41-.67-2.2L14 3h-1.89l-.06.43c-.2 1.36.27 2.71 1.3 3.72l.07.06z"/></svg>
+                </div>
+                <h3>Hot Tubs & Spas</h3>
+                <p>Stand-alone or integrated spas for year-round relaxation.</p>
+                <div className="model-list">
+                  <span className="model-chip">Tranquility</span>
+                  <span className="model-chip">Garden Leisure</span>
+                </div>
+                <a className="btn btn-ghost" href="/hot-tubs.html">Explore Hot Tubs</a>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section className="section split reveal" id="services">
+          <div className="container">
+            <div className="section-head">
+              <div>
+                <p className="eyebrow">Service & Maintenance</p>
+                <h2>Keep your pool running smoothly.</h2>
+              </div>
+              <p className="section-sub">Our crew handles the seasonal and mechanical work so you don't have to.</p>
+            </div>
+
+            <div className="content-grid">
+              <div className="list-grid">
+                <div className="list-card">
+                  <div className="list-icon">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" ><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M6.11 5.56C7.3 5.7 8.14 6.14 9 7l1 1-3.25 3.25c.31.12.56.27.77.39.37.23.59.36 1.15.36s.78-.13 1.15-.36c.46-.27 1.08-.64 2.19-.64s1.73.37 2.18.64c.37.22.6.36 1.15.36.55 0 .78-.13 1.15-.36.12-.07.26-.15.41-.23L10.48 5C9.22 3.74 8.04 3.2 6.3 3.05 5.6 2.99 5 3.56 5 4.26v.09c0 .63.49 1.13 1.11 1.21zm15.24 13.35c-.17-.06-.32-.15-.5-.27-.45-.27-1.07-.64-2.18-.64s-1.73.37-2.18.64c-.37.23-.6.36-1.15.36-.55 0-.78-.14-1.15-.36-.45-.27-1.07-.64-2.18-.64s-1.73.37-2.19.64c-.37.23-.59.36-1.15.36s-.78-.13-1.15-.36c-.45-.27-1.07-.64-2.18-.64s-1.73.37-2.19.64c-.18.11-.33.2-.5.27-.38.13-.65.45-.65.85v.12c0 .67.66 1.13 1.3.91.37-.13.65-.3.89-.44.37-.22.6-.35 1.15-.35.55 0 .78.13 1.15.36.45.27 1.07.64 2.18.64s1.73-.37 2.19-.64c.37-.23.59-.36 1.15-.36.55 0 .78.14 1.15.36.45.27 1.07.64 2.18.64s1.72-.37 2.18-.64c.37-.23.59-.36 1.15-.36.55 0 .78.14 1.15.36.23.14.51.31.88.44.63.22 1.3-.24 1.3-.91v-.12c0-.41-.27-.73-.65-.86zM3.11 16.35c.47-.13.81-.33 1.09-.49.37-.23.6-.36 1.15-.36.55 0 .78.14 1.15.36.45.27 1.07.64 2.18.64s1.73-.37 2.18-.64c.37-.23.59-.36 1.15-.36.55 0 .78.14 1.15.36.45.27 1.07.64 2.18.64s1.73-.37 2.18-.64c.37-.23.59-.36 1.15-.36.55 0 .78.14 1.15.36.23.14.5.3.85.43a.978.978 0 0 0 1.31-.91v-.12c0-.4-.27-.72-.64-.86-.17-.06-.32-.15-.51-.26-.45-.27-1.07-.64-2.18-.64s-1.73.37-2.18.64c-.37.23-.6.36-1.15.36s-.78-.14-1.15-.36c-.45-.27-1.07-.64-2.18-.64s-1.73.37-2.18.64c-.37.23-.59.36-1.15.36-.55 0-.78-.14-1.15-.36-.45-.27-1.07-.64-2.18-.64s-1.73.37-2.18.64c-.18.11-.33.2-.5.27-.38.13-.65.45-.65.85v.23c0 .58.55 1.02 1.11.86z"/><circle fill="currentColor" cx="16.5" cy="5.5" r="2.5"/></svg>
+                  </div>
+                  <h3>Openings & closings</h3>
+                  <p>Seasonal prep, balancing, and protection.</p>
+                </div>
+                <div className="list-card">
+                  <div className="list-icon">
+                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"><defs><linearGradient id="a" x1="243.21" x2="243.21" y1="372.66" y2="453.3" gradientUnits="userSpaceOnUse"><stop offset="0" stopColor="#cacfdd"/><stop offset="1" stopColor="#eef0f1"/></linearGradient><linearGradient id="b" x1="108.91" x2="377.51" y1="146.25" y2="146.25" xlinkHref="#a"/><linearGradient id="c" x1="322.22" x2="394.46" y1="331.99" y2="331.99" xlinkHref="#a"/></defs><g style={{ isolation: "isolate" }}><g><rect width="268.59" height="221.3" x="108.91" y="133.6" fill="currentColor"/><path fill="currentColor" d="M188.66 357.9H144.29V130.6h44.37zm-38.37-6h32.37V136.6H150.29zM265.4 357.9H221V130.6H265.4zm-38.37-6H259.4V136.6H227z"/><rect width="301.37" height="37.18" x="92.52" y="354.9" fill="currentColor" rx="13.26"/><path fill="currentColor" d="M128.1,392.09l13,31.34H345.29l13-31.34Z"/><path d="M128.1,392.09l13,31.34H345.29l13-31.34Z" style={{ mixBlendMode: "multiply" }} fill="currentColor"/><rect width="268.59" height="34.3" x="108.91" y="423.43" fill="currentColor" rx="13.26"/><path fill="currentColor" d="M364.25,460.72H122.18a16.27,16.27,0,0,1-16.26-16.26v-7.77a16.27,16.27,0,0,1,16.26-16.26H364.25a16.28,16.28,0,0,1,16.26,16.26v7.77A16.28,16.28,0,0,1,364.25,460.72ZM122.18,426.43a10.27,10.27,0,0,0-10.26,10.26v7.77a10.27,10.27,0,0,0,10.26,10.26H364.25a10.27,10.27,0,0,0,10.26-10.26v-7.77a10.27,10.27,0,0,0-10.26-10.26Z"/><rect width="268.59" height="25.3" x="108.91" y="133.6" style={{ mixBlendMode: "multiply" }} fill="currentColor"/><rect width="19.72" x="400.74" y="74.36" fill="currentColor" transform="rotate(-45 410.604 77.362)"/><rect height="19.72" x="384.37" y="54.28" fill="currentColor"/><rect width="19.72" x="414.5" y="96.4" fill="currentColor"/><path fill="currentColor" d="M55.62 379.94a13.32 13.32 0 1113.09-11.06A13.33 13.33 0 0155.62 379.94zm0-20.64a7.32 7.32 0 104.23 13.3A7.32 7.32 0 0055.58 359.3zM78.78 432a8.83 8.83 0 111.47-17.54h0A8.83 8.83 0 0178.78 432zm0-11.67a2.83 2.83 0 101.64 5.15A2.83 2.83 0 0078.75 420.34z"/><path fill="currentColor" d="M403.8 232.76a13.77 13.77 0 0113.78 13.77 13.75 13.75 0 0113.77-13.77A13.77 13.77 0 01417.58 219 13.78 13.78 0 01403.8 232.76zM36 176.47a24.74 24.74 0 0124.74 24.74 24.74 24.74 0 0124.73-24.74 24.73 24.73 0 01-24.73-24.74A24.74 24.74 0 0136 176.47z"/><path fill="currentColor" d="M70.1,117.31h-6v-6h6Zm.55-15.41-5.9-1.09a37.78,37.78,0,0,1,1.72-6.27l5.63,2.08A32.25,32.25,0,0,0,70.65,101.9Zm5.79-13.3L71.62,85a39,39,0,0,1,4.29-4.88l4.16,4.33A33,33,0,0,0,76.44,88.6Zm11-9.45-2.79-5.31a37.53,37.53,0,0,1,6-2.52L92.52,77A32.36,32.36,0,0,0,87.47,79.15Zm14-3.68-.18-6c.8,0,.8,0,6.09,0v6C102.19,75.46,102.22,75.45,101.51,75.47Zm117.91,0h-6v-6h6Zm-16,0h-6v-6h6Zm-16,0h-6v-6h6Zm-16,0h-6v-6h6Zm-16,0h-6v-6h6Zm-16,0h-6v-6h6Zm-16,0h-6v-6h6Z"/><path d="M394.46,368.72v10.66a13.26,13.26,0,0,1-13.26,13.26H358.88l-5.08,12.21a84.82,84.82,0,0,1,24.27-145.73v96.34h3.13A13.26,13.26,0,0,1,394.46,368.72Z" style={{ mixBlendMode: "multiply" }} fill="currentColor"/><path fill="currentColor" d="M227 357.9H182.66V130.6H227zm-38.37-6H221V136.6H188.66zM303.77 357.9H259.4V130.6h44.37zm-38.37-6h32.37V136.6H265.4z"/><path fill="currentColor" d="M342.14 357.9H297.77V130.6h44.37zm-38.37-6h32.37V136.6H303.77zM150.29 357.9H105.92V130.6h44.37zm-38.37-6h32.37V136.6H111.92z"/><rect width="301.37" height="37.18" x="92.52" y="96.42" fill="currentColor" rx="13.26"/><path fill="currentColor" d="M380.64,136.6H105.78a16.28,16.28,0,0,1-16.26-16.26V109.68a16.28,16.28,0,0,1,16.26-16.26H380.64a16.28,16.28,0,0,1,16.26,16.26v10.66A16.28,16.28,0,0,1,380.64,136.6ZM105.78,99.42a10.27,10.27,0,0,0-10.26,10.26v10.66a10.27,10.27,0,0,0,10.26,10.26H380.64a10.27,10.27,0,0,0,10.26-10.26V109.68a10.27,10.27,0,0,0-10.26-10.26Z"/><path fill="currentColor" d="M380.51,357.9H336.14V130.6h44.37Zm-38.37-6h32.37V136.6H342.14Z"/><path fill="currentColor" d="M380.64,395.09H105.78a16.29,16.29,0,0,1-16.26-16.26V368.17a16.29,16.29,0,0,1,16.26-16.27H380.64a16.29,16.29,0,0,1,16.26,16.27v10.66A16.29,16.29,0,0,1,380.64,395.09ZM105.78,357.9a10.28,10.28,0,0,0-10.26,10.27v10.66a10.27,10.27,0,0,0,10.26,10.26H380.64a10.27,10.27,0,0,0,10.26-10.26V368.17a10.28,10.28,0,0,0-10.26-10.27Z"/><path fill="currentColor" d="M347.29,426.43H139.13L123.6,389.09H362.82Zm-204.16-6H343.29l10.54-25.34H132.6Z"/><circle cx="407.12" cy="338.88" r="68.88" fill="currentColor"/><path fill="currentColor" d="M407.12,410.76A71.88,71.88,0,1,1,479,338.88,72,72,0,0,1,407.12,410.76Zm0-137.76A65.88,65.88,0,1,0,473,338.88,66,66,0,0,0,407.12,273Z"/><polygon fill="currentColor" points="369.96 313 369.96 333.03 397.4 349.23 397.4 378.73 415.78 368.85 415.78 349.23 444.28 333.03 444.28 313 369.96 313"/></g></g></svg>
+                  </div>
+                  <h3>Sand changes</h3>
+                  <p>Filter performance and water clarity upgrades.</p>
+                </div>
+                <div className="list-card">
+                  <div className="list-icon">
+                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="currentColor" d="M46 69V27c-2.2 0-4 1.8-4 4v34c0 2.2 1.8 4 4 4zM31 45h3v6h-3zM40 63V33c-2.2 0-4 1.8-4 4v22c0 2.2 1.8 4 4 4zM57 69h18v4H57zM76 67h8V29H48v38h28zM55 33h22c1.7 0 3 1.3 3 3s-1.3 3-3 3H55c-1.7 0-3-1.3-3-3s1.3-3 3-3zm0 12h22c1.7 0 3 1.3 3 3s-1.3 3-3 3H55c-1.7 0-3-1.3-3-3s1.3-3 3-3zm-3 15c0-1.7 1.3-3 3-3h22c1.7 0 3 1.3 3 3s-1.3 3-3 3H55c-1.7 0-3-1.3-3-3zm-23 1V35H15.4L13 37.4v21.2l2.4 2.4H29zm-8.7-20.7c.4-.4 1-.4 1.4 0 .2.2 5.3 5.3 5.3 9.7 0 3.3-2.7 6-6 6s-6-2.7-6-6c0-4.4 5.1-9.5 5.3-9.7zM90 27h-4v42h4c2.2 0 4-1.8 4-4V31c0-2.2-1.8-4-4-4zM18 25h9.6l1.4-1.4V19H15v4.6l1.4 1.4zM19 27h6v6h-6zM6 45h5v6H6zM76 75H16.7l-2.3 6h71.2l-2.3-6z"/></svg>
+                  </div>
+                  <h3>Equipment installs</h3>
+                  <p>Pumps, filters, heaters, and automation systems.</p>
+                </div>
+                <div className="list-card">
+                  <div className="list-icon">
+                    <svg aria-hidden="true" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" ><path fill="currentColor" d="M-10.5 1020.362a.5.5 0 0 0-.5.5v31a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5v-31a.5.5 0 0 0-.5-.5zm.5 1h9v23h-1v1h1v1h-9v-1h1v-1h-1zm1.5 1a.5.5 0 1 0 0 1 .5.5 0 0 0 0-1zm2 0a.5.5 0 1 0 0 1 .5.5 0 0 0 0-1zm2 0a.5.5 0 1 0 0 1 .5.5 0 0 0 0-1zm2 0a.5.5 0 1 0 0 1 .5.5 0 0 0 0-1zm-5 2a.5.5 0 1 0 0 1 .5.5 0 0 0 0-1zm2 0a.5.5 0 1 0 0 1 .5.5 0 0 0 0-1zm2 0a.5.5 0 1 0 0 1 .5.5 0 0 0 0-1zm-3 2a.5.5 0 1 0 0 1 .5.5 0 0 0 0-1zm2 0a.5.5 0 1 0 0 1 .5.5 0 0 0 0-1zm-1 2a.5.5 0 1 0 0 1 .5.5 0 0 0 0-1zm0 9.983-1.768 1.767.707.71.561-.563v2.103h1v-2.103l.56.562.708-.709zm-2.5 6.017v1h1v-1zm2 0v1h1v-1zm2 0v1h1v-1zm-6 3h9v4h-9z" color="#000" fontFamily="sans-serif" fontWeight="400" overflow="visible" transform="translate(21 -1020.362)" style={{ lineHeight: "normal", textIndent: "0", textAlign: "start", textDecorationLine: "none", textDecorationStyle: "solid", textDecorationColor: "currentColor", textTransform: "none", blockProgression: "tb", whiteSpace: "normal", isolation: "auto", mixBlendMode: "normal", solidColor: "currentColor", solidOpacity: "1" } as CSSProperties}/></svg>
+                  </div>
+                  <h3>Liner changes</h3>
+                  <p>Vinyl liner replacements and leak fixes.</p>
+                </div>
+                <a className="btn btn-ghost" href="/services.html">See all services</a>
+              </div>
+              <div className="image-card">
+                <img src="/assets/images/pool-04.jpg" alt="Pool pump and filter system installed beside an above-ground pool" loading="lazy"  width={836} height={627} decoding="async"/>
+                <span className="image-caption">Pump, filter &amp; equipment system</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section reveal section-tinted" id="retail">
+          <div className="container">
+            <div className="section-head">
+              <div>
+                <p className="eyebrow">Retail + Water Care</p>
+                <h2>Everything for the pool — in one stop.</h2>
+              </div>
+              <p className="section-sub">Chemicals, toys, automatic cleaners, and chlorine alternatives like oxygen pools and salt-based systems.</p>
+            </div>
+
+            <div className="feature-row" data-stagger="">
+              <div className="feature-item">
+                <div className="feature-icon">
+                  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="currentColor" d="M18.6 44.1c5.1 0 9.3-4.2 9.3-9.3V7.6h.9c1.6 0 2.9-1.3 2.9-2.9V.6H5.6v4.1c0 1.6 1.3 2.9 2.9 2.9h.9v27.2c-.1 5.2 4.1 9.3 9.2 9.3zm7.8-32.7h-7.8v1.5h7.8v5.6h-7.8V20h7.8v5.6h-7.8V27h7.8v5.6h-7.8v1.5h7.8v.8c0 4.3-3.5 7.8-7.8 7.8s-7.8-3.5-7.8-7.8V7.6h15.6v3.8zm-18-5.3C7.6 6.1 7 5.5 7 4.7V2.1h23.1v2.6c0 .8-.6 1.4-1.4 1.4H8.4z"/></svg>
+                </div>
+                <h3>Water testing</h3>
+                <p>Bring a sample in and leave with a plan.</p>
+              </div>
+              <div className="feature-item">
+                <div className="feature-icon">
+                  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path fill="currentColor" d="M53.61,7.46a5.11,5.11,0,0,0-3.93-1.79h0a5.69,5.69,0,0,0-4.37,2c-3.86,4.35-2.76,14.6-2.62,15.76a1.5,1.5,0,0,0,1.49,1.32h3.66l0,29.79a4.75,4.75,0,0,1-9.5,0V16.23c0-6.9-2.32-10.72-6.9-11.38V3.41a1.5,1.5,0,0,0-1.5-1.5H25.7A1.51,1.51,0,0,0,24.23.73H16.74a1.5,1.5,0,0,0-1.5,1.5v9a9.78,9.78,0,0,0-4.53,8.24v5.83a.59.59,0,0,0,0,.13v5.5a.51.51,0,0,0,0,.13v14.6a.51.51,0,0,0,0,.13v5.5a.59.59,0,0,0,0,.13v8.84a1.5,1.5,0,0,0,1.5,1.5H28.76a1.5,1.5,0,0,0,1.5-1.5V19.48a9.78,9.78,0,0,0-4.53-8.24v-.68h4.16a1.5,1.5,0,0,0,1.5-1.5V7.88c2.1.47,3.9,2.28,3.9,8.35V54.52a7.75,7.75,0,0,0,15.5,0l0-29.8h3.59a1.51,1.51,0,0,0,1.49-1.31C56.06,22.23,57.31,11.66,53.61,7.46ZM18.24,3.73h4.49V10a9.47,9.47,0,0,0-4.49,0Zm9,40.57H13.71V32.44H27.26Zm0,5.5H13.71V47.3H27.26Zm0-20.36H13.71v-2.5H27.26ZM13.71,58.77v-6H27.26v6ZM27.26,23.94H13.71V19.48a6.78,6.78,0,1,1,13.55,0ZM28.39,7.56H25.73V4.91h2.66ZM47.54,9.64a2.68,2.68,0,0,1,2.13-1h0a2.11,2.11,0,0,1,1.68.77C52.67,10.93,53.13,14,53.21,17H45.49C45.65,14.15,46.18,11.17,47.54,9.64Zm1.79,12.09H45.54c0-.52-.07-1.11-.08-1.73h7.72c0,.62-.07,1.21-.11,1.73Z" data-name="Layer 14"/></svg>
+                </div>
+                <h3>Oxygen + salt systems</h3>
+                <p>Chlorine alternatives with a softer water feel.</p>
+                <a className="btn btn-ghost external-link" href="https://www.oxygenpools.com" target="_blank" rel="noopener noreferrer" aria-label="Learn about Oxygen Pools (opens in new tab)">Learn about Oxygen Pools</a>
+              </div>
+              <div className="feature-item">
+                <div className="feature-icon">
+                  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g><g><g><g><path fill="currentColor" d="M501.037,256.001h-40.003c0-113.235-91.799-205.034-205.034-205.034
+					S50.966,142.766,50.966,256.001H10.963C10.963,120.677,120.668,10.964,256,10.964
+					C392.525,10.964,501.037,121.863,501.037,256.001z"/><path fill="currentColor" d="M461.034,256.001c0-113.235-91.799-205.034-205.034-205.034S50.966,142.766,50.966,256.001
+					H10.963c0,97.746,57.235,182.124,140.02,221.45h210.035c82.785-39.325,140.02-123.704,140.02-221.45H461.034z"/><path fill="currentColor" d="M256,230.999c-58.002,0-105.017,47.015-105.017,105.018v141.434
+					c66.195,31.451,143.772,31.483,210.035,0V336.017C361.017,278.014,314.002,230.999,256,230.999z"/><path fill="currentColor" d="M336.016 140.983c11.047 0 20.001 8.955 20.001 20.001s-8.955 20.001-20.001 20.001-20.011-8.955-20.011-20.001S324.969 140.983 336.016 140.983zM256 281.003c24.852 0 45.003 20.151 45.003 45.013 0 24.852-20.151 45.003-45.003 45.003-24.852 0-45.003-20.151-45.003-45.003C210.997 301.153 231.148 281.003 256 281.003z"/><circle cx="256" cy="160.984" r="20.001" fill="currentColor"/><path fill="currentColor" d="M175.984,140.983c11.047,0,20.011,8.955,20.011,20.001s-8.965,20.001-20.011,20.001
+					c-11.047,0-20.001-8.955-20.001-20.001S164.938,140.983,175.984,140.983z"/></g></g><g><g><g><path fill="currentColor" d="M256,510.999c-68.112,0-132.148-26.525-180.311-74.687
+						C27.527,388.149,1.002,324.113,1.002,256.001S27.527,123.853,75.689,75.69C123.852,27.527,187.888,1.003,256,1.003
+						S388.148,27.527,436.311,75.69c48.162,48.163,74.687,112.199,74.687,180.311s-26.525,132.148-74.687,180.311
+						C388.148,484.474,324.112,510.999,256,510.999z M256,20.925c-129.622,0-235.076,105.455-235.076,235.076
+						S126.378,491.077,256,491.077s235.076-105.455,235.076-235.076S385.622,20.925,256,20.925z"/></g><g><path fill="currentColor" d="M501.037,265.962h-40.006c-5.501,0-9.961-4.46-9.961-9.961
+						c0-107.563-87.509-195.07-195.07-195.07S60.93,148.438,60.93,256.001c0,5.501-4.46,9.961-9.961,9.961H10.963
+						c-5.501,0-9.961-4.46-9.961-9.961s4.46-9.961,9.961-9.961h30.27c2.433-53.686,24.496-103.812,62.745-142.062
+						C144.584,63.372,198.573,41.009,256,41.009c116.019,0,209.619,91.424,214.767,205.031h30.27c5.501,0,9.961,4.46,9.961,9.961
+						S506.538,265.962,501.037,265.962z"/></g><g><path fill="currentColor" d="M361.016,487.416c-5.501,0-9.961-4.46-9.961-9.961V336.013
+						c0-52.413-42.642-95.054-95.055-95.054s-95.055,42.641-95.055,95.054v141.442c0,5.501-4.46,9.961-9.961,9.961
+						c-5.501,0-9.961-4.46-9.961-9.961V336.013c0-63.398,51.579-114.976,114.977-114.976s114.977,51.578,114.977,114.976v141.442
+						C370.977,482.956,366.517,487.416,361.016,487.416z"/></g><g><path fill="currentColor" d="M256,380.98c-30.31,0-54.968-24.658-54.968-54.968S225.69,271.043,256,271.043
+						c30.31,0,54.968,24.659,54.968,54.969S286.31,380.98,256,380.98z M256,290.965c-19.324,0-35.046,15.722-35.046,35.047
+						s15.721,35.046,35.046,35.046c19.324,0,35.046-15.721,35.046-35.046S275.324,290.965,256,290.965z"/></g><g><path fill="currentColor" d="M336.012,190.951c-16.522,0-29.963-13.442-29.963-29.964s13.441-29.964,29.963-29.964
+						s29.964,13.442,29.964,29.964S352.534,190.951,336.012,190.951z M336.012,150.944c-5.537,0-10.042,4.505-10.042,10.043
+						s4.505,10.043,10.042,10.043c5.538,0,10.043-4.505,10.043-10.043S341.55,150.944,336.012,150.944z"/></g><g><path fill="currentColor" d="M256,190.951c-16.522,0-29.964-13.442-29.964-29.964s13.442-29.964,29.964-29.964
+						c16.522,0,29.964,13.442,29.964,29.964S272.522,190.951,256,190.951z M256,150.944c-5.538,0-10.043,4.505-10.043,10.043
+						s4.505,10.043,10.043,10.043c5.538,0,10.043-4.505,10.043-10.043S261.538,150.944,256,150.944z"/></g><g><path fill="currentColor" d="M175.988,190.951c-16.522,0-29.964-13.442-29.964-29.964s13.442-29.964,29.964-29.964
+						s29.963,13.442,29.963,29.964S192.51,190.951,175.988,190.951z M175.988,150.944c-5.538,0-10.043,4.505-10.043,10.043
+						s4.505,10.043,10.043,10.043c5.537,0,10.042-4.505,10.042-10.043S181.525,150.944,175.988,150.944z"/></g><path fill="currentColor" d="M510.785 65.781c-1.132-5.383-6.41-8.829-11.796-7.699l-38.86 8.167 19.664-19.664c3.89-3.89 3.89-10.197 0-14.087-3.891-3.889-10.196-3.889-14.087 0l-19.664 19.664 8.167-38.861c1.131-5.384-2.316-10.665-7.699-11.796-5.377-1.125-10.664 2.316-11.796 7.699C418.83 84.79 419.58 81.08 419.498 81.871c-.672 6.584 5.224 12.142 11.957 10.761l71.631-15.054C508.47 76.447 511.916 71.165 510.785 65.781zM92.476 80.669L77.285 8.901c-1.139-5.383-6.431-8.821-11.807-7.683-5.382 1.139-8.822 6.426-7.683 11.807l8.238 38.921L46.295 32.208c-3.891-3.889-10.196-3.889-14.087 0-3.89 3.89-3.89 10.197 0 14.087l19.739 19.739-38.921-8.238c-5.374-1.132-10.667 2.302-11.807 7.683C.079 70.86 3.518 76.147 8.901 77.286l71.768 15.19C87.883 93.986 93.978 87.431 92.476 80.669z"/></g></g></g></g></svg>
+                </div>
+                <h3>Automatic cleaners</h3>
+                <p>Robotic and pressure cleaners for every pool type.</p>
+              </div>
+              <div className="feature-item">
+                <div className="feature-icon">
+                  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 2000"><path fill="currentColor" d="M1628,1765H372c-29.7,0-56.6-16.3-72.1-43.7c-17.3-30.7-16.7-68.3,1.5-98.3l495.3-816.7V412.1c0-11.6,9.4-21,21-21s21,9.4,21,21v400.1c0,3.8-1.1,7.6-3,10.9l-498.3,821.7c-12.3,20.3-8.5,42.2-0.8,55.9c8,14.2,20.9,22.3,35.5,22.3H1628c14.5,0,27.5-8.1,35.5-22.3c7.7-13.7,11.6-35.6-0.8-55.9l-498.3-821.7c-2-3.3-3-7-3-10.9V412.1c0-11.6,9.4-21,21-21s21,9.4,21,21v394.2l495.3,816.7c18.2,30,18.7,67.6,1.5,98.3C1684.6,1748.7,1657.7,1765,1628,1765z"/><path fill="currentColor" d="M1256.2 433.1H743.8c-11.6 0-21-9.4-21-21V256c0-11.6 9.4-21 21-21h512.4c11.6 0 21 9.4 21 21v156.1C1277.2 423.7 1267.8 433.1 1256.2 433.1zM764.8 391.1h470.4V277H764.8V391.1zM829.1 1229.4c-92.3 0-139.1-22-184.2-43.3-13.2-6.2-25.6-12.1-39.2-17.4-10.8-4.3-16.1-16.4-11.8-27.2 4.3-10.8 16.4-16.1 27.2-11.8 14.9 5.9 28.6 12.3 41.8 18.5 42.9 20.2 83.4 39.3 166.3 39.3 83 0 123.5-19.1 166.4-39.3 45.2-21.3 91.9-43.4 184.3-43.4 92.4 0 139.1 22 184.3 43.4 17.8 8.4 34.6 16.3 54.3 23 8.6 2.7 14.8 10.6 14.8 20.1 0 11.6-9.4 21-21 21-2.3 0-4.5-.4-6.7-1.1-22.2-7.4-41.1-16.3-59.3-25-42.9-20.2-83.4-39.3-166.3-39.3-83 0-123.5 19.1-166.4 39.3C968.2 1207.4 921.5 1229.4 829.1 1229.4zM734.2 1472.6c-39.6 0-71.8-32.2-71.8-71.8 0-39.6 32.2-71.8 71.8-71.8s71.8 32.2 71.8 71.8C806 1440.4 773.8 1472.6 734.2 1472.6zM734.2 1370.9c-16.5 0-29.8 13.4-29.8 29.8 0 16.5 13.4 29.8 29.8 29.8 16.5 0 29.8-13.4 29.8-29.8C764 1384.3 750.6 1370.9 734.2 1370.9zM1303.5 1659.5c-39.6 0-71.8-32.2-71.8-71.8 0-39.6 32.2-71.8 71.8-71.8s71.8 32.2 71.8 71.8C1375.3 1627.3 1343.1 1659.5 1303.5 1659.5zM1303.5 1557.9c-16.5 0-29.8 13.4-29.8 29.8 0 16.5 13.4 29.8 29.8 29.8s29.8-13.4 29.8-29.8C1333.3 1571.2 1319.9 1557.9 1303.5 1557.9zM1042.8 1368.2c-32.3 0-58.6-26.3-58.6-58.6s26.3-58.6 58.6-58.6c32.3 0 58.6 26.3 58.6 58.6S1075.1 1368.2 1042.8 1368.2zM1042.8 1292.9c-9.2 0-16.6 7.5-16.6 16.6s7.5 16.6 16.6 16.6 16.6-7.5 16.6-16.6S1052 1292.9 1042.8 1292.9zM967.6 1600.7c-32.3 0-58.6-26.3-58.6-58.6 0-32.3 26.3-58.6 58.6-58.6s58.6 26.3 58.6 58.6C1026.2 1574.4 999.9 1600.7 967.6 1600.7zM967.6 1525.5c-9.2 0-16.6 7.5-16.6 16.6s7.5 16.6 16.6 16.6 16.6-7.5 16.6-16.6S976.8 1525.5 967.6 1525.5zM1310.6 1418.6c-32.3 0-58.6-26.3-58.6-58.6 0-32.3 26.3-58.6 58.6-58.6 32.3 0 58.6 26.3 58.6 58.6C1369.2 1392.3 1342.9 1418.6 1310.6 1418.6zM1310.6 1343.3c-9.2 0-16.6 7.5-16.6 16.6s7.5 16.6 16.6 16.6 16.6-7.5 16.6-16.6S1319.7 1343.3 1310.6 1343.3zM606.1 1659.5c-32.3 0-58.6-26.3-58.6-58.6 0-32.3 26.3-58.6 58.6-58.6s58.6 26.3 58.6 58.6C664.7 1633.2 638.4 1659.5 606.1 1659.5zM606.1 1584.3c-9.2 0-16.6 7.5-16.6 16.6s7.5 16.6 16.6 16.6 16.6-7.5 16.6-16.6S615.3 1584.3 606.1 1584.3z"/><circle fill="currentColor" cx="777.7" cy="1610.4" r="20.7"/><circle fill="currentColor" cx="432.4" cy="1647.7" r="20.7"/><circle fill="currentColor" cx="1154.1" cy="1440.9" r="20.7"/><circle fill="currentColor" cx="1169.6" cy="1233" r="20.7"/><g><circle fill="currentColor" cx="881.1" cy="1389.7" r="20.7"/></g><g><circle fill="currentColor" cx="653.6" cy="1268.7" r="20.7"/></g><g><circle fill="currentColor" cx="1077.5" cy="1651.8" r="20.7"/></g><g><circle fill="currentColor" cx="1458" cy="1482.2" r="20.7"/></g><g><circle fill="currentColor" cx="1546.9" cy="1647.7" r="20.7"/></g><g><circle fill="currentColor" cx="576.6" cy="1445" r="20.7"/></g></svg>
+                </div>
+                <h3>Chemical concierge</h3>
+                <p>Delivery and support for regular chemical needs.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section section-process reveal" id="process">
+          <div className="container">
+            <p className="eyebrow eyebrow-light">How It Works</p>
+            <h2>From first call to first swim — in 4 steps.</h2>
+            <p className="section-sub">We handle the heavy lifting so you can focus on enjoying your backyard.</p>
+            <div className="process-grid" data-stagger="">
+              <div className="process-step">
+                <h3>Consult</h3>
+                <p>We visit your property, discuss your vision, and recommend the best pool for your space and budget.</p>
+              </div>
+              <div className="process-step">
+                <h3>Permit</h3>
+                <p>Our team handles county permits, HOA coordination, and site prep paperwork — you sign, we file.</p>
+              </div>
+              <div className="process-step">
+                <h3>Install</h3>
+                <p>Professional installation by our in-house crew. No subcontractors, no surprises.</p>
+              </div>
+              <div className="process-step">
+                <h3>Enjoy</h3>
+                <p>Final walkthrough, water balancing, and equipment training. Then it's your pool — we're just a call away.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section section-dark reveal" id="testimonials">
+          <div className="container">
+            <p className="eyebrow eyebrow-light">Testimonials</p>
+            <h2>What our customers say</h2>
+            <p className="section-sub">Trusted by families across Franklin and surrounding counties.</p>
+
+            <div className="testimonials-grid">
+              <div className="testimonial-card">
+                <p className="testimonial-quote">"US-1 Pools installed our above-ground pool and deck last spring. Shayne and his team were professional, on time, and the install was flawless. We've been using their chemical concierge service all season — so convenient!"</p>
+                <p className="testimonial-author"><strong>— Jennifer M.</strong>, Wake Forest, NC</p>
+                <div className="testimonial-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+              </div>
+              <div className="testimonial-card">
+                <p className="testimonial-quote">"After our pump failed mid-summer, US-1 came out same-day and got us back up and running. They didn't try to upsell us — just fixed the problem at a fair price. That's rare these days."</p>
+                <p className="testimonial-author"><strong>— David R.</strong>, Raleigh, NC</p>
+                <div className="testimonial-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+              </div>
+              <div className="testimonial-card">
+                <p className="testimonial-quote">"We've worked with US-1 Pools for 3 years now — weekly maintenance, winterization, spring openings. They're responsive, knowledgeable, and always leave our pool crystal clear. Highly recommend!"</p>
+                <p className="testimonial-author"><strong>— Lisa &amp; Tom H.</strong>, Franklinton, NC</p>
+                <div className="testimonial-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <section className="section section-areas reveal" id="service-areas">
+          <div className="container">
+            <p className="eyebrow">Where We Work</p>
+            <h2>Serving 7 communities across Franklin &amp; surrounding counties</h2>
+            <p className="section-sub">From our Franklinton shop, we're within 30 minutes of your backyard.</p>
+            <div className="areas-grid">
+              <div className="area-card">
+                <strong>Franklinton</strong>
+                <span>Franklin County — HQ</span>
+              </div>
+              <div className="area-card">
+                <strong>Wake Forest</strong>
+                <span>Wake County</span>
+              </div>
+              <div className="area-card">
+                <strong>Youngsville</strong>
+                <span>Franklin County</span>
+              </div>
+              <div className="area-card">
+                <strong>Louisburg</strong>
+                <span>Franklin County</span>
+              </div>
+              <div className="area-card">
+                <strong>Raleigh</strong>
+                <span>Wake County</span>
+              </div>
+              <div className="area-card">
+                <strong>Durham</strong>
+                <span>Durham County</span>
+              </div>
+              <div className="area-card">
+                <strong>Henderson</strong>
+                <span>Vance County</span>
+              </div>
+            </div>
+            <div className="section-cta">
+              <a className="btn btn-primary" data-haptic="nudge" href="/contact.html">Get a Free Quote</a>
+            </div>
+          </div>
+        </section>
+
+        <section className="section reveal" id="team">
+          <div className="container content-grid">
+            <div>
+              <p className="eyebrow">Our Team</p>
+              <h2>Local experts, hands-on leadership.</h2>
+              <p className="section-sub">Owners Shayne and Cathy Parrish are CPO certified and have been in the pool industry since 1986.</p>
+              <div className="badge-row">
+                <span className="badge"><img src="/assets/images/nc-licensed.png" alt="" width={318} height={315} loading="lazy" decoding="async" /> NC Licensed</span>
+                <span className="badge">CPO Certified</span>
+                <span className="badge">Founded 2015</span>
+              </div>
+            </div>
+            <div className="image-card">
+              <img src="/assets/images/team.webp" alt="US-1 Pools leadership team" loading="lazy" width={2500} height={2058} decoding="async" />
+              <span className="image-caption">Family owned and operated</span>
+            </div>
+          </div>
+        </section>
+
+        <section className="section reveal" id="visit">
+          <div className="container clinic-card">
+            <div>
+              <p className="eyebrow">Visit the showroom</p>
+              <h2>Franklinton based. County focused.</h2>
+              <p className="section-sub">Walk in for supplies, schedule a service call, or talk through a new build.</p>
+            </div>
+            <div className="clinic-details">
+              <ul>
+                <li>3453 US Hwy 1 South, Franklinton, NC 27525</li>
+                <li data-seasonal="">M-Th 11am-3pm · Fri 11am-5pm · Sat 10am-5pm · Sun 12pm-3pm</li>
+                <li>Primary: 919.441.0033 · Secondary: 919.864.0277</li>
+              </ul>
+              <a className="btn btn-secondary" href="/contact.html">Plan a visit</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <SiteFooter />
+
+      <div className="floating-cta" id="floatingCta" aria-hidden="true">
+        <a className="btn btn-primary" data-haptic="nudge" href="/contact.html">Get a Free Quote</a>
+      </div>
+
+      <JsonLd
+        data={`{
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "US-1 Pools",
+      "url": "https://www.us1pools.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.us1pools.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }`}
+      />
+      <JsonLd
+        data={`{
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://www.us1pools.com/#business",
+      "name": "US-1 Pools",
+      "alternateName": "US1 Pools",
+      "dateModified": "2026-03-14",
+      "description": "Full-service pool company offering sales, installation, maintenance, and repair for above-ground pools, fiberglass in-ground shells, vinyl liner replacements, and hot tubs across Franklin and surrounding counties.",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".hero-copy", ".lead", ".footer-tagline"]
+      },
+      "image": "https://www.us1pools.com/assets/images/logo.png",
+      "logo": "https://www.us1pools.com/assets/images/logo.png",
+      "url": "https://www.us1pools.com",
+      "telephone": "+1-919-441-0033",
+      "email": "us1pools@gmail.com",
+      "priceRange": "$$",
+      "currenciesAccepted": "USD",
+      "paymentAccepted": "Cash, Credit Card, Financing",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "3453 US Hwy 1 South",
+        "addressLocality": "Franklinton",
+        "addressRegion": "NC",
+        "postalCode": "27525",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 36.1026,
+        "longitude": -78.4578
+      },
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "11:00", "closes": "15:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "11:00", "closes": "17:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "17:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "12:00", "closes": "15:00" }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/us1pools",
+        "https://www.youtube.com/@US-1Pools"
+      ],
+      "areaServed": [
+        { "@type": "City", "name": "Franklinton", "address": { "@type": "PostalAddress", "addressRegion": "NC" } },
+        { "@type": "City", "name": "Wake Forest", "address": { "@type": "PostalAddress", "addressRegion": "NC" } },
+        { "@type": "City", "name": "Raleigh", "address": { "@type": "PostalAddress", "addressRegion": "NC" } },
+        { "@type": "City", "name": "Durham", "address": { "@type": "PostalAddress", "addressRegion": "NC" } },
+        { "@type": "City", "name": "Youngsville", "address": { "@type": "PostalAddress", "addressRegion": "NC" } },
+        { "@type": "City", "name": "Louisburg", "address": { "@type": "PostalAddress", "addressRegion": "NC" } },
+        { "@type": "City", "name": "Henderson", "address": { "@type": "PostalAddress", "addressRegion": "NC" } },
+        { "@type": "State", "name": "North Carolina" }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Pool Services",
+        "itemListElement": [
+          { "@type": "OfferCatalog", "name": "Pool Installation", "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Above-Ground Pool Installation" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "In-Ground Pool Installation" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "In-Ground Pool Installation" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hot Tub & Swim Spa Installation" } }
+          ]},
+          { "@type": "OfferCatalog", "name": "Pool Maintenance & Repair", "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Weekly Pool Maintenance" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pool Opening & Closing" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Equipment Repair & Replacement" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Liner Replacement" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Water Testing & Chemical Balancing" } }
+          ]},
+          { "@type": "OfferCatalog", "name": "Retail", "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Pool Chemicals & Supplies" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Pool Equipment & Parts" } }
+          ]}
+        ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "3"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Jennifer M." },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+          "reviewBody": "US-1 Pools installed our above-ground pool and deck last spring. Shayne and his team were professional, on time, and the install was flawless. We've been using their chemical concierge service all season — so convenient!"
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "David R." },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+          "reviewBody": "After our pump failed mid-summer, US-1 came out same-day and got us back up and running. They didn't try to upsell us — just fixed the problem at a fair price. That's rare these days."
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Lisa & Tom H." },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+          "reviewBody": "We've worked with US-1 Pools for 3 years now — weekly maintenance, winterization, spring openings. They're responsive, knowledgeable, and always leave our pool crystal clear. Highly recommend!"
+        }
+      ]
+    }`}
+      />
+
+      <script defer src="/scripts/scroll-reveal.js"></script>
+    </>
+  );
+}

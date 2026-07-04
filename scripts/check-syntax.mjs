@@ -3,7 +3,7 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 
 const rootDir = process.cwd();
-const ignoredDirs = new Set([".git", "node_modules", ".next", ".vercel", ".playwright-mcp"]);
+const ignoredDirs = new Set([".git", "node_modules", ".next", ".vercel", ".playwright-mcp", "out"]);
 const allowedExtensions = new Set([".js", ".mjs", ".cjs"]);
 
 async function collectJavaScriptFiles(dir) {

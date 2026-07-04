@@ -101,35 +101,26 @@ A complete rebuild of the US-1 Pools website with modern web standards, improved
 
 ```
 us1pools/
-├── index.html              # Homepage
-├── about.html              # Company info
-├── pools.html              # Pools overview
-├── above-ground.html       # Above-ground pools
-├── in-ground.html          # In-ground pools
-├── hot-tubs.html           # Hot tubs & spas
-├── gallery.html            # Project gallery
-├── services.html           # Service offerings
-├── contact.html            # Contact form + map
-├── faq.html                # Frequently asked questions
-├── calculator.html         # ✨ Pool cost calculator
-├── 404.html                # Custom error page
-├── styles.css              # Main stylesheet
-├── script.js               # Interactive features
-├── robots.txt              # Crawler directives
-├── sitemap.xml             # SEO sitemap
+├── app/                    # Next.js App Router pages (static export)
+│   ├── layout.tsx          # Shared shell: skip link, header, site scripts
+│   ├── page.tsx            # Homepage (/)
+│   ├── site.css            # Legacy stylesheet (formerly styles.css)
+│   ├── globals.css         # Tailwind entrypoint
+│   ├── about/ … videos/    # One folder per page → exports /<page>.html
+│   ├── areas/              # ✨ Service area pages (7 towns)
+│   └── guides/pool-care/   # ✨ Pool maintenance guide
+├── components/             # Shared header, footer, orbs, JSON-LD helpers
+├── public/                 # Static files served at site root
+│   ├── assets/images/      # logo, hero, team, pool-01…12 project photos
+│   ├── script.js           # Interactive features (nav, dropdowns, seasonal hours)
+│   ├── calculator.js       # ✨ Pool cost calculator logic
+│   ├── contact-form.js     # Contact form submit handler
+│   ├── gallery.js          # Gallery filter + lightbox
+│   ├── robots.txt          # Crawler directives
+│   └── sitemap.xml         # SEO sitemap
 ├── api/
 │   └── contact.js          # ✨ Serverless contact form handler
-├── areas/
-│   └── raleigh.html        # ✨ Service area page (Raleigh)
-├── guides/
-│   └── pool-care.html      # ✨ Pool maintenance guide
-├── assets/
-│   └── images/
-│       ├── logo.png
-│       ├── hero.webp
-│       ├── team.webp
-│       ├── pool-01.jpg through pool-12.jpg  # ✨ Real project photos
-│       └── ...
+├── next.config.ts          # output: "export" → out/ keeps /<page>.html URLs
 └── legacy/                 # Original Squarespace export (gitignored)
 ```
 
@@ -137,9 +128,9 @@ us1pools/
 
 ### Local Preview
 ```bash
-cd /Volumes/Ext-code/GitHub\ Repos/us1pools
-python3 -m http.server 5173
-# Visit http://localhost:5173
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # static export to out/
 ```
 
 ### Contact Form Setup
@@ -216,5 +207,5 @@ RESEND_API_KEY=your_resend_api_key_here
 
 ---
 
-**Built with**: Vanilla HTML/CSS/JS, Vercel Serverless Functions, Plausible Analytics
-**Last Updated**: December 2024
+**Built with**: Next.js (App Router, static export), React, TypeScript, Tailwind CSS, shadcn/ui config, Vercel Serverless Functions, Plausible Analytics
+**Last Updated**: July 2026

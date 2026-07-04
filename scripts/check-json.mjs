@@ -2,7 +2,7 @@ import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 
 const rootDir = process.cwd();
-const ignoredDirs = new Set([".git", "node_modules", ".next", ".vercel", ".playwright-mcp"]);
+const ignoredDirs = new Set([".git", "node_modules", ".next", ".vercel", ".playwright-mcp", "out"]);
 
 async function collectJsonFiles(dir) {
   const entries = await readdir(dir, { withFileTypes: true });

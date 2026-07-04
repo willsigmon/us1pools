@@ -1,0 +1,57 @@
+/*
+ * Tailwind CSS v4 — loaded WITHOUT preflight on purpose.
+ * The legacy stylesheet (site.css) defines all base styles; adding
+ * Tailwind's preflight reset would change the rendered output.
+ */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* shadcn/ui design tokens (new-york style, neutral base). Mapped onto the
+ * existing brand palette so any adopted primitive inherits site colors. */
+:root {
+  --radius: 0.625rem;
+  --background: #f6fbfd;
+  --foreground: #0c2d3c;
+  --card: #ffffff;
+  --card-foreground: #0c2d3c;
+  --popover: #ffffff;
+  --popover-foreground: #0c2d3c;
+  --primary: #0e7ea8;
+  --primary-foreground: #ffffff;
+  --secondary: #e5f2f7;
+  --secondary-foreground: #0c2d3c;
+  --muted: #e5f2f7;
+  --muted-foreground: #4c6b78;
+  --accent: #e5f2f7;
+  --accent-foreground: #0c2d3c;
+  --destructive: #dc2626;
+  --border: #d3e5ec;
+  --input: #d3e5ec;
+  --ring: #0e7ea8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}

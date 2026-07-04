@@ -5,3 +5,6 @@ legacy/
 .claude/
 .letta/
 .playwright-mcp/
+.next/
+out/
+*.tsbuildinfo
