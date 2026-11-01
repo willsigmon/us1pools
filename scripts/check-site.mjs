@@ -193,7 +193,7 @@ const specifications = [
 assert(/<table\b/i.test(chill), 'chill.html missing real-text Specifications table');
 for (const [label, value] of specifications) assert(specificationRows.some((row) => row[0] === label && row[1] === value), `chill.html missing specification row: ${label}: ${value}`);
 for (const text of ['40 °F / 4 °C — 104 °F / 40 °C', 'Unrivaled chill-to-heat flexibility for recovery or relaxation.']) assert(plainText(chill).includes(text), `chill.html missing callout: ${text}`);
-assert(/<a\b[^>]*href="https:\/\/www\.lathampools\.com"[^>]*>\s*Click here for more information on Latham liners\./.test(html.get('hotwater-1.html') ?? ''), 'hotwater-1.html missing corrected Latham liner link');
+assert(/<a\b[^>]*href="https:\/\/www\.lathampool\.com"[^>]*>\s*Click here for more information on Latham liners\./.test(html.get('hotwater-1.html') ?? ''), 'hotwater-1.html missing corrected Latham liner link');
 assert(!html.get('hybrid.html')?.includes('7tSUAi7gdmM'), 'hybrid.html must not reference removed video');
 // Shared logo and footer photo belong to the site chrome; the remaining 40 are gallery photographs.
 for (const url of content.gallery.imgs) {
