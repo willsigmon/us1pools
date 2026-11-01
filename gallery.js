@@ -1,140 +1,74 @@
+/* Native image links remain usable when dialog support or JavaScript is absent. */
 (() => {
-  "use strict";
+  'use strict';
 
-  const filterButtons = document.querySelectorAll("[data-filter]");
-  const galleryItems = document.querySelectorAll("[data-category]");
+  const links = [...document.querySelectorAll('a[data-gallery-item]')];
+  const dialog = document.querySelector('#gallery-dialog');
+  if (!links.length || !dialog || typeof dialog.showModal !== 'function') return;
 
-  if (filterButtons.length && galleryItems.length) {
-    filterButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const filter = button.dataset.filter;
-        filterButtons.forEach((btn) => {
-          btn.classList.remove("active");
-          btn.setAttribute("aria-pressed", "false");
-        });
-        button.classList.add("active");
-        button.setAttribute("aria-pressed", "true");
-        galleryItems.forEach((item) => {
-          const categories = item.dataset.category?.split(" ") || [];
-          const isMatch = filter === "all" || categories.includes(filter);
-          item.classList.toggle("is-hidden", !isMatch);
-          item.setAttribute("aria-hidden", String(!isMatch));
-        });
-      });
-    });
-  }
+  const image = dialog.querySelector('[data-lightbox-image]');
+  const caption = dialog.querySelector('[data-lightbox-caption]');
+  const count = dialog.querySelector('[data-lightbox-count]');
+  const closeButton = dialog.querySelector('[data-lightbox-close]');
+  const previousButton = dialog.querySelector('[data-lightbox-prev]');
+  const nextButton = dialog.querySelector('[data-lightbox-next]');
+  if (!image || !closeButton || !previousButton || !nextButton) return;
 
-  const galleryImages = document.querySelectorAll(".gallery-grid .image-card img");
-  let currentImageIndex = 0;
-  let lastFocusedImage = null;
-  const lightboxImages = [];
+  let activeIndex = 0;
+  let opener = null;
+  let previousOverflow = '';
 
-  if (galleryImages.length === 0) return;
-
-  const lightbox = document.createElement("dialog");
-  lightbox.className = "lightbox";
-  lightbox.id = "gallery-lightbox";
-  lightbox.setAttribute("closedby", "any");
-  lightbox.setAttribute("aria-label", "Image viewer");
-
-  const closeBtn = document.createElement("button");
-  closeBtn.className = "lightbox-close";
-  closeBtn.type = "button";
-  closeBtn.setAttribute("aria-label", "Close lightbox");
-  closeBtn.textContent = "\u00D7";
-
-  const prevBtn = document.createElement("button");
-  prevBtn.className = "lightbox-prev";
-  prevBtn.type = "button";
-  prevBtn.setAttribute("aria-label", "Previous image");
-  prevBtn.textContent = "\u2039";
-
-  const nextBtn = document.createElement("button");
-  nextBtn.className = "lightbox-next";
-  nextBtn.type = "button";
-  nextBtn.setAttribute("aria-label", "Next image");
-  nextBtn.textContent = "\u203A";
-
-  const lbImage = document.createElement("img");
-  lbImage.className = "lightbox-image";
-  lbImage.alt = "";
-
-  const lbCaption = document.createElement("div");
-  lbCaption.className = "lightbox-caption";
-  lbCaption.id = "lightboxCaption";
-  lightbox.setAttribute("aria-describedby", "lightboxCaption");
-
-  lightbox.appendChild(closeBtn);
-  lightbox.appendChild(prevBtn);
-  lightbox.appendChild(nextBtn);
-  lightbox.appendChild(lbImage);
-  lightbox.appendChild(lbCaption);
-  document.body.appendChild(lightbox);
-
-  const showLightbox = (idx, sourceImage) => {
-    currentImageIndex = idx;
-    lastFocusedImage = sourceImage || lightboxImages[idx];
-    const img = lightboxImages[idx];
-    lbImage.src = img.src;
-    lbImage.alt = img.alt;
-    lbCaption.textContent = img.alt || "";
-    if (!lightbox.open) {
-      lightbox.showModal();
-    }
-    document.body.style.overflow = "hidden";
-    closeBtn.focus();
+  const showImage = (index) => {
+    activeIndex = (index + links.length) % links.length;
+    const link = links[activeIndex];
+    const thumbnail = link.querySelector('img');
+    const description = thumbnail?.alt || 'US-1 Pools gallery photo';
+    image.src = link.href;
+    image.alt = description;
+    if (caption) caption.textContent = description;
+    if (count) count.textContent = `${activeIndex + 1} / ${links.length}`;
+    previousButton.disabled = links.length < 2;
+    nextButton.disabled = links.length < 2;
   };
 
-  const closeLightbox = () => {
-    if (lightbox.open) {
-      lightbox.close();
-    }
-  };
-
-  lightbox.addEventListener("close", () => {
-    document.body.style.overflow = "";
-    lastFocusedImage?.focus();
-  });
-
-  const showNext = () => showLightbox((currentImageIndex + 1) % lightboxImages.length);
-  const showPrev = () => showLightbox((currentImageIndex - 1 + lightboxImages.length) % lightboxImages.length);
-
-  galleryImages.forEach((img, i) => {
-    lightboxImages.push(img);
-    img.style.cursor = "pointer";
-    img.tabIndex = 0;
-    img.setAttribute("role", "button");
-    img.setAttribute("aria-label", `${img.alt || "Open image"} (opens large view)`);
-    img.addEventListener("click", () => showLightbox(i, img));
-    img.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        showLightbox(i, img);
-      }
+  links.forEach((link, index) => {
+    link.addEventListener('click', (event) => {
+      // Preserve native new-tab and download behavior.
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      opener = link;
+      showImage(index);
+      previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      document.documentElement.classList.add('has-lightbox');
+      dialog.showModal();
+      closeButton.focus({ preventScroll: true });
     });
   });
 
-  closeBtn.addEventListener("click", closeLightbox);
-  nextBtn.addEventListener("click", showNext);
-  prevBtn.addEventListener("click", showPrev);
-  
-  // Backdrop click handler for Safari/older browser compatibility
-  lightbox.addEventListener("click", (e) => {
-    if (e.target === lightbox) closeLightbox();
+  closeButton.addEventListener('click', () => dialog.close());
+  previousButton.addEventListener('click', () => showImage(activeIndex - 1));
+  nextButton.addEventListener('click', () => showImage(activeIndex + 1));
+
+  dialog.addEventListener('keydown', (event) => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    showImage(activeIndex + (event.key === 'ArrowRight' ? 1 : -1));
   });
 
-  document.addEventListener("keydown", (e) => {
-    if (!lightbox.open) return;
-    if (e.key === "ArrowRight") showNext();
-    if (e.key === "ArrowLeft") showPrev();
+  // Escape uses the native cancel event and native dialog focus containment.
+  dialog.addEventListener('click', (event) => {
+    if (event.target !== dialog) return;
+    const bounds = dialog.getBoundingClientRect();
+    if (
+      event.clientX < bounds.left || event.clientX > bounds.right ||
+      event.clientY < bounds.top || event.clientY > bounds.bottom
+    ) dialog.close();
   });
 
-  // Listen for agentic custom window events to open lightbox programmatically
-  window.addEventListener("us1-pools-open-lightbox", (e) => {
-    const idx = e.detail && typeof e.detail.index === "number" ? e.detail.index : 0;
-    if (idx >= 0 && idx < lightboxImages.length) {
-      showLightbox(idx);
-    }
+  dialog.addEventListener('close', () => {
+    document.body.style.overflow = previousOverflow;
+    document.documentElement.classList.remove('has-lightbox');
+    opener?.focus({ preventScroll: true });
   });
 })();
-

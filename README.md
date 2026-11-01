@@ -1,220 +1,47 @@
-# US-1 Pools (Modern Reimagining)
+# US-1 Pools
 
-A complete rebuild of the US-1 Pools website with modern web standards, improved SEO, and enhanced user experience.
+A static HTML/CSS/JavaScript rebuild of the Squarespace site. The committed root HTML files are the served site; there is no framework, backend, or required deployment build.
 
-## 🚀 Features
+## Work locally
 
-### Core Pages
-- **Home** - Hero, services overview, testimonials, team intro
-- **About** - Company history, founders, certifications
-- **Pools & Spas** - Overview with dropdown navigation:
-  - Above-ground pools
-  - In-ground pools (vinyl & fiberglass)
-  - Hot tubs & spas
-- **Gallery** - Filterable project photos with lightbox viewer
-- **Services** - Detailed service offerings
-- **Contact** - Working contact form with map embed
-- **FAQ** - Common questions with structured data
+Node.js 20 or newer:
 
-### New Features (2024)
-
-#### 1. **Interactive Pool Cost Calculator** (`calculator.html`)
-- Multi-step quiz for cost estimation
-- Instant price ranges based on:
-  - Pool type (above-ground, in-ground, spa)
-  - Size selection
-  - Feature packages (basic, mid-level, premium)
-  - Timeline preferences
-- CTA to request detailed quote
-
-#### 2. **Service Area Pages** (`/areas/`)
-- Local SEO landing pages for nearby cities
-- Raleigh, NC coverage (additional areas can be added)
-- Neighborhood-specific details and drive times
-- Structured data for local search
-
-#### 3. **Content Hub** (`/guides/`)
-- Pool care & maintenance guide
-- Weekly checklists
-- Water chemistry basics
-- Winterization & spring opening instructions
-- Troubleshooting common problems
-
-#### 4. **Customer Testimonials**
-- Featured reviews on homepage
-- Review schema markup for SEO
-- 5-star ratings display
-
-#### 5. **Working Contact Form**
-- Serverless API endpoint (`/api/contact.js`)
-- Email delivery via Resend API
-- Honeypot spam protection
-- Client-side validation
-- Success/error messaging
-
-#### 6. **Gallery Lightbox**
-- Click-to-expand images
-- Keyboard navigation (arrow keys, escape)
-- Next/previous buttons
-- Image captions overlay
-
-#### 7. **Seasonal Messaging System**
-- Auto-updates hours based on current date
-- Winter mode (Nov-Feb): "Closed for winter — call for appointments"
-- Active season (Mar-Oct): Normal business hours
-- Uses `data-seasonal` attribute for easy updates
-
-#### 8. **Analytics & SEO**
-- Plausible Analytics (privacy-friendly, no cookies)
-- Comprehensive structured data:
-  - LocalBusiness schema
-  - Review/Rating schema
-  - FAQ schema
-- Meta tags for social sharing (Open Graph, Twitter Cards)
-- Canonical URLs
-- XML sitemap with all pages
-
-### Technical Improvements
-
-#### Performance
-- Lazy loading on gallery images
-- Preconnect to Google Fonts
-- Async/defer script loading
-- Optimized image sizes
-- Minimal CSS/JS footprint
-
-#### Accessibility
-- ARIA labels on interactive elements
-- Keyboard-accessible dropdowns
-- Focus management in lightbox
-- Skip-to-content link
-- Semantic HTML5
-
-#### Design System
-- Aquatic color palette (ocean, lagoon, seafoam, coral)
-- Responsive grid layouts
-- Smooth animations (floating orbs, button glow)
-- Wave dividers between sections
-- Mobile-first responsive design
-
-## 📂 Project Structure
-
-```
-us1pools/
-├── index.html              # Homepage
-├── about.html              # Company info
-├── pools.html              # Pools overview
-├── above-ground.html       # Above-ground pools
-├── in-ground.html          # In-ground pools
-├── hot-tubs.html           # Hot tubs & spas
-├── gallery.html            # Project gallery
-├── services.html           # Service offerings
-├── contact.html            # Contact form + map
-├── faq.html                # Frequently asked questions
-├── calculator.html         # ✨ Pool cost calculator
-├── 404.html                # Custom error page
-├── styles.css              # Main stylesheet
-├── script.js               # Interactive features
-├── robots.txt              # Crawler directives
-├── sitemap.xml             # SEO sitemap
-├── api/
-│   └── contact.js          # ✨ Serverless contact form handler
-├── areas/
-│   └── raleigh.html        # ✨ Service area page (Raleigh)
-├── guides/
-│   └── pool-care.html      # ✨ Pool maintenance guide
-├── assets/
-│   └── images/
-│       ├── logo.png
-│       ├── hero.webp
-│       ├── team.webp
-│       ├── pool-01.jpg through pool-12.jpg  # ✨ Real project photos
-│       └── ...
-└── legacy/                 # Original Squarespace export (gitignored)
+```sh
+npm run build     # Regenerate the committed HTML, sitemap, robots and CSP hash
+npm run check     # Verify local links/assets, content requirements, SEO and schema
+npm start        # Preview at http://127.0.0.1:3000 with clean URLs and CSP headers
 ```
 
-## 🛠️ Development
+`npm run build` and `npm run check` have no package dependencies. The source snapshot is `_source/content.json`; the task specification is `_source/BRIEF.md`. Shared contact details and the winter-hours override are in `scripts/data.mjs`. Product copy is read directly from the snapshot. `scripts/home.mjs`, `scripts/pages.mjs` and `scripts/extras.mjs` define page content; `scripts/layout.mjs` defines shared navigation, footer and metadata. Always regenerate and commit root HTML after a template change.
 
-### Local Preview
-```bash
-cd /Volumes/Ext-code/GitHub\ Repos/us1pools
-python3 -m http.server 5173
-# Visit http://localhost:5173
+For browser regression tests:
+
+```sh
+npm ci
+npx playwright install chromium
+npm test
 ```
 
-### Contact Form Setup
-The contact form requires a Resend API key for email delivery:
+An existing Chrome installation can be used instead: `CHROME_PATH=/usr/bin/google-chrome npm test`. The tests start and stop their own local server, exercise responsive layouts, navigation, the lightbox, video facades, no-JavaScript fallbacks and reduced motion, and run axe accessibility checks. Third-party requests are blocked in these tests; they verify the correct embed URLs and interactions, not the availability of YouTube or Google Maps.
 
-1. Sign up at [resend.com](https://resend.com) (free tier: 100 emails/day)
-2. Add your API key to Vercel environment variables:
-   ```
-   RESEND_API_KEY=re_xxxxxxxxxxxx
-   ```
-3. The form will fall back to console logging if no API key is set (for local dev)
+## Pages
 
-### Deployment
-Deployed on Vercel with automatic GitHub integration:
-- **Production URL**: https://us1pools.vercel.app
-- **Custom Domain**: us1pools.com (DNS configuration required)
-- **Auto-deploy on push to `main` branch**
+`/`, `/about`, `/pools-spas`, `/hotwater`, `/cool-water`, `/hotwater-1`, `/chill`, `/fiberglass`, `/hybrid`, `/aboveground-examples`, `/steel-pools`, `/resin-examples`, `/gallery`, `/how-to-videos`, `/contact`, plus `404.html`. The live Squarespace slugs are preserved. The empty store and placeholder FAQ are intentionally excluded.
 
-```bash
-# Manual deploy
-vercel --prod
+## Assets and behavior
 
-# Preview deploy
-vercel
-```
+- `assets/live/manifest.json` maps original Squarespace UUIDs to the supplied optimized WebP files and dimensions.
+- `assets/thumbs/` contains responsive derivatives. To regenerate thumbnails, the social image and favicons, install Pillow in a Python environment and run `python3 scripts/prepare-assets.py`, then `npm run build`.
+- Fraunces and Manrope Latin WOFF2 fonts are self-hosted in `assets/fonts/`, with their OFL licenses. No Google Fonts network request occurs at runtime.
+- The hero uses the supplied water-video poster with a short CSS shimmer. Reduced-motion preferences disable movement. Reveals progressively enhance otherwise visible content.
+- Videos use thumbnails and load a `youtube-nocookie.com` player only on request. A normal YouTube link remains available without JavaScript.
+- Gallery photos use native image links, enhanced into a modal dialog with keyboard arrows, Escape, focus restoration and scroll locking.
+- Contact includes telephone/email links, directions and a lazy Google Maps iframe. Payment and financing link to the destinations specified in the brief; there is no contact/payment API.
 
-## 📊 Analytics
+## Static hosting
 
-Plausible Analytics is configured for:
-- Privacy-friendly tracking (no cookies, GDPR compliant)
-- Page views, referrers, device types
-- No personal data collection
-- Dashboard: https://plausible.io/us1pools.com
+`vercel.json` specifies `cleanUrls: true`, framework `null` (Other), no build command, and root output. CSP permits only the required video/map frame origins and video thumbnail host. The build script calculates exact hashes for the shared LocalBusiness JSON-LD and the tiny pre-paint navigation initializer. It does not contact Vercel or any indexing service. Existing `.github/` files are left untouched.
 
-## 🎨 Design Notes
+`.vercelignore` excludes source snapshots, local tooling and documentation from a future upload; committed root HTML and public assets remain the serving output.
 
-### Color Palette
-- **Deep Ocean** (#052026) - Dark backgrounds
-- **Ocean** (#0a5c6b) - Primary brand color
-- **Lagoon** (#0f7d8a) - Interactive elements
-- **Aqua** (#1fb9c6) - Accents
-- **Aqua Bright** (#40d3dd) - Highlights
-- **Seafoam** (#d7f6f4) - Light backgrounds
-- **Sand** (#f2efe7) - Neutral backgrounds
-- **Sun** (#f6b35d) - Warm accents
-- **Coral** (#ef6b5b) - CTAs
-
-### Typography
-- **Headings**: Fraunces (serif, 600/700 weight)
-- **Body**: Space Grotesk (sans-serif, 400/500/600 weight)
-
-## 📝 Content Sources
-
-All business information sourced from official us1pools.com:
-- Address: 3453 US Hwy 1 South, Franklinton, NC 27525
-- Primary Phone: (919) 441-0033
-- Secondary Phone: (919) 864-0277
-- Email: us1pools@gmail.com
-- Seasonal Hours: Closed for winter (call for appointments)
-
-Brand partnerships and product lines verified from live site.
-
-## 🔐 Environment Variables
-
-For full functionality, set these in Vercel:
-
-```bash
-RESEND_API_KEY=your_resend_api_key_here
-```
-
-## 📄 License
-
-© 2024 US-1 Pools. All rights reserved.
-
----
-
-**Built with**: Vanilla HTML/CSS/JS, Vercel Serverless Functions, Plausible Analytics
-**Last Updated**: December 2024
+Design direction, reference review, token JSON and verification notes are in `_source/IMPLEMENTATION.md` and `_source/design-tokens.json`. No push or deployment is part of this rebuild.

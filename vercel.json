@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; script-src 'self' 'sha256-AzX2QGl4Br0uIvjabuUp9XZWHOCrEfJww/6DAvIJ0Nk=' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://plausible.io; frame-src https://www.google.com; manifest-src 'self'; upgrade-insecure-requests"
+          "value": "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; script-src 'self' 'sha256-xSJRf2nwIWWXFH8ajGEVr0s4KZQ1RXD4rNFFTaROBVE=' 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; font-src 'self'; connect-src 'self'; frame-src https://www.youtube-nocookie.com https://www.youtube.com https://www.google.com; manifest-src 'self'; upgrade-insecure-requests"
         },
         {
           "key": "Permissions-Policy",
@@ -28,15 +28,10 @@
           "value": "DENY"
         }
       ]
-    },
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-store, max-age=0"
-        }
-      ]
     }
-  ]
+  ],
+  "cleanUrls": true,
+  "framework": null,
+  "buildCommand": "",
+  "outputDirectory": "."
 }

@@ -1,0 +1,8 @@
+.git/
+.github/
+.claude/
+node_modules/
+_source/
+scripts/
+AGENTS.md
+README.md

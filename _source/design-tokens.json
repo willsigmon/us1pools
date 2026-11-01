@@ -1,0 +1,23 @@
+{
+  "typography": {
+    "display": "Fraunces, self-hosted Latin, weight 500",
+    "body": "Manrope, self-hosted Latin, weights 400–700",
+    "scale": "1.25 modular ratio with clamp() display sizing"
+  },
+  "color": {
+    "model": "OKLCH",
+    "palette_strategy": "60% warm white, 30% navy, 10% aqua; warm gold appears only in the original award badge",
+    "tokens": {
+      "bg": "oklch(98.5% .006 195)",
+      "surface": "oklch(95% .022 205)",
+      "ink": "oklch(26% .068 252)",
+      "muted": "oklch(44% .035 239)",
+      "accent": "oklch(71% .125 216)",
+      "signal": "oklch(48% .085 216)"
+    }
+  },
+  "spacing": "8pt grid: xs 8, s 16, m 24, l 32, xl 48, 2xl 64, 3xl 96, 4xl 128",
+  "radius": "soft: 4px on controls; square editorial image edges",
+  "motion": "180ms controls, 600ms reveals, ease cubic-bezier(.2,.7,.2,1); a single 4.8s water shimmer; reduced-motion disables all movement",
+  "texture": "none; real water photography provides the surface detail"
+}
