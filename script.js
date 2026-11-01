@@ -137,3 +137,17 @@
     }, { once: true });
   });
 })();
+
+/* Print every accordion panel; restore the previous state afterwards. */
+(() => {
+  const groups = [...document.querySelectorAll('details')];
+  if (!groups.length) return;
+  let saved = [];
+  addEventListener('beforeprint', () => {
+    saved = groups.map((d) => [d, d.open, d.getAttribute('name')]);
+    groups.forEach((d) => { d.removeAttribute('name'); d.open = true; });
+  });
+  addEventListener('afterprint', () => {
+    saved.forEach(([d, open, name]) => { d.open = open; if (name) d.setAttribute('name', name); });
+  });
+})();
