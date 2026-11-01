@@ -1,3 +1,4 @@
+const localPosters = { '7tSUAi7gdmM': '/assets/live/4b6c614b-img_0776.webp' };
 import { readFileSync, existsSync } from 'node:fs';
 
 export const content = JSON.parse(readFileSync(new URL('../_source/content.json', import.meta.url)));
@@ -31,6 +32,6 @@ export function image(prefix, alt, { className = '', eager = false, sizes = '(ma
   return `<img src="${src}"${srcset} alt="${escape(alt)}" width="${entry.w}" height="${entry.h}"${className ? ` class="${escape(className)}"` : ''} loading="${eager ? 'eager' : 'lazy'}" decoding="async">`;
 }
 export function video(id, title) {
-  return `<div class="video-facade"><button type="button" data-video="${escape(id)}" data-title="${escape(title)}" aria-label="Play ${escape(title)}"><img src="https://i.ytimg.com/vi/${escape(id)}/mqdefault.jpg" width="320" height="180" alt="" loading="lazy" decoding="async"><span class="play-icon" aria-hidden="true">▶</span><span class="video-label">${escape(title)}</span></button></div><a class="video-fallback text-link" href="https://www.youtube.com/watch?v=${escape(id)}">Watch on YouTube <span aria-hidden="true">↗</span></a>`;
+  return `<div class="video-facade"><button type="button" data-video="${escape(id)}" data-title="${escape(title)}" aria-label="Play ${escape(title)}"><img src="${localPosters[id] || `https://i.ytimg.com/vi/${escape(id)}/mqdefault.jpg`}" width="320" height="180" alt="" loading="lazy" decoding="async"><span class="play-icon" aria-hidden="true">▶</span><span class="video-label">${escape(title)}</span></button></div><a class="video-fallback text-link" href="https://www.youtube.com/watch?v=${escape(id)}">Watch on YouTube <span aria-hidden="true">↗</span></a>`;
 }
 export const textEntries = (slug) => content[slug].text.map((line) => ({ tag: line.slice(1, line.indexOf(']')), text: line.slice(line.indexOf(']') + 2) }));
