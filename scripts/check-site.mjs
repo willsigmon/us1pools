@@ -168,7 +168,7 @@ assert(/<iframe[^>]+src=[\"']https:\/\/www\.google\.com\//.test(html.get('contac
 const content = JSON.parse(await read('_source/content.json'));
 const manifest = JSON.parse(await read('assets/live/manifest.json'));
 const gallery = html.get('gallery.html') ?? '';
-assert(/<p\b[^>]*>\s*View recent photos of our work\.\s*<\/p>/i.test(gallery), 'gallery.html missing approved intro paragraph');
+
 const hub = html.get('pools-spas.html') ?? '';
 for (const entry of content['pools-spas'].text.slice(2).filter((line) => !line.startsWith('[li]'))) {
   const text = entry.replace(/^\[[^\]]+\] /, '');

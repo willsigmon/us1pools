@@ -8,7 +8,7 @@ export function productPages({ content, image, escape, video }) {
     .filter(({ tag }) => tag !== 'li');
   const photos = (slug) => content[slug].imgs.filter((url) => !/e2bf0920|6ef8eace/u.test(url));
   const section = (body, className = '') => `<section class="section ${className}"><div class="container">${body}</div></section>`;
-  const link = (href, label) => `<a class="text-link" href="${escape(href)}">${escape(label)} <span aria-hidden="true">↗</span></a>`;
+  const link = (href, label) => `<a class="text-link" href="${escape(href)}">${escape(label)} <span aria-hidden="true"><svg class="icon-arrow" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span></a>`;
   const paragraph = (text) => `<p>${escape(text)}</p>`;
   const groups = (slug) => entries(slug).reduce((result, entry) => {
     if (entry.tag === 'h2') return [...result, { title: entry.text, copy: [] }];
@@ -54,7 +54,7 @@ export function productPages({ content, image, escape, video }) {
       { title: 'Cool Water', photo: photos('cool-water')[0], href: '/cool-water' },
       { title: 'Liners', photo: photos('hotwater-1')[0], href: '/hotwater-1' },
       { title: 'Chill Therapy', photo: photos('chill')[0], href: '/chill' },
-    ]) + rows('pools-spas')),
+    ]) + `<section class="section"><div class="container"><h2>Hot Tubs &amp; Spas</h2></div></section>` + rows('pools-spas')),
     page('hotwater', 'Hot Tubs & Spas', 'Explore Garden Leisure hot tubs and swim spas at US-1 Pools in Franklinton, NC, with padded headrests, LED lighting and a range of swim spa sizes.', rows('hotwater')),
     page('cool-water', 'Cool Water', 'Explore fiberglass, hybrid and above ground pool options from US-1 Pools in Franklinton, NC. View pool categories and find details on available models.', cards([
       { title: 'Fiberglass', photo: photos('cool-water')[0], href: '/fiberglass' },

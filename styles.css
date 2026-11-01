@@ -93,3 +93,4 @@
   @media(prefers-reduced-motion:reduce){.hero-video{display:none}html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}[data-reveal].reveal-ready:not(.is-visible){opacity:1;transform:none}}
 }
 @media (hover:hover) and (min-width:960px){.js .nav-dropdown:hover .dropdown-menu,.js .nav-dropdown:focus-within .dropdown-menu{display:block}}
+.recent-cta{display:block;margin:0 0 32px}.recent-cta img{width:100%;height:auto;display:block}
