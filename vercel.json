@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; script-src 'self' 'sha256-xSJRf2nwIWWXFH8ajGEVr0s4KZQ1RXD4rNFFTaROBVE=' 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; font-src 'self'; connect-src 'self'; frame-src https://www.youtube-nocookie.com https://www.youtube.com https://www.google.com; manifest-src 'self'; upgrade-insecure-requests"
+          "value": "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; script-src 'self' 'sha256-zWGnqf7raEYpWicTTGg070ijQtOOWqZJPJPHg+CuX0c=' 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; font-src 'self'; media-src 'self'; connect-src 'self'; frame-src https://www.youtube-nocookie.com https://www.youtube.com https://www.google.com; manifest-src 'self'; upgrade-insecure-requests"
         },
         {
           "key": "Permissions-Policy",
@@ -33,5 +33,22 @@
   "cleanUrls": true,
   "framework": null,
   "buildCommand": "",
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "redirects": [
+    {
+      "source": "/home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/customer-faqs",
+      "destination": "/contact",
+      "statusCode": 301
+    },
+    {
+      "source": "/store",
+      "destination": "/",
+      "statusCode": 301
+    }
+  ]
 }

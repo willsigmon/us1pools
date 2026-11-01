@@ -85,6 +85,16 @@
   }
 
   const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const heroVideo = document.querySelector('.hero-video');
+  const stopHeroForReducedMotion = () => {
+    if (!heroVideo || !motionPreference.matches) return;
+    heroVideo.pause();
+    heroVideo.removeAttribute('autoplay');
+  };
+  stopHeroForReducedMotion();
+  motionPreference.addEventListener('change', stopHeroForReducedMotion);
+  heroVideo?.addEventListener('error', () => { heroVideo.hidden = true; });
+
   const revealItems = [...document.querySelectorAll('[data-reveal]')];
   if ('IntersectionObserver' in window && !motionPreference.matches) {
     const observer = new IntersectionObserver((entries) => {

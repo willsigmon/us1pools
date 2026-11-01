@@ -17,7 +17,7 @@ const config = JSON.parse(readFileSync(new URL('vercel.json',root)));
 config.cleanUrls = true;
 config.headers = config.headers.filter(({source})=>source!=='/api/(.*)');
 const csp = config.headers.find(({source})=>source==='/(.*)').headers.find(({key})=>key==='Content-Security-Policy');
-csp.value = `default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; script-src 'self' ${hashes}; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; font-src 'self'; connect-src 'self'; frame-src https://www.youtube-nocookie.com https://www.youtube.com https://www.google.com; manifest-src 'self'; upgrade-insecure-requests`;
+csp.value = `default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; script-src 'self' ${hashes}; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; font-src 'self'; media-src 'self'; connect-src 'self'; frame-src https://www.youtube-nocookie.com https://www.youtube.com https://www.google.com; manifest-src 'self'; upgrade-insecure-requests`;
 // Static root output, with no server-side functions or deployment-time build required.
 config.framework = null;
 config.buildCommand = '';

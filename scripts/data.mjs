@@ -7,7 +7,8 @@ export const business = Object.freeze({
   street: '3453 US Hwy 1 South',
   city: 'Franklinton, NC 27525',
   primary: '919-441-0033',
-  secondary: '919-880-4323',
+  secondary: '919-864-0277',
+  additional: '919-880-4323',
   email: 'us1pools@gmail.com',
   hours: "Closed for the winter starting November 1. We'll post spring hours when we reopen.",
   payment: 'https://buy.stripe.com/5kA4iY3xm30agFObII',
@@ -30,6 +31,6 @@ export function image(prefix, alt, { className = '', eager = false, sizes = '(ma
   return `<img src="${src}"${srcset} alt="${escape(alt)}" width="${entry.w}" height="${entry.h}"${className ? ` class="${escape(className)}"` : ''} loading="${eager ? 'eager' : 'lazy'}" decoding="async">`;
 }
 export function video(id, title) {
-  return `<div class="video-facade"><button type="button" data-video="${escape(id)}" data-title="${escape(title)}" aria-label="Play ${escape(title)}"><img src="https://i.ytimg.com/vi/${escape(id)}/hqdefault.jpg" width="480" height="360" alt="" loading="lazy" decoding="async"><span class="play-icon" aria-hidden="true">▶</span><span class="video-label">${escape(title)}</span></button></div><a class="video-fallback text-link" href="https://www.youtube.com/watch?v=${escape(id)}">Watch on YouTube <span aria-hidden="true">↗</span></a>`;
+  return `<div class="video-facade"><button type="button" data-video="${escape(id)}" data-title="${escape(title)}" aria-label="Play ${escape(title)}"><img src="https://i.ytimg.com/vi/${escape(id)}/mqdefault.jpg" width="320" height="180" alt="" loading="lazy" decoding="async"><span class="play-icon" aria-hidden="true">▶</span><span class="video-label">${escape(title)}</span></button></div><a class="video-fallback text-link" href="https://www.youtube.com/watch?v=${escape(id)}">Watch on YouTube <span aria-hidden="true">↗</span></a>`;
 }
 export const textEntries = (slug) => content[slug].text.map((line) => ({ tag: line.slice(1, line.indexOf(']')), text: line.slice(line.indexOf(']') + 2) }));

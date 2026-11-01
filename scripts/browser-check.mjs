@@ -73,6 +73,24 @@ try {
     active: document.getAnimations().filter((animation) => animation.playState === 'running' && Number(animation.effect.getTiming().duration) > 1).length,
   }));
   assert.deepEqual(motion, { reduced: true, hidden: 0, active: 0 });
+  const heroVideo = page.locator('.hero-video');
+  assert.equal(await heroVideo.isVisible(), false, 'Reduced motion hides the hero video');
+  assert.equal(await heroVideo.evaluate((video) => video.paused && !video.autoplay), true, 'Reduced motion stops hero autoplay');
+  assert.equal(await page.locator('img.hero-water').isVisible(), true, 'Hero image remains as the fallback');
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await visit('');
+  await page.waitForFunction(() => {
+    const video = document.querySelector('.hero-video');
+    return video.readyState >= 2 && !video.paused;
+  });
+  assert.equal(await heroVideo.isVisible(), true, 'Hero video plays when motion is allowed');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.waitForFunction(() => {
+    const video = document.querySelector('.hero-video');
+    return video.paused && !video.autoplay && getComputedStyle(video).display === 'none';
+  });
+  await visit('chill');
+  assert.equal(await page.getByRole('table', { name: 'Specifications' }).getByRole('row').count(), 9);
   await visit('how-to-videos');
   assert.equal(await page.locator('iframe').count(), 0);
   assert.equal(await page.locator('button[data-video]').count(), 7);
@@ -102,7 +120,7 @@ try {
   await page.keyboard.press('Escape');
   assert.equal(await dialog.evaluate((element) => element.open), false);
   assert.equal(await links.first().evaluate((element) => element === document.activeElement), true);
-  for (const slug of ['', 'gallery', 'contact', 'hotwater']) {
+  for (const slug of ['', 'gallery', 'contact', 'hotwater', 'chill', 'pools-spas']) {
     await visit(slug);
     const scan = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
     assert.deepEqual(scan.violations.map(({ id, nodes }) => ({ id, targets: nodes.map(({ target }) => target) })), [], `/${slug}: accessibility violations`);
@@ -118,7 +136,7 @@ try {
   assert.match(new URL(fallback.url()).pathname, /^\/assets\/live\/.*\.webp$/, 'Gallery links work without JavaScript');
   await noJS.close();
   assert.deepEqual(errors, [], 'No JavaScript or CSP errors');
-  console.log('Browser checks passed: 15 pages at four widths; keyboard menus/lightbox; deferred videos; no-JS links; reduced motion; four axe audits.');
+  console.log('Browser checks passed: 15 pages at four widths; keyboard menus/lightbox; deferred videos; no-JS links; reduced motion; six axe audits; hero playback and motion preference changes.');
 } finally {
   try { await browser?.close(); } finally {
     if (server.exitCode === null) {

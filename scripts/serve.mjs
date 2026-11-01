@@ -11,7 +11,7 @@ const args = process.argv.slice(2);
 const portIndex = args.indexOf('--port');
 const port = Number(args.find((arg) => arg.startsWith('--port='))?.split('=')[1] ?? (portIndex >= 0 ? args[portIndex + 1] : undefined) ?? process.env.PORT ?? 3000);
 const host = process.env.HOST ?? '127.0.0.1';
-const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json', '.xml': 'application/xml; charset=utf-8', '.txt': 'text/plain; charset=utf-8', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.ico': 'image/x-icon', '.woff': 'font/woff', '.woff2': 'font/woff2', '.avif': 'image/avif', '.mp4': 'video/mp4' };
+const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json', '.xml': 'application/xml; charset=utf-8', '.txt': 'text/plain; charset=utf-8', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.ico': 'image/x-icon', '.woff': 'font/woff', '.woff2': 'font/woff2', '.avif': 'image/avif', '.mp4': 'video/mp4', '.webm': 'video/webm' };
 let headers = [];
 try { headers = JSON.parse(await readFile(resolve(root, 'vercel.json'), 'utf8')).headers ?? []; } catch { /* Preview also works without deployment config. */ }
 const publicPath = (pathname) => {
