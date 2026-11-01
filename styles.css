@@ -51,7 +51,7 @@
   .hero{position:relative;isolation:isolate;min-height:660px;display:flex;align-items:center;padding-block:72px 112px;background:var(--aqua);overflow:hidden}
   .hero-water,.water-shimmer{position:absolute;inset:0;width:100%;height:100%;z-index:-3;object-fit:cover}.hero-water{object-position:center}
   .hero::before{content:'';position:absolute;inset:0;z-index:-2;background:linear-gradient(100deg,oklch(96% .035 203 / .96) 4%,oklch(94% .045 205 / .87) 44%,oklch(86% .06 206 / .18) 83%)}
-  .water-shimmer{z-index:-1;background:repeating-radial-gradient(ellipse at 72% 50%,transparent 0 8%,oklch(99% .01 200 / .13) 9% 9.5%,transparent 11% 18%);background-size:140% 120%;opacity:.3;animation:water-shimmer 4.8s ease-in-out 1}
+  .water-shimmer{z-index:-1;background:repeating-radial-gradient(ellipse at 72% 50%,transparent 0 8%,oklch(99% .01 200 / .13) 9% 9.5%,transparent 11% 18%);background-size:140% 120%;opacity:.3;animation:water-shimmer 12s ease-in-out infinite}
   .hero-layout{display:grid;grid-template-areas:'copy identity';grid-template-columns:minmax(0,1.5fr) minmax(260px,1fr);gap:64px;align-items:center}.hero-copy{grid-area:copy}.hero-copy .eyebrow{color:var(--ink)}.hero h1{max-width:810px;line-height:1.02}.hero h1 em{font-style:normal;color:var(--signal)}
   .hero-subtitle{font-size:1.05rem;max-width:35ch;margin-top:32px;font-weight:500}.hero-actions{display:flex;align-items:center;gap:32px;margin-top:32px;flex-wrap:wrap}
   .hero-identity{grid-area:identity;display:flex;flex-direction:column;align-items:center;gap:40px}.hero-logo{width:340px;max-width:100%;height:auto}.hero-credentials{display:flex;gap:32px;align-items:center}.hero-credentials img{width:108px;height:108px;object-fit:contain}.hero-credentials figcaption{text-align:center;font-size:.75rem;font-weight:700;margin-top:8px}.hero-credentials figure:last-child{align-self:start}
@@ -91,3 +91,4 @@
   @keyframes water-shimmer{0%,100%{transform:scale(1);opacity:.15}50%{transform:scale(1.05) translateX(1%);opacity:.4}}
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}[data-reveal].reveal-ready:not(.is-visible){opacity:1;transform:none}}
 }
+@media (hover:hover) and (min-width:960px){.js .nav-dropdown:hover .dropdown-menu,.js .nav-dropdown:focus-within .dropdown-menu{display:block}}

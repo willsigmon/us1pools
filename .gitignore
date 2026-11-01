@@ -5,3 +5,4 @@ legacy/
 .claude/
 .letta/
 .playwright-mcp/
+.env*
