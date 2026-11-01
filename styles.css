@@ -143,3 +143,11 @@
     .gallery-grid{columns:1}
   }
 }
+/* Recent Photos: portrait joins the grid as an equal tile */
+.recent .container{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.recent .section-heading{grid-column:1/-1}
+.recent-photos{display:contents}
+.recent-cta,.recent-photos a{display:block;max-width:none;width:100%;margin:0;overflow:hidden;flex:none}
+.recent-cta img,.recent-photos img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block}
+.recent-cta img{object-position:50% 30%}
+@media(min-width:900px){.recent .container{grid-template-columns:repeat(5,minmax(0,1fr))}}
