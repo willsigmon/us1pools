@@ -11,12 +11,12 @@ export const business = Object.freeze({
   secondary: '919-864-0277',
   additional: '919-880-4323',
   email: 'us1pools@gmail.com',
-  hours: "Closed for the winter starting November 1. We'll post spring hours when we reopen.",
+  hours: "Closed for the winter starting November 1. We’ll post spring hours when we reopen.",
   payment: 'https://buy.stripe.com/5kA4iY3xm30agFObII',
   facebook: 'https://www.facebook.com/us1pools',
   directions: 'https://www.google.com/maps/search/?api=1&query=3453+US+Hwy+1+South%2C+Franklinton%2C+NC+27525',
 });
-export const escape = (text) => String(text).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
+export const escape = (text) => String(text).replace(/(\p{L})'(\p{L})/gu, '$1’$2').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
 export const asset = (prefixOrUrl) => {
   const prefix = prefixOrUrl.includes('/') ? prefixOrUrl.split('/').at(-2).slice(0, 8) : prefixOrUrl;
   const file = Object.keys(manifest).find((name) => name.startsWith(prefix));

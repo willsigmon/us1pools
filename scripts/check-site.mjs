@@ -90,7 +90,7 @@ for (const [name, body] of html) {
       await checkReference(meta(key), name);
     }
     assert(meta('og:url') === expected, `${name}: incorrect og:url`);
-    if (['index.html', 'contact.html'].includes(name)) assert(decode(body).includes("Closed for the winter starting November 1. We'll post spring hours when we reopen."), `${name}: missing mandatory winter hours`);
+    if (['index.html', 'contact.html'].includes(name)) assert(decode(body).includes("Closed for the winter starting November 1. We’ll post spring hours when we reopen."), `${name}: missing mandatory winter hours`);
     for (const value of ['3453 US Hwy 1 South', 'Franklinton', '27525', 'us1pools@gmail.com']) assert(body.includes(value), `${name}: missing NAP ${value}`);
   }
   checkPhones(body.match(/<footer\b[^>]*>([\s\S]*?)<\/footer>/i)?.[1] ?? '', `${name} footer`);

@@ -94,3 +94,4 @@
 }
 @media (hover:hover) and (min-width:960px){.js .nav-dropdown:hover .dropdown-menu,.js .nav-dropdown:focus-within .dropdown-menu{display:block}}
 .recent-cta{display:block;margin:0 0 32px}.recent-cta img{width:100%;height:auto;display:block}
+.footer-label{margin:12px 0 2px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
