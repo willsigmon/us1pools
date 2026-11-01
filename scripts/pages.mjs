@@ -19,7 +19,7 @@ export function productPages({ content, image, escape, video }) {
     if (tag === 'a' && text === 'More Steel Pool Examples') return link('/steel-pools', text);
     if (tag === 'a' && text === 'More Resin Pool Examples') return link('/resin-examples', text);
     if (text === 'Click here for more information about GLI liners.') return `<p>${link('https://www.glipoolproducts.com', text)}</p>`;
-    if (text === 'Click here for more information on Latham liners.') return `<p>${link('https://www.lathampools.com', text)}</p>`;
+    if (text === 'Click here for more information on Latham liners.') return `<p>${link('https://www.lathampool.com', text)}</p>`;
     if (text.startsWith('https://')) return `<p>${link(text, text)}</p>`;
     if (text.startsWith('Installation video: ')) return '';
     return paragraph(text);
