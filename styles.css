@@ -151,3 +151,97 @@
 .recent-cta img,.recent-photos img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block}
 .recent-cta img{object-position:50% 30%}
 @media(min-width:900px){.recent .container{grid-template-columns:repeat(5,minmax(0,1fr))}}
+/* Compact home: wider container, tighter rhythm, wave dividers, brand logos */
+.page-home{--section:clamp(28px,3.2vw,48px)}
+.page-home main .container{max-width:1360px;padding-inline:clamp(16px,3vw,40px)}
+.page-home main h2{font-size:clamp(1.6rem,2.6vw,2.3rem);text-decoration:underline wavy var(--aqua) 2px;text-underline-offset:.22em;text-decoration-skip-ink:none}
+.page-home .hero h1{text-decoration:none}
+.page-home .eyebrow{margin-bottom:4px}
+.page-home .section-heading{margin-bottom:20px}
+.wave-divider{display:block;width:100%;height:22px;margin-top:-22px;position:relative;z-index:1;pointer-events:none}
+.wave-surface{fill:var(--surface)}.wave-ink{fill:var(--ink)}.wave-bg{fill:var(--bg)}
+.page-home .hero{min-height:0;padding-block:40px 64px}
+.page-home .hero h1{font-size:clamp(2rem,4vw,3.4rem)}
+.page-home .hero-logo{max-width:220px}
+.page-home .hero-credentials img{max-width:76px}
+.page-home .financing{padding-block:12px}
+.brand-logo{display:inline-block;height:28px;width:auto;max-width:120px;object-fit:contain;vertical-align:middle;margin-right:8px}
+.financing .brand-logo{height:30px}
+.page-home .visit{padding-block:20px}
+.page-home .visit-grid{gap:24px;align-items:center}
+.page-home .visit h2{font-size:clamp(1.3rem,2vw,1.7rem);text-decoration:none}
+.page-home .payment-row{padding-top:12px}
+/* Models: photo beside an exclusive accordion */
+.page-home .model-directory{grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:32px;align-items:start}
+.page-home .model-photo{position:static}.page-home .model-photo img{aspect-ratio:4/3}
+.model-group{margin:0 0 8px;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg)}
+.model-group summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:10px 16px;min-height:44px}
+.model-group summary::-webkit-details-marker{display:none}
+.model-group summary::after{content:'+';font-size:1.4rem;color:var(--signal);line-height:1}
+.model-group[open] summary::after{content:'\2212'}
+.model-group summary h3{font-size:1.2rem;padding:0}
+.model-group summary:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+.model-group>:not(summary){margin-inline:16px}
+.model-group .model-link{padding-block:10px;align-items:center}
+.model-link>.brand-logo{height:32px;max-width:96px;flex:none}
+.model-link>span:first-child,.model-link>img+span{flex:1}
+.page-home .model-groups>.button{margin-top:12px}
+/* Services: compact intro row + one row of 4 */
+.page-home .services{padding-bottom:var(--section)}
+.page-home .service-intro{grid-template-columns:auto 1fr;gap:32px;margin-bottom:24px;align-items:start}
+.page-home .service-intro h2,.page-home .service-intro .eyebrow{text-align:left}
+.page-home .service-list{display:flex;flex-wrap:wrap;gap:4px 24px;margin-top:8px}
+.page-home .service-intro .button{margin-top:12px}
+.page-home .service-cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;grid-auto-rows:auto}
+.page-home .service-card figure{margin-bottom:12px}.page-home .service-card img{aspect-ratio:16/10}
+.page-home .service-card h3{font-size:1.25rem;margin-bottom:8px}
+.page-home .service-card p{font-size:.82rem;line-height:1.6}
+/* Retail: short block beside its photo */
+.page-home .retail .split{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:center}
+.page-home .retail h2{margin-bottom:8px}
+.page-home .retail-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px}
+.page-home .retail-list li{padding-block:8px}
+.page-home .retail figure img{aspect-ratio:16/9}
+/* Differentiators: 3-column grid */
+.page-home .reasons-layout{display:block}
+.page-home .reasons-heading{position:static;display:flex;align-items:center;gap:24px;margin-bottom:20px}
+.page-home .reasons-heading h2{max-width:none}
+.page-home .wave-mark{margin-top:0;width:100px}
+.page-home .reason-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.page-home .reason-list li{grid-template-columns:28px 1fr;gap:12px;padding:16px;border:0;border-radius:var(--radius);background:var(--bg)}
+.page-home .reason-list h3{font-size:1.2rem;margin-bottom:6px}
+.page-home .reason-list p{font-size:.85rem}
+/* Team: compact row */
+.page-home .team-layout{grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px}
+.page-home .team-layout img{aspect-ratio:16/10}
+.page-home .team-names>div{padding-block:16px}
+/* Recent photos: one row of 5, the rest scroll sideways */
+.page-home .recent{padding-top:var(--section)}
+.page-home .recent .container{display:block}
+.page-home .recent-row{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-color:var(--signal) var(--surface)}
+.page-home .recent-row a{flex:0 0 calc((100% - 48px)/5);width:auto;scroll-snap-align:start}
+.page-home .recent-row img{aspect-ratio:1;height:auto}
+@media(max-width:899.98px){
+  .page-home .model-directory,.page-home .service-intro,.page-home .retail .split,.page-home .team-layout{grid-template-columns:minmax(0,1fr)}
+  .page-home .service-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .page-home .reason-list{grid-template-columns:minmax(0,1fr)}
+  .page-home .team-names{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .page-home .recent-row a{flex-basis:42%}
+  .page-home .hero{padding-block:28px 56px}
+}
+@media(max-width:479.98px){.page-home .retail-list{grid-template-columns:minmax(0,1fr)}.page-home .service-card p{font-size:.8rem}}
+.page-home .recent-row .recent-photos{display:contents}
+.page-home .team-names{grid-column:auto}
+.page-home .team-layout img{max-height:220px}
+.page-home .section-heading{display:flex;flex-direction:row;justify-content:space-between;align-items:flex-end;text-align:left;gap:16px}
+.page-home .section-heading h2{text-align:left}
+.page-home .visit .contact-links{margin:0}
+.page-home .visit p{margin:0}
+@media(min-width:900px){.page-home .visit-grid{grid-template-columns:auto 1fr auto}}
+.page-home .model-photo img{aspect-ratio:16/11}
+.page-home .hero{padding-block:28px 52px}
+.page-home .financing{padding-block:6px}
+.page-home .reason-list li{padding:12px 14px}
+.page-home .service-intro{margin-bottom:16px}
+.page-home .retail figure img{max-height:260px}
+.page-home .recent-row img{aspect-ratio:4/3}

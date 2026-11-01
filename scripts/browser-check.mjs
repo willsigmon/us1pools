@@ -98,14 +98,14 @@ try {
   assert.match(await page.locator('iframe').getAttribute('src'), /^https:\/\/www\.youtube-nocookie\.com\/embed\/[\w-]{11}\?/);
   await visit('gallery');
   const links = page.locator('a[data-gallery-item]');
-  assert.equal(await links.count(), 40);
+  assert.equal(await links.count(), 49);
   await links.first().click();
   const dialog = page.locator('#gallery-dialog');
   const image = page.locator('[data-lightbox-image]');
   assert.equal(await dialog.evaluate((element) => element.open), true);
   const firstImage = await image.getAttribute('src');
   await page.keyboard.press('ArrowLeft');
-  assert.equal(await page.locator('[data-lightbox-count]').textContent(), '40 / 40');
+  assert.equal(await page.locator('[data-lightbox-count]').textContent(), '49 / 49');
   await page.keyboard.press('ArrowRight');
   assert.equal(await image.getAttribute('src'), firstImage);
   await page.keyboard.press('ArrowRight');
