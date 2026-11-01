@@ -1,4 +1,4 @@
-const localPosters = { '7tSUAi7gdmM': '/assets/live/4b6c614b-img_0776.webp' };
+const localPosters = {};
 import { readFileSync, existsSync } from 'node:fs';
 
 export const content = JSON.parse(readFileSync(new URL('../_source/content.json', import.meta.url)));

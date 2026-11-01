@@ -21,13 +21,13 @@ export function productPages({ content, image, escape, video }) {
     if (text === 'Click here for more information about GLI liners.') return `<p>${link('https://www.glipoolproducts.com', text)}</p>`;
     if (text === 'Click here for more information on Latham liners.') return `<p>${link('https://www.lathampools.com', text)}</p>`;
     if (text.startsWith('https://')) return `<p>${link(text, text)}</p>`;
-    if (text.startsWith('Installation video: ')) return `<p>Installation video: ${link('https://youtu.be/7tSUAi7gdmM', 'https://youtu.be/7tSUAi7gdmM')}</p>`;
+    if (text.startsWith('Installation video: ')) return '';
     return paragraph(text);
   };
   const rows = (slug) => section(`<div class="product-list">${groups(slug).map((group, index) => {
     const listStart = group.copy.findIndex(({ text }) => text === 'Available in:');
     const copy = listStart < 0 ? group.copy.map(renderCopy).join('') : `${group.copy.slice(0, listStart + 1).map(renderCopy).join('')}<ul class="feature-list">${group.copy.slice(listStart + 1).map(({ text }) => `<li>${escape(text)}</li>`).join('')}</ul>`;
-    const embeddedVideo = slug === 'hotwater-1' && index === 0 ? video('7B76eOgC9Fc', 'Doctor Liners for Above Ground pools from GLI') : slug === 'hybrid' && index === 2 ? video('7tSUAi7gdmM', 'The Ultimate installation video') : '';
+    const embeddedVideo = slug === 'hotwater-1' && index === 0 ? video('7B76eOgC9Fc', 'Doctor Liners for Above Ground pools from GLI') : '';
     return `<article class="product-row" data-reveal><figure>${image(photos(slug)[index], group.title)}</figure><div class="product-copy"><h2>${escape(group.title)}</h2>${copy}${embeddedVideo}</div></article>`;
   }).join('')}</div>`);
   const cards = (items) => section(`<div class="cards">${items.map(({ title, photo, href }) => `<article class="image-card"><a href="${escape(href)}" aria-label="${escape(title)}">${image(photo, title)}</a><div class="card-copy"><h2><a href="${escape(href)}">${escape(title)}</a></h2>${link(href, 'View details')}</div></article>`).join('')}</div>`);
