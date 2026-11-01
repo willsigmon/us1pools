@@ -93,5 +93,53 @@
   @media(prefers-reduced-motion:reduce){.hero-video{display:none}html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}[data-reveal].reveal-ready:not(.is-visible){opacity:1;transform:none}}
 }
 @media (hover:hover) and (min-width:960px){.js .nav-dropdown:hover .dropdown-menu,.js .nav-dropdown:focus-within .dropdown-menu{display:block}}
-.recent-cta{display:block;margin:0 0 32px}.recent-cta img{width:100%;height:auto;display:block}
+.recent-cta{display:block;width:100%;max-width:320px;margin:0 auto 32px}.recent-cta img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:50% 36%;display:block}
 .footer-label{margin:12px 0 2px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+
+/* Shared content rhythm; retain the existing typography, colors and source order. */
+@layer responsive{
+  .section-heading{flex-direction:column;align-items:center;justify-content:center;gap:24px;text-align:center}
+  .page-intro h1,.page-intro .eyebrow,.section>.container>h2{text-align:center}
+  .team-layout>figure,.page-about .split>figure,.recent-cta{width:100%;max-width:320px;justify-self:center;margin-inline:auto}
+  .team-layout img,.page-about .split img,.recent-cta img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:50% 36%}
+  .image-card{display:flex;flex-direction:column}
+  .image-card .card-copy{flex:1}
+  .page-pools-spas .image-card:nth-child(odd){margin-top:0}
+  .model-card .model-sheet{aspect-ratio:4/3;object-fit:contain}
+
+  @media(min-width:900px){
+    :root{--section:clamp(64px,6vw,88px)}
+    .split,.retail .split,.visit-grid,.model-directory,.service-intro,.reasons-layout,.product-row{
+      grid-template-columns:repeat(2,minmax(0,1fr));gap:40px;
+    }
+    .cards,.service-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 32px}
+    .cards:has(>:nth-child(3):last-child),.cards:has(>:nth-child(5)),.video-grid{
+      grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 32px;
+    }
+    .product-list{gap:48px}
+    .service-intro{margin-bottom:48px}
+    .service-intro h2,.service-intro .eyebrow{text-align:center}
+    .service-cards{grid-auto-rows:1fr}
+    .service-card{min-width:0}
+    .team-layout{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+    .team-names{grid-column:span 2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;align-self:stretch}
+    .team-names>div{display:flex;flex-direction:column;justify-content:center;text-align:center}
+    .contact-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+    .contact-grid>div:last-child{grid-column:auto}
+    .contact-grid h2{text-align:center}
+    .visit{padding-block:var(--section)}
+    .page-pools-spas .section:has(>.container>h2:only-child){padding-bottom:0}
+  }
+
+  @media(max-width:899.98px){
+    .hero-layout{grid-template-areas:'copy' 'identity';grid-template-columns:minmax(0,1fr)}
+    .visit-grid,.model-directory,.service-intro,.split,.retail .split,.reasons-layout,
+    .team-layout,.product-row,.contact-grid,.cards,.service-cards,.video-grid,.footer-top{
+      grid-template-columns:minmax(0,1fr);
+    }
+    .contact-grid>div:last-child{grid-column:auto}
+    .product-row:nth-child(even)>figure{order:0}
+    .model-photo,.reasons-heading,.page-about .split figure{position:static}
+    .gallery-grid{columns:1}
+  }
+}
