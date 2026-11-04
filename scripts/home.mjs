@@ -1,52 +1,75 @@
 import { textEntries, image, escape, business, homePhotos } from './data.mjs';
 import { logo } from './logos.mjs';
+import { tel } from './layout.mjs';
 
 const entries = textEntries('home');
+const about = textEntries('about');
 const copy = (start) => escape(entries.find(({ text }) => text.startsWith(start)).text);
 const paragraphAfter = (heading) => escape(entries[entries.findIndex(({ tag, text }) => tag === 'h2' && text === heading) + 1].text);
-const arrow = '<span aria-hidden="true"><svg class="icon-arrow" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>';
-const model = (title, names, href, brand = '') => `<a class="model-link" href="${href}">${brand}<span><strong>${title}</strong> <span>${names}</span></span>${arrow}</a>`;
-const wave = '<svg class="wave" viewBox="0 0 1440 72" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40C240 85 400 5 720 35S1200 85 1440 20V72H0Z"/></svg>';
-// Short inline wave divider; `tone` sets the fill to the next section's background.
-const divider = (tone) => `<svg class="wave-divider wave-${tone}" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 22C180 4 360 4 540 20S900 38 1080 22S1320 6 1440 16V40H0Z"/></svg>`;
+const names = (list) => list.map((name) => `<span>${name}</span>`).join('');
+const model = (title, list, href, brand = '') => `<li><a class="model-link" href="${href}">${brand}<strong>${title}</strong><span class="model-names">${names(list)}</span></a></li>`;
+const various = ['Various sizes &amp; colors'];
 
 export function homePage() {
-  const reasons = [
-    ['Quality Guaranteed', 'Quality Guaranteed'],
-    ['Shark-Smart Pricing', 'Shark-Smart Pricing'],
-    ['Pro Installation Crew', 'Pro Installation Crew'],
-    ['Chemical Concierge', 'Chemical Concierge'],
-    ['Free Water Testing', 'Free Water Testing'],
-  ];
+  const reasons = ['Quality Guaranteed', 'Shark-Smart Pricing', 'Pro Installation Crew', 'Chemical Concierge', 'Free Water Testing'];
   const retail = [
-    `<a href="https://www.youtube.com/watch?v=-JBIObt7Cuo">${logo('oxygen-pools', 'Oxygen Pools')}<span class="retail-label"><span aria-hidden="true">Oxygen Pools</span> (Chlorine alternative)</span><span aria-hidden="true"><svg class="icon-arrow" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9L9 3M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span></a>`,
+    `<a class="retail-brand" href="https://www.youtube.com/watch?v=-JBIObt7Cuo">${logo('oxygen-pools', 'Oxygen Pools')}</a><span class="retail-note">(Chlorine alternative)</span>`,
     'Salt-Based Systems', 'General Maintenance Equipment', 'Various Pool &amp; Spa Parts', 'Automatic Cleaners',
   ];
-  const photos = homePhotos.map(({ url }) => url);
-  const photoAlts = homePhotos.map(({ alt }) => alt);
+  const services = ['Sand Changes', 'Pump / Filter / Heater Installation', 'Liner Changes (Above & In-Ground)', 'Season Openings / Closings', 'General Maintenance & more.'];
   return {
     slug: '', title: 'Pools, Spas & Service',
     description: 'US-1 Pools in Franklinton, NC offers pool and spa sales, service and installation, liners, equipment and free water testing for Wake Forest and The Triangle.',
     body: `<section class="hero" aria-labelledby="hero-title">
-      <img class="hero-water" src="/assets/live/hero-yt.webp" width="1280" height="720" alt="" fetchpriority="high" decoding="async">
-      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/assets/live/hero-yt.webp" aria-hidden="true"><source src="/assets/video/hero-water.webm" type="video/webm"><source src="/assets/video/hero-water.mp4" type="video/mp4"></video>
-      <div class="water-shimmer" aria-hidden="true"></div>
-      <div class="container hero-layout">
+      <div class="hero-grid">
         <div class="hero-copy">
-          <h1 id="hero-title">The premier aquatic experts in <em>The Triangle.</em></h1>
-          <p class="hero-subtitle">${copy('Sales, Service')}</p>
-          <div class="hero-actions"><a class="button" href="/pools-spas">Explore Pools &amp; Spas ${arrow}</a><a class="text-link" href="/contact">Get in Touch ${arrow}</a></div>
+          <h1 id="hero-title">Pools, spas &amp; service in Franklinton, NC</h1>
+          <p class="hero-lead">The premier aquatic experts in The Triangle. ${copy('Sales, Service')}</p>
+          <div class="hero-actions"><a class="button" href="${tel(business.primary)}">Call ${business.primary}</a><a class="text-link" href="/pools-spas">Explore pools &amp; spas</a></div>
+          <div class="hero-badges"><figure>${image('6b1cf7df', 'North Carolina licensing board seal', { eager: true, sizes: '72px' })}<figcaption>NC-Licensed</figcaption></figure><figure>${image('78992bbd', '2023 Best of the Best, The Wake Weekly', { eager: true, sizes: '72px' })}<figcaption>Best of the Best 2023</figcaption></figure></div>
         </div>
-        <div class="hero-identity"><div class="hero-credentials"><figure>${image('6b1cf7df', 'North Carolina licensing board seal', { eager: true, sizes: '(max-width: 639px) 58px, (max-width: 959px) 80px, 108px' })}<figcaption>NC-Licensed</figcaption></figure><figure>${image('78992bbd', '2023 Best of the Best — The Wake Weekly', { eager: true, sizes: '(max-width: 639px) 58px, (max-width: 959px) 80px, 108px' })}</figure></div></div>
-      </div>${wave}
+        <div class="hero-visual">
+          <figure class="hero-store">${image('6ef8eace', 'The US-1 Pools store at 3453 US Hwy 1 South in Franklinton', { eager: true, sizes: '(max-width: 959px) 100vw, 60vw' })}</figure>
+          <div class="hero-pool">
+            <img class="hero-water" src="/assets/live/hero-yt.webp" width="1280" height="720" alt="" fetchpriority="high" decoding="async">
+            <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/assets/live/hero-yt.webp" aria-hidden="true"><source src="/assets/video/hero-water.webm" type="video/webm"><source src="/assets/video/hero-water.mp4" type="video/mp4"></video>
+          </div>
+        </div>
+      </div>
     </section>
-    <section class="financing container" aria-label="Financing"><p>Financing available through:</p><div><a href="https://www.hfsfinancial.net/promo/62e3e8d04c132a3c6be3dbe8/">${logo('hfs', 'HFS')}<span aria-hidden="true">HFS</span> ${arrow}</a><a href="https://allegrologin.com/app/035ef18f">${logo('allegro', 'Allegro')}Allegro ${arrow}</a></div></section>
-    ${divider('surface')}
-    <section class="section models" id="pool-models"><div class="container"><div class="section-heading" data-reveal><div><p class="eyebrow">Pools &amp; Spas</p><h2>Available Pool Models</h2></div><a class="text-link" href="/pools-spas">View all ${arrow}</a></div><div class="model-directory"><figure class="model-photo" data-reveal>${image('0093d4f7', 'Blue pool liner with steps and stone surround', { sizes: '(max-width: 640px) 100vw, 48vw' })}<figcaption>In-Ground Liner / Fiberglass</figcaption></figure><div class="model-groups"><div class="model-group"><h3 id="model-group-1">Above-Ground</h3><details name="model-groups" open><summary aria-labelledby="model-group-1"></summary>${model('Resin Above-Ground', 'Genesis &nbsp;|&nbsp; Nakoma &nbsp;|&nbsp; Discovery', '/resin-examples')}${model('Hybrid Above-Ground', 'AquaSport &nbsp;|&nbsp; Oasis &nbsp;|&nbsp; Ultimate', '/hybrid')}${model('Steel Above-Ground', 'Coral Seas &nbsp;|&nbsp; Distinction &nbsp;|&nbsp; Eclipse &nbsp;|&nbsp; Serena &nbsp;|&nbsp; Southport', '/steel-pools')}</details></div><div class="model-group"><h3 id="model-group-2">In-Ground Liner / Fiberglass</h3><details name="model-groups"><summary aria-labelledby="model-group-2"></summary>${model('Imagine® Fiberglass', 'Various sizes &amp; colors', 'https://imaginepools.com/pool-range/', logo('imagine', 'Imagine Pools'))}${model('Pools by Genesis®', 'Various sizes &amp; colors', 'https://poolsbygenesis.com', logo('genesis', 'Pools by Genesis'))}<div class="model-link"><span><strong>Vinyl Liners</strong><span><a href="https://cardinalpools.com">${logo('cardinal', 'Cardinal')}<span aria-hidden="true">Cardinal</span></a> | <a href="https://lathampool.com">${logo('latham', 'Latham')}<span aria-hidden="true">Latham</span></a></span></span>${arrow}</div></details></div><div class="model-group"><h3 id="model-group-3">Hot Tubs &amp; Spas</h3><details name="model-groups"><summary aria-labelledby="model-group-3"></summary>${model('Tranquility®', 'Various sizes &amp; colors', 'https://tranquilitybrandspas.com', logo('tranquility', 'Tranquility'))}${model('Garden Leisure® Spas', 'Various sizes &amp; colors', 'https://hottubs.com/brands/garden-leisure/', logo('garden-leisure', 'Garden Leisure'))}</details></div><a class="button" href="/contact">Get in Touch ${arrow}</a></div></div></div></section>${divider('water')}
-    <section class="section services"><div class="container"><div class="service-intro" data-reveal><div><h2>Services</h2></div><div><p class="lead">Including:</p><ul class="service-list" role="list">${['Sand Changes', 'Pump / Filter / Heater Installation', 'Liner Changes (Above & In-Ground)', 'Season Openings / Closings', 'General Maintenance & more.'].map(item => `<li>${escape(item)}</li>`).join('')}</ul><a class="button button-aqua" href="tel:+19194410033">Call Us - 919.441.0033 ${arrow}</a></div></div><div class="service-cards">${[['Pumps','33580aba'],['Liners','0093d4f7'],['Filters & Heaters','440327bc'],['Openings & Closings','e2690e86']].map(([title,prefix]) => `<article class="service-card" data-reveal><figure>${image(prefix,title, { sizes: '(max-width: 640px) 100vw, (max-width: 960px) 50vw, 25vw' })}</figure><h3>${escape(title)}</h3><p>${paragraphAfter(title)}</p></article>`).join('')}</div></div>${wave}</section>
-    <section class="section retail"><div class="container split"><div data-reveal><h2>Retail</h2><p>Include:</p><ul class="retail-list">${retail.map((item) => `<li>${item}</li>`).join('')}</ul></div><figure data-reveal>${image('a5502ee3','Inside the US-1 Pools retail store')}</figure></div></section>${divider('surface')}
-    <section class="section reasons"><div class="container reasons-layout"><div class="reasons-heading" data-reveal><p class="eyebrow">Why Choose Us?</p><h2>We’re the wave that makes a difference:</h2></div><ol class="reason-list">${reasons.map(([title,start],i)=>`<li data-reveal><span class="reason-number" aria-hidden="true">0${i+1}</span><div><h3>${title}</h3><p>${copy(start).slice(title.length+1)}</p></div></li>`).join('')}</ol></div></section>${divider('bg')}
-    <section class="section team"><div class="container"><div class="section-heading" data-reveal><h2>Our Team</h2><a class="text-link" href="/about">About US-1 Pools ${arrow}</a></div><div class="team-layout"><figure data-reveal>${image('c2cddecf','Shayne and Cathy Parrish, owners of US-1 Pools')}</figure><div class="team-names" data-reveal><div><h3>Shayne &amp; Cathy Parrish</h3><p>Owners &amp; CPO Certified</p></div><div><h3>Tonni &amp; Alan Deitch</h3><p>Business Operations</p></div></div></div></div></section>
-    <section class="section recent"><div class="container"><div class="section-heading" data-reveal><h2>Recent Photos</h2><a class="text-link" href="/gallery">View gallery ${arrow}</a></div><div class="recent-row" role="region" aria-label="Recent photos" tabindex="0"><a class="recent-cta" href="/gallery">${image('43a6a347','View recent photos',{sizes:'(max-width: 640px) 42vw, 20vw'})}</a><div class="recent-photos">${photos.map((url,i)=>`<a href="/gallery" aria-label="View gallery: ${escape(photoAlts[i])}">${image(url,photoAlts[i],{sizes:'(max-width: 640px) 42vw, 20vw'})}</a>`).join('')}</div></div></div></section>`,
+    <section class="info-strip" aria-label="Visit, financing and payment"><div class="container info-grid">
+      <div class="info-cell"><p class="sublabel">Financing available through:</p><ul class="financing-list" role="list"><li><a href="https://www.hfsfinancial.net/promo/62e3e8d04c132a3c6be3dbe8/">${logo('hfs', 'HFS')}</a></li><li><a href="https://allegrologin.com/app/035ef18f">Allegro</a></li></ul></div>
+      <div class="info-cell"><p class="sublabel">Payments</p><a class="text-link" href="${business.payment}">Pay US-1 Pools</a></div>
+    </div></section>
+    <section class="team" aria-labelledby="team-title">
+      <figure class="team-photo">${image('c2cddecf', 'Shayne and Cathy Parrish, owners of US-1 Pools', { sizes: '(max-width: 959px) 100vw, 58vw' })}</figure>
+      <div class="team-copy" data-reveal><h2 id="team-title">Our Team</h2><p class="team-quote">${escape(about.at(-1).text)}</p><dl class="team-names"><div><dt>Shayne &amp; Cathy Parrish</dt><dd>Owners &amp; CPO Certified</dd></div><div><dt>Tonni &amp; Alan Deitch</dt><dd>Business Operations</dd></div></dl><a class="text-link" href="/about">About US-1 Pools</a></div>
+    </section>
+    <section class="section models" aria-labelledby="models-title"><div class="container">
+      <h2 class="section-heading" id="models-title" data-reveal>Available Pool Models</h2>
+      <div class="model-columns">
+        <div class="model-col" data-reveal><figure>${image('0a979cbc', 'Above ground pool installed in a backyard', { sizes: '(max-width: 959px) 100vw, 30vw' })}</figure><h3>Above-Ground</h3><ul role="list">${model('Resin Above-Ground', ['Genesis', 'Nakoma', 'Discovery'], '/resin-examples')}${model('Hybrid Above-Ground', ['AquaSport', 'Oasis', 'Ultimate'], '/hybrid')}${model('Steel Above-Ground', ['Coral Seas', 'Distinction', 'Eclipse', 'Serena', 'Southport'], '/steel-pools')}</ul></div>
+        <div class="model-col" data-reveal><figure>${image('741f794f', 'Imagine fiberglass pool in reef blue', { sizes: '(max-width: 959px) 100vw, 30vw' })}</figure><h3>In-Ground Liner / Fiberglass</h3><ul role="list">${model('Imagine® Fiberglass', various, 'https://imaginepools.com/pool-range/', logo('imagine', 'Imagine Pools'))}${model('Pools by Genesis®', various, 'https://poolsbygenesis.com', logo('genesis', 'Pools by Genesis'))}<li><div class="model-link"><strong>Vinyl Liners</strong><span class="model-logos"><a href="https://cardinalpools.com">${logo('cardinal', 'Cardinal')}</a><a href="https://www.lathampool.com">${logo('latham', 'Latham')}</a></span></div></li></ul></div>
+        <div class="model-col" data-reveal><figure>${image('71d991cf', 'Garden Leisure hot tub', { sizes: '(max-width: 959px) 100vw, 30vw' })}</figure><h3>Hot Tubs &amp; Spas</h3><ul role="list">${model('Tranquility®', various, 'https://tranquilitybrandspas.com', logo('tranquility', 'Tranquility'))}${model('Garden Leisure® Spas', various, 'https://hottubs.com/brands/garden-leisure/', logo('garden-leisure', 'Garden Leisure'))}</ul></div>
+      </div>
+      <div class="section-actions"><a class="button" href="/contact">Get in Touch</a><a class="text-link" href="/pools-spas">All pools &amp; spas</a></div>
+    </div></section>
+    <section class="services" aria-labelledby="services-title">
+      <div class="container services-head" data-reveal><h2 id="services-title">Services</h2><div class="services-summary"><div><p class="sublabel">Including:</p><ul class="service-list" role="list">${services.map((item) => `<li>${escape(item).replace('In-Ground', '<span class="nowrap">In-Ground</span>')}</li>`).join('')}</ul></div><a class="button button-light" href="${tel(business.primary)}">Call Us - ${business.primary}</a></div></div>
+      <div class="service-strip">${[['Pumps', '33580aba'], ['Liners', '0093d4f7'], ['Filters & Heaters', '440327bc'], ['Openings & Closings', 'e2690e86']].map(([title, prefix]) => `<article class="service" data-reveal><figure>${image(prefix, title, { sizes: '(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 25vw' })}</figure><div class="service-copy"><h3>${escape(title)}</h3><p>${paragraphAfter(title)}</p></div></article>`).join('')}</div>
+    </section>
+    <section class="section retail" aria-labelledby="retail-title"><div class="container retail-grid">
+      <figure class="retail-photo" data-reveal>${image('a5502ee3', 'Inside the US-1 Pools retail store', { sizes: '(max-width: 960px) 100vw, 50vw' })}</figure>
+      <div class="retail-copy" data-reveal><h2 id="retail-title">Retail</h2><p class="sublabel">Include:</p><ul class="retail-list" role="list">${retail.map((item) => `<li>${item}</li>`).join('')}</ul></div>
+    </div></section>
+    <section class="section reasons" aria-labelledby="reasons-title"><div class="container reasons-grid">
+      <h2 class="section-heading" id="reasons-title" data-reveal>Why Choose Us? <span>We’re the wave that makes a difference:</span></h2>
+      <ol class="reason-list" role="list">${reasons.map((title) => `<li data-reveal><h3>${title}</h3><p>${copy(title).slice(title.length + 1)}</p></li>`).join('')}</ol>
+    </div></section>
+    <section class="section recent" aria-labelledby="recent-title"><div class="container">
+      <h2 class="section-heading" id="recent-title">Recent Photos</h2>
+      <div class="recent-row" role="region" aria-label="Recent photos" tabindex="0"><a class="recent-cta" href="/gallery">${image('43a6a347', 'View recent photos', { sizes: '240px' })}</a>${homePhotos.map(({ url, alt }) => `<a href="/gallery" aria-label="View gallery: ${escape(alt)}">${image(url, alt, { sizes: '240px' })}</a>`).join('')}</div>
+      <div class="section-actions"><a class="text-link" href="/gallery">View gallery</a></div>
+    </div></section>`,
   };
 }

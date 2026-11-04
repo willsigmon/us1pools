@@ -16,5 +16,5 @@ export function logo(slug, name) {
   const ext = ['svg', 'png', 'webp'].find((e) => existsSync(new URL(`${slug}.${e}`, dir)));
   if (!ext) return '';
   const [w, h] = size(new URL(`${slug}.${ext}`, dir));
-  return `<img class="brand-logo" src="/assets/logos/${slug}.${ext}" alt="${escape(name)}" width="${Math.round(w)}" height="${Math.round(h)}" loading="lazy" decoding="async">`;
+  return `<img class="brand-logo brand-${slug}" src="/assets/logos/${slug}.${ext}" alt="${escape(name)}" width="${Math.round(w)}" height="${Math.round(h)}" loading="lazy" decoding="async">`;
 }

@@ -32,8 +32,8 @@ An existing Chrome installation can be used instead: `CHROME_PATH=/usr/bin/googl
 
 - `assets/live/manifest.json` maps original Squarespace UUIDs to the supplied optimized WebP files and dimensions.
 - `assets/thumbs/` contains responsive derivatives. To regenerate thumbnails, the social image and favicons, install Pillow in a Python environment and run `python3 scripts/prepare-assets.py`, then `npm run build`.
-- Fraunces and Manrope Latin WOFF2 fonts are self-hosted in `assets/fonts/`, with their OFL licenses. No Google Fonts network request occurs at runtime.
-- The hero uses the supplied water-video poster with a short CSS shimmer. Reduced-motion preferences disable movement. Reveals progressively enhance otherwise visible content.
+- Newsreader (display) and Manrope (body) Latin WOFF2 fonts are self-hosted in `assets/fonts/`, with their OFL licenses. No Google Fonts network request occurs at runtime.
+- The home hero pairs the real storefront photo with a strip of the supplied water video, cut by one SVG wave mask. Reduced-motion preferences disable movement. Reveals progressively enhance otherwise visible content.
 - Videos use thumbnails and load a `youtube-nocookie.com` player only on request. A normal YouTube link remains available without JavaScript.
 - Gallery photos use native image links, enhanced into a modal dialog with keyboard arrows, Escape, focus restoration and scroll locking.
 - Contact includes telephone/email links, directions and a lazy Google Maps iframe. Payment and financing link to the destinations specified in the brief; there is no contact/payment API.
