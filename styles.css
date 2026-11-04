@@ -266,7 +266,7 @@
 .page-home .visit-grid p{margin:0}
 .visit-hours,.visit-contact{display:flex;flex-direction:column;align-items:flex-start;gap:16px;padding-top:8px}
 .visit-contact a{min-height:44px;display:inline-flex;align-items:center}
-.visit-contact p a{min-height:0;display:inline}
+.visit-contact p a{min-height:44px;display:inline-flex;align-items:center}
 @media(min-width:900px){
   .page-home .team-layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
   .page-home .team-layout>figure{max-width:none;justify-self:stretch}
@@ -287,10 +287,12 @@
 }
 /* layout round, critic r1 */
 a[href^="tel:"]{white-space:nowrap}
+@media(min-width:960px){
 .page-home .hero-identity{gap:24px}
 .page-home .hero-logo{width:260px}
 .page-home .hero-credentials img{width:96px;height:96px}
 .page-home .hero-credentials figure:last-child{align-self:center}
+}
 .retail .split{align-items:start}
 .retail-list li{min-height:56px;display:flex;align-items:center}
 .retail-list li>a{flex:1}
@@ -302,7 +304,7 @@ a[href^="tel:"]{white-space:nowrap}
 }
 @media(max-width:639px){
   .footer-top{gap:24px}
-  .footer-contact a,.footer-hours a{min-height:40px}
+  .footer-contact a,.footer-hours a,.footer-identity a,.footer-bottom nav a{min-height:44px;display:inline-flex;align-items:center}
   .footer-bottom nav{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:4px 24px}
 }
 /* layout round, critic r2: one label style, sentence case as written */
@@ -328,3 +330,7 @@ a[href^="tel:"]{white-space:nowrap}
 .page-intro h1{font-size:clamp(2.4rem,5vw,3.6rem)}
 .page-about .split img{aspect-ratio:4/5;max-height:560px}
 @media(max-width:639px){.section{padding-block:calc(var(--section) * .72)}}
+/* second-model review fixes */
+.page-home .team-layout img{max-height:none;aspect-ratio:4/3}
+.model-link strong{text-decoration:underline;text-decoration-color:var(--line);text-decoration-thickness:1px;text-underline-offset:.25em}
+.model-link:hover strong,.model-link:focus-visible strong{text-decoration-color:currentColor}
