@@ -10,7 +10,7 @@
   [hidden]{display:none!important}
 }
 @layer tokens{
-  :root{--bg:oklch(98.5% .006 195);--surface:oklch(95% .022 205);--ink:oklch(26% .068 252);--muted:oklch(44% .035 239);--aqua:oklch(71% .125 216);--signal:oklch(48% .085 216);--line:oklch(85% .025 215);--display:Fraunces,Georgia,serif;--body:Manrope,Arial,sans-serif;--radius:4px;--ease:cubic-bezier(.2,.7,.2,1);--gutter:clamp(24px,4.5vw,72px);--section:clamp(64px,8vw,120px)}
+  :root{--bg:oklch(98.5% .006 195);--surface:oklch(95% .022 205);--ink:oklch(26% .068 252);--muted:oklch(44% .035 239);--aqua:oklch(71% .125 216);--signal:oklch(48% .085 216);--line:oklch(85% .025 215);--water:oklch(89% .055 208);--display:Fraunces,Georgia,serif;--body:Manrope,Arial,sans-serif;--radius:4px;--ease:cubic-bezier(.2,.7,.2,1);--gutter:clamp(24px,4.5vw,72px);--section:clamp(64px,8vw,120px)}
 }
 @layer base{
   html{scroll-behavior:smooth;scroll-padding-top:120px;overflow-x:clip}
@@ -334,3 +334,29 @@ a[href^="tel:"]{white-space:nowrap}
 .page-home .team-layout img{max-height:none;aspect-ratio:4/3}
 .model-link strong{text-decoration:underline;text-decoration-color:var(--line);text-decoration-thickness:1px;text-underline-offset:.25em}
 .model-link:hover strong,.model-link:focus-visible strong{text-decoration-color:currentColor}
+/* approved cut: lighter water-tone Services band */
+.services{background:var(--water);color:var(--ink)}
+.services .eyebrow{color:var(--signal)}
+.services .service-card p{color:var(--muted)}
+.services :focus-visible{outline-color:var(--ink)}
+.services .button-aqua{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.page-home .hero-identity{justify-content:center}
+.wave-water{fill:var(--water)}
+/* cuts round, critic r1 */
+.page-home .hero-credentials{align-items:flex-end}
+.page-home .hero-credentials figure:last-child{align-self:flex-end}
+.page-home .service-intro{grid-template-columns:minmax(0,1fr);gap:16px}
+.page-home .service-list{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px 24px}
+.page-home .service-list li{border-top:1px solid oklch(26% .068 252 / .15);padding-top:8px}
+.reason-list p,.service-card p{color:var(--ink);opacity:1}
+@media(min-width:900px){.page-home .team-layout{grid-template-columns:minmax(0,.8fr) minmax(0,1fr)}}
+.page-contact .section{padding-block:32px var(--section)}
+.page-contact .map-wrap{margin-top:0}
+.page-home .hero-credentials figure{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;align-self:stretch!important}
+/* cuts round, critic r2 */
+.page-home .hero-identity{align-self:end}
+.page-home .service-list{display:flex;flex-wrap:wrap;gap:8px 24px}
+.page-home .service-list li{border-top:0;padding-top:0}
+@media(min-width:900px){.page-home .reason-list li:nth-child(4){grid-column:1/span 2}}
+.page-intro{padding-block:24px 32px}
+.page-intro h1{font-size:clamp(2.2rem,4vw,3rem)}

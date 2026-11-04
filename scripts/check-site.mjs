@@ -94,7 +94,7 @@ for (const [name, body] of html) {
     for (const value of ['3453 US Hwy 1 South', 'Franklinton', '27525', 'us1pools@gmail.com']) assert(body.includes(value), `${name}: missing NAP ${value}`);
   }
   checkPhones(body.match(/<footer\b[^>]*>([\s\S]*?)<\/footer>/i)?.[1] ?? '', `${name} footer`);
-  if (name === 'contact.html') checkPhones(body.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1] ?? '', 'contact.html main content');
+  // Contact details live once, in the site-wide footer (checked above on every page).
   assert(!/lightstream|indexnow/i.test(body), `${name}: forbidden financing provider or IndexNow`);
   assert(!/openingHours/.test(body), `${name}: remove openingHours while closed for winter`);
   for (const [, tag, contents] of body.matchAll(/(<button\b[^>]*\bdata-video=[^>]*>)([\s\S]*?)<\/button>/gi)) {
