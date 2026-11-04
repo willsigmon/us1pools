@@ -360,3 +360,7 @@ a[href^="tel:"]{white-space:nowrap}
 @media(min-width:900px){.page-home .reason-list li:nth-child(4){grid-column:1/span 2}}
 .page-intro{padding-block:24px 32px}
 .page-intro h1{font-size:clamp(2.2rem,4vw,3rem)}
+/* review nits */
+.financing{padding-bottom:16px}
+.financing + .wave-divider,.financing ~ .wave-divider{margin-top:0}
+.services .button-aqua:hover{background:var(--signal);border-color:var(--signal);color:var(--bg)}
