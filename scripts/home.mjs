@@ -26,7 +26,7 @@ export function homePage() {
           <h1 id="hero-title">Pools, spas &amp; service in Franklinton, NC</h1>
           <p class="hero-lead">The premier aquatic experts in The Triangle. ${copy('Sales, Service').replace('—', ' — ')}</p>
           <div class="hero-actions"><a class="button" href="${tel(business.primary)}">Call ${business.primary}</a><a class="text-link" href="/pools-spas">Explore pools &amp; spas</a></div>
-          <div class="hero-badges"><figure>${image('6b1cf7df', 'North Carolina licensing board seal', { eager: true, sizes: '72px' })}<figcaption>NC-Licensed</figcaption></figure><figure>${image('78992bbd', '2023 Best of the Best, The Wake Weekly', { eager: true, sizes: '72px' })}<figcaption>Best of the Best 2023</figcaption></figure></div>
+          <div class="hero-badges"><figure>${image('6b1cf7df', 'North Carolina licensing board seal', { eager: true, sizes: '72px' })}<figcaption>NC-Licensed</figcaption></figure></div>
         </div>
         <div class="hero-visual">
           <figure class="hero-store">${image('6ef8eace', 'The US-1 Pools store at 3453 US Hwy 1 South in Franklinton', { eager: true, sizes: '(max-width: 959px) 100vw, 60vw' })}</figure>
