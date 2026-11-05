@@ -31,11 +31,12 @@ function header(slug) {
   return `<a class="skip-link" href="#main">Skip to content</a><p class="season-notice"><span class="container">${escape(business.hours)}</span></p><header class="site-header" data-header><div class="container header-inner"><a class="brand" href="/" aria-label="US-1 Pools home">${image('e2bf0920', 'US-1 Pools', { eager: true, sizes: '160px' })}</a><button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" data-menu-toggle><span>Menu</span><svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true"><path d="M0 1h20M0 7h20M0 13h20" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button><nav id="site-nav" aria-label="Main navigation">${items}<a class="header-call" href="${tel(business.primary)}">${business.primary}</a></nav></div></header>`;
 }
 
-function footer() {
-  return `<footer class="site-footer">${wave('footer-wave')}<div class="footer-body"><div class="container footer-grid">
+function footer(slug) {
+  const light = slug === 'contact'; // Contact page already lists every detail; keep its footer light.
+  return `<footer class="site-footer${light ? ' footer-light' : ''}">${wave('footer-wave')}<div class="footer-body"><div class="container footer-grid">
     <div class="footer-brand"><a href="/" aria-label="US-1 Pools home">${image('e2bf0920', 'US-1 Pools', { className: 'footer-logo', sizes: '200px' })}</a></div>
-    <div class="footer-col"><h2 class="footer-head">Visit</h2><address>${business.street}<br>${business.city}</address><p><a class="text-link" href="${business.directions}">Directions</a></p><h2 class="footer-head">Hours</h2><p class="footer-hours">${escape(business.hours)}</p></div>
-    <div class="footer-col"><h2 class="footer-head">Call</h2><ul class="footer-phones" role="list">${phones.map(([label, number]) => `<li><span class="phone-label">${label}</span><a href="${tel(number)}">${number}</a></li>`).join('')}</ul><h2 class="footer-head">Email</h2><p><a href="mailto:${business.email}">${business.email}</a></p></div>
+    ${light ? '' : `<div class="footer-col"><h2 class="footer-head">Visit</h2><address>${business.street}<br>${business.city}</address><p><a class="text-link" href="${business.directions}">Directions</a></p><h2 class="footer-head">Hours</h2><p class="footer-hours">${escape(business.hours)}</p></div>
+    <div class="footer-col"><h2 class="footer-head">Call</h2><ul class="footer-phones" role="list">${phones.map(([label, number]) => `<li><span class="phone-label">${label}</span><a href="${tel(number)}">${number}</a></li>`).join('')}</ul><h2 class="footer-head">Email</h2><p><a href="mailto:${business.email}">${business.email}</a></p></div>`}
     <div class="footer-col"><h2 class="footer-head">More</h2><ul class="footer-links" role="list"><li><a class="text-link" href="${business.payment}">Pay US-1 Pools</a></li><li><a class="text-link" href="${business.facebook}">Facebook</a></li><li><a class="text-link" href="/contact">Get in touch</a></li></ul></div>
   </div><div class="container footer-bottom"><span>&copy; ${new Date().getUTCFullYear()} US-1 Pools</span><nav aria-label="Footer navigation">${navigation.slice(1).map(([s, l]) => navLink(s, l)).join('')}</nav></div></div></footer>`;
 }
@@ -52,6 +53,6 @@ export function layout({ slug, title, description, body, intro = '' }) {
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escape(fullTitle)}"><meta name="twitter:description" content="${escape(description)}"><meta name="twitter:image" content="${ogImage}"><meta name="twitter:image:alt" content="US-1 Pools logo over aqua pool water"><meta name="theme-color" content="#0d2240">
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/assets/favicon.png"><link rel="apple-touch-icon" href="/assets/favicon.png"><link rel="preload" as="font" type="font/woff2" href="/assets/fonts/newsreader-latin.woff2" crossorigin><link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin.woff2" crossorigin>${slug === '' ? '<link rel="preload" as="image" href="/assets/live/hero-yt.webp" fetchpriority="high">' : ''}
 <link rel="stylesheet" href="/styles.css"><script src="/script.js" defer></script>${slug === 'gallery' ? '<script src="/gallery.js" defer></script>' : ''}<script type="application/ld+json">${schema}</script></head>
-<body class="${slug ? `page-${slug}` : 'page-home'}">${header(slug)}<main id="main" tabindex="-1">${pageIntro}${body}</main>${footer()}</body></html>
+<body class="${slug ? `page-${slug}` : 'page-home'}">${header(slug)}<main id="main" tabindex="-1">${pageIntro}${body}</main>${footer(slug)}</body></html>
 `;
 }

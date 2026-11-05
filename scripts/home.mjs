@@ -4,7 +4,7 @@ import { tel } from './layout.mjs';
 
 const entries = textEntries('home');
 const about = textEntries('about');
-const copy = (start) => escape(entries.find(({ text }) => text.startsWith(start)).text);
+const copy = (start) => escape(entries.find(({ text }) => text.startsWith(start)).text.replace(' – ', ', '));
 const paragraphAfter = (heading) => escape(entries[entries.findIndex(({ tag, text }) => tag === 'h2' && text === heading) + 1].text);
 const names = (list) => list.map((name) => `<span>${name}</span>`).join('');
 const model = (title, list, href, brand = '') => `<li><a class="model-link" href="${href}">${brand}<strong>${title}</strong><span class="model-names">${names(list)}</span></a></li>`;
@@ -24,7 +24,7 @@ export function homePage() {
       <div class="hero-grid">
         <div class="hero-copy">
           <h1 id="hero-title">Pools, spas &amp; service in Franklinton, NC</h1>
-          <p class="hero-lead">The premier aquatic experts in The Triangle. ${copy('Sales, Service')}</p>
+          <p class="hero-lead">The premier aquatic experts in The Triangle. ${copy('Sales, Service').replace('—', ' — ')}</p>
           <div class="hero-actions"><a class="button" href="${tel(business.primary)}">Call ${business.primary}</a><a class="text-link" href="/pools-spas">Explore pools &amp; spas</a></div>
           <div class="hero-badges"><figure>${image('6b1cf7df', 'North Carolina licensing board seal', { eager: true, sizes: '72px' })}<figcaption>NC-Licensed</figcaption></figure><figure>${image('78992bbd', '2023 Best of the Best, The Wake Weekly', { eager: true, sizes: '72px' })}<figcaption>Best of the Best 2023</figcaption></figure></div>
         </div>
@@ -55,12 +55,12 @@ export function homePage() {
       <div class="section-actions"><a class="button" href="/contact">Get in Touch</a><a class="text-link" href="/pools-spas">All pools &amp; spas</a></div>
     </div></section>
     <section class="services" aria-labelledby="services-title">
-      <div class="container services-head" data-reveal><h2 id="services-title">Services</h2><div class="services-summary"><div><p class="sublabel">Including:</p><ul class="service-list" role="list">${services.map((item) => `<li>${escape(item).replace('In-Ground', '<span class="nowrap">In-Ground</span>')}</li>`).join('')}</ul></div><a class="button button-light" href="${tel(business.primary)}">Call Us - ${business.primary}</a></div></div>
+      <div class="container services-head" data-reveal><h2 id="services-title">Services</h2><div class="services-summary"><div><p class="sublabel">Including:</p><ul class="service-list" role="list">${services.map((item) => `<li>${escape(item).replace('In-Ground', '<span class="nowrap">In-Ground</span>')}</li>`).join('')}</ul></div><a class="button button-light" href="${tel(business.primary)}">Call ${business.primary}</a></div></div>
       <div class="service-strip">${[['Pumps', '33580aba'], ['Liners', '0093d4f7'], ['Filters & Heaters', '440327bc'], ['Openings & Closings', 'e2690e86']].map(([title, prefix]) => `<article class="service" data-reveal><figure>${image(prefix, title, { sizes: '(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 25vw' })}</figure><div class="service-copy"><h3>${escape(title)}</h3><p>${paragraphAfter(title)}</p></div></article>`).join('')}</div>
     </section>
     <section class="section retail" aria-labelledby="retail-title"><div class="container retail-grid">
       <figure class="retail-photo" data-reveal>${image('a5502ee3', 'Inside the US-1 Pools retail store', { sizes: '(max-width: 960px) 100vw, 50vw' })}</figure>
-      <div class="retail-copy" data-reveal><h2 id="retail-title">Retail</h2><p class="sublabel">Include:</p><ul class="retail-list" role="list">${retail.map((item) => `<li>${item}</li>`).join('')}</ul></div>
+      <div class="retail-copy" data-reveal><h2 id="retail-title">Retail</h2><p class="sublabel">Including:</p><ul class="retail-list" role="list">${retail.map((item) => `<li>${item}</li>`).join('')}</ul></div>
     </div></section>
     <section class="section reasons" aria-labelledby="reasons-title"><div class="container reasons-grid">
       <h2 class="section-heading" id="reasons-title" data-reveal>Why Choose Us? <span>We’re the wave that makes a difference:</span></h2>

@@ -12,9 +12,11 @@ const size = (path) => {
   return [160, 48];
 };
 // Official brand logo if downloaded (see assets/logos/SOURCES.md), otherwise nothing: text always stays.
+// Optical sizing: equal visual area, so wide wordmarks get shorter and stacked marks taller.
+const LOGO_AREA = 3600;
 export function logo(slug, name) {
   const ext = ['svg', 'png', 'webp'].find((e) => existsSync(new URL(`${slug}.${e}`, dir)));
   if (!ext) return '';
   const [w, h] = size(new URL(`${slug}.${ext}`, dir));
-  return `<img class="brand-logo brand-${slug}" src="/assets/logos/${slug}.${ext}" alt="${escape(name)}" width="${Math.round(w)}" height="${Math.round(h)}" loading="lazy" decoding="async">`;
+  return `<img class="brand-logo brand-${slug}" src="/assets/logos/${slug}.${ext}" alt="${escape(name)}" width="${Math.round(w)}" height="${Math.round(h)}" style="--logo-h:${Math.round(Math.sqrt(LOGO_AREA * h / w))}px" loading="lazy" decoding="async">`;
 }

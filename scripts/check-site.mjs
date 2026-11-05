@@ -93,7 +93,9 @@ for (const [name, body] of html) {
     if (['index.html', 'contact.html'].includes(name)) assert(decode(body).includes("Closed for the winter starting November 1. We’ll post spring hours when we reopen."), `${name}: missing mandatory winter hours`);
     for (const value of ['3453 US Hwy 1 South', 'Franklinton', '27525', 'us1pools@gmail.com']) assert(body.includes(value), `${name}: missing NAP ${value}`);
   }
-  checkPhones(body.match(/<footer\b[^>]*>([\s\S]*?)<\/footer>/i)?.[1] ?? '', `${name} footer`);
+  // Contact carries the details in its main column and a light footer; every other page in the footer.
+  if (name.startsWith('contact')) checkPhones(body.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1] ?? '', `${name} main`);
+  else checkPhones(body.match(/<footer\b[^>]*>([\s\S]*?)<\/footer>/i)?.[1] ?? '', `${name} footer`);
   // Contact details live once, in the site-wide footer (checked above on every page).
   assert(!/lightstream|indexnow/i.test(body), `${name}: forbidden financing provider or IndexNow`);
   assert(!/openingHours/.test(body), `${name}: remove openingHours while closed for winter`);
@@ -171,7 +173,7 @@ const gallery = html.get('gallery.html') ?? '';
 
 const hub = html.get('pools-spas.html') ?? '';
 for (const entry of content['pools-spas'].text.slice(2).filter((line) => !line.startsWith('[li]'))) {
-  const text = entry.replace(/^\[[^\]]+\] /, '');
+  const text = entry.replace(/^\[[^\]]+\] /, '').replace(/!+(?=\s|$)/gu, '.'); // site style: no exclamation marks
   assert(plainText(hub).includes(text), `pools-spas.html missing verbatim source copy: ${text}`);
 }
 for (const prefix of ['71d991cf-garden-spas1', '47929c8d-swim-spa5']) assert(hub.includes(prefix), `pools-spas.html missing ${prefix} image`);

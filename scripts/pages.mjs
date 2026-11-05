@@ -3,7 +3,7 @@ export function productPages({ content, image, escape, video }) {
   const entries = (slug) => content[slug].text
     .map((line) => {
       const [, tag, text] = line.match(/^\[([^\]]+)\] (.*)$/u);
-      return { tag, text };
+      return { tag, text: text.replace(/!+(?=\s|$)/gu, ".") };
     })
     .filter(({ tag }) => tag !== 'li');
   const photos = (slug) => content[slug].imgs.filter((url) => !/e2bf0920|6ef8eace/u.test(url));
