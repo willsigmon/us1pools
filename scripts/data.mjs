@@ -23,13 +23,13 @@ export const asset = (prefixOrUrl) => {
   if (!file) throw new Error(`No image for ${prefixOrUrl}`);
   return { file, ...manifest[file], src: `/assets/live/${file}`, original: manifest[file].src };
 };
-export function image(prefix, alt, { className = '', eager = false, sizes = '(max-width: 640px) 100vw, (max-width: 960px) 50vw, 600px' } = {}) {
+export function image(prefix, alt, { className = '', eager = false, priority = false, sizes = '(max-width: 640px) 100vw, (max-width: 960px) 50vw, 600px' } = {}) {
   const entry = asset(prefix);
   const src = `/assets/live/${entry.file}`;
   const variants = [160, 320, 480, 768, 960].map((width) => ({ width, path: `/assets/thumbs/${entry.file.replace('.webp', `-${width}.webp`)}` }))
     .filter(({ path }) => existsSync(new URL(`..${path}`, import.meta.url)));
   const srcset = variants.length ? ` srcset="${variants.map(({ path, width }) => `${path} ${width}w`).join(', ')}, ${src} ${entry.w}w" sizes="${escape(sizes)}"` : '';
-  return `<img src="${src}"${srcset} alt="${escape(alt)}" width="${entry.w}" height="${entry.h}"${className ? ` class="${escape(className)}"` : ''} loading="${eager ? 'eager' : 'lazy'}" decoding="async">`;
+  return `<img src="${src}"${srcset} alt="${escape(alt)}" width="${entry.w}" height="${entry.h}"${className ? ` class="${escape(className)}"` : ''} loading="${eager ? 'eager' : 'lazy'}"${priority ? ' fetchpriority="high"' : ''} decoding="async">`;
 }
 export function video(id, title) {
   return `<div class="video-facade"><button type="button" data-video="${escape(id)}" data-title="${escape(title)}" aria-label="Play ${escape(title)}"><img src="${localPosters[id] || `https://i.ytimg.com/vi/${escape(id)}/mqdefault.jpg`}" width="320" height="180" alt="" loading="lazy" decoding="async"><span class="play-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" focusable="false"><path d="M7 4l12 7-12 7z" fill="currentColor"/></svg></span><span class="video-label">${escape(title)}</span></button></div><a class="video-fallback text-link" href="https://www.youtube.com/watch?v=${escape(id)}">Watch on YouTube</a>`;

@@ -202,7 +202,7 @@
   .hero-badges img{width:64px;height:64px;object-fit:contain}
   .hero-badges figcaption{font-size:var(--small);font-weight:600;color:var(--ink);white-space:nowrap}
   .hero-visual{position:relative}
-  .hero-store img{width:100%;height:clamp(440px,66svh,720px);object-fit:cover;object-position:56% 58%}
+  .hero-photo img{width:100%;height:clamp(440px,66svh,720px);object-fit:cover;object-position:45% 62%}
   .hero-pool{position:absolute;left:0;right:0;bottom:0;height:clamp(56px,7vw,100px);overflow:hidden;background:var(--aqua-deep);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 200' preserveAspectRatio='none'%3E%3Cpath d='M0 40C180 18 360 12 540 30S900 62 1080 44S1320 20 1440 30V200H0Z'/%3E%3C/svg%3E") top / 100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 200' preserveAspectRatio='none'%3E%3Cpath d='M0 40C180 18 360 12 540 30S900 62 1080 44S1320 20 1440 30V200H0Z'/%3E%3C/svg%3E") top / 100% 100% no-repeat}
   .hero-pool img,.hero-pool video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 
@@ -427,7 +427,7 @@
     .hero-lead{order:3;margin-top:0}
     .hero-actions{order:4;margin-top:0}
     .hero-badges{order:5}
-    .hero-store img{height:clamp(300px,62vw,520px)}
+    .hero-photo img{height:clamp(300px,62vw,520px)}
     .services-head{grid-template-columns:minmax(0,1fr);grid-template-areas:"title" "list" "action";gap:var(--s3);padding-bottom:var(--s5)}
     .reason-list{grid-template-columns:minmax(0,1fr);gap:var(--s5)}
     .reason-list li,.reason-list li:nth-child(-n+2){grid-column:auto}
