@@ -1,0 +1,21 @@
+{
+  "findings": [],
+  "errors": 0,
+  "warnings": 0,
+  "notes": 0,
+  "baselined": 0,
+  "reviewRules": 33,
+  "unread": {},
+  "spacing": {
+    "web": {
+      "base": 4,
+      "values": [],
+      "source": "default"
+    },
+    "native": {
+      "base": 4,
+      "values": [],
+      "source": "default"
+    }
+  }
+}

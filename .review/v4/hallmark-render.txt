@@ -1,0 +1,44 @@
+render tier: 10 screenshots in /Users/wsig/work/us1pools/.hallmark/shots (1280x800, 1440x900, 1920x1080 folds; 1440 and 375 full pages)
+index.html
+  FAIL 34 :1 [320px] horizontal scroll: scrollWidth 1848 > viewport 320 | fix: overflow-x: clip on html and body; find the overflowing block
+  FAIL 34 :1 [375px] horizontal scroll: scrollWidth 1288 > viewport 375
+  FAIL 34 :1 [414px] horizontal scroll: scrollWidth 1288 > viewport 414
+  FAIL 34 :1 [768px] horizontal scroll: scrollWidth 1288 > viewport 768
+  FAIL 34 :1 [1024px] horizontal scroll: scrollWidth 1288 > viewport 1024
+  FAIL 34 :1 [1280px] horizontal scroll: scrollWidth 1288 > viewport 1280
+  FAIL 44d :1 [1920px] hero text starts 8px from the edge at 1920 | fix: Cap the container at 1360 to 1520px and centre it
+  FAIL 49a :1 [320px] control "919-441-0033" wraps to 2 lines (a.header-call) | fix: Shorten the label or set nowrap
+  FAIL 76 :1 [1440px] an image that does not load: e2bf0920-us-1-pools-og-logo.webp, 6b1cf7df-board-seal-transparent.webp, 287a21de-… | fix: Point it at a file that exists, make it a data-slot placeholder, or remove it
+  REFLEX 39b :1 [1440px] control height outside 44 to 52px: a.button 18px, a.button 18px, a.button 18px | fix: Marketing controls stand 44 to 52px; app UI 32 to 40px with a 44px hit target
+  REFLEX 44c :1 [1440px] hero ends at 358px of a 900px screen | fix: Fill the first screen with the visual or the headline, not with copy
+  REFLEX 49b :1 [320px] link "Resin Above-GroundGenesisNakomaD" wraps to 2 lines (a.model-link) | fix: Shorten the label or set nowrap
+  REFLEX 49b :1 [320px] link "Hybrid Above-GroundAquaSportOasi" wraps to 2 lines (a.model-link)
+  REFLEX 49b :1 [320px] link "Steel Above-GroundCoral SeasDist" wraps to 2 lines (a.model-link)
+  REFLEX 49b :1 [320px] link "Imagine® FiberglassVarious sizes" wraps to 2 lines (a.model-link)
+  REFLEX 49b :1 [320px] link "Pools by Genesis®Various sizes &" wraps to 2 lines (a.model-link)
+  REFLEX 49b :1 [320px] link "Garden Leisure® SpasVarious size" wraps to 2 lines (a.model-link)
+  REFLEX 49b :1 [320px] link "How-To Videos" wraps to 2 lines (a)
+  REFLEX 49b :1 [375px] link "Tranquility®Various sizes & colo" wraps to 2 lines (a.model-link)
+  REFLEX 59 :1 [1440px] smallest gap between sections is 16px (gaps: 174, 16, 20, 20, 16, 20, 20, 51) | fix: 120px or more between sections, by the --section-gap steps
+  REFLEX 77 :1 [1440px] 6 thin sections: section.info-strip (13% wide, no mass); "Our Team" (51% wide, no mass); "Available Pool Model… | fix: Widen the body to ten of twelve columns and give it mass: a visual 300px tall or more, a set of three across, rows, or a statement (layout.md § 4 and § 5)
+  REFLEX 78 :1 [1440px] section heads render at 24px under a 32px hero head | fix: h2 at --text-section (about 52px at 1440), item titles at --text-title (layout.md § 2)
+  REFLEX 79 :1 [1440px] 542px of nothing between the hero's last content (y 358) and the fold | fix: Centre the content in the screen and grow the visual or the head (layout.md § 6); never fill it with copy
+  WARN render :1 the shots show a fallback: fonts or stylesheets did not load (newsreader-latin.woff2, manrope-latin.woff2) | fix: Recapture when the host answers or the path is right; never review or sign off a fallback face
+  NOTE 19 :53 buzzword "industry-leading" | fix: Say what the product does, in its own nouns
+  NOTE 58 :1 482 visible words on the page (450 at most) | fix: Cut copy: one idea per screen, sections become objects
+  NOTE 58 :1 [1440px] 202 words on one screen (from y=2700) | fix: One idea per screen: cut to about 80 words, make the section an object
+  NOTE 58 :12 hero paragraph runs 14 words | fix: One sentence, twelve words or fewer
+http://127.0.0.1:4173
+  REFLEX 44c :1 [1440px] hero ends at 718px of a 900px screen
+  REFLEX 49b :1 [768px] link "919-441-0033" wraps to 2 lines (a)
+  REFLEX 49b :1 [768px] link "919-864-0277" wraps to 2 lines (a)
+  REFLEX 49b :1 [768px] link "919-880-4323" wraps to 2 lines (a)
+  REFLEX 59 :1 [1440px] smallest gap between sections is 19px (gaps: 50, 19, 101, 202, 149, 202, 165, 109)
+  REFLEX 77 :1 [1440px] 1 thin section: "Retail" (71% wide)
+  REFLEX 83 :1 [1440px] photographs cover 38% of the page below the hero (21 pictures) | fix: Balance the page: cut or shrink pictures until they cover a quarter to a third of it, and carry the freed sections in type, figures, the product or a list (imagery.md § 5)
+  WARN F19 :1 [1440px] 4 font weights in running use (400, 500, 600, 700) | fix: Three weights at most, display and body together, picked as extremes
+  WARN F20 :1 [1440px] ul.service-list leaves one item alone on its last row (2 + 2 + 1) | fix: Change the count or the columns so the last row is not an orphan
+  NOTE 58 :1 [1440px] 136 words on one screen (from y=4150)
+styles.css
+  ANSWERED F15 :1 6 different column gaps across multi-column sections (2rem, 3rem, 4rem, 5rem, 1.5rem, .5rem)
+sloplint: 9 FAIL, 21 REFLEX, 3 WARN, 1 ANSWERED, 5 NOTE across 2 file(s) and 1 URL(s).

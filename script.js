@@ -120,6 +120,25 @@
     });
   }
 
+  // Native horizontal scrolling, with explicit controls for keyboard and touch users.
+  document.querySelectorAll('.row-controls').forEach((controls) => {
+    const buttons = [...controls.querySelectorAll('[data-row]')];
+    const row = document.getElementById(buttons[0]?.dataset.row);
+    if (!row) return;
+    const update = () => {
+      controls.hidden = row.scrollWidth <= row.clientWidth + 2;
+      buttons[0].disabled = row.scrollLeft < 2;
+      buttons[1].disabled = row.scrollLeft + row.clientWidth >= row.scrollWidth - 2;
+    };
+    buttons.forEach((button) => button.addEventListener('click', () => {
+      row.scrollBy({ left: Number(button.dataset.step) * row.firstElementChild.getBoundingClientRect().width,
+        behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    }));
+    row.addEventListener('scroll', update, { passive: true });
+    new ResizeObserver(update).observe(row);
+    update();
+  });
+
   document.querySelectorAll('button[data-video]').forEach((button) => {
     button.addEventListener('click', () => {
       const videoId = button.dataset.video;

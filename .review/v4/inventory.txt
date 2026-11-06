@@ -1,0 +1,20 @@
+
+Buttons  6 uses · 3 different looks · 6 without a shared component
+     4×  <button> (no classes)  index.html:44
+     1×  <button> menu-toggle  index.html:8
+     1×  <button> dropdown-toggle  index.html:8
+
+Form fields  0 uses · 0 different looks · 0 without a shared component
+
+Headings  24 uses · 5 different looks · 24 without a shared component
+    12×  <h3> (no classes)  index.html:36
+     5×  <h2> footer-head  index.html:61
+     3×  <h2> (no classes)  index.html:31
+     3×  <h2> section-heading  index.html:34
+     1×  <h1> (no classes)  index.html:11
+
+Badges  0 uses · 0 different looks · 0 without a shared component
+
+Cards and boxes  0 uses · 0 different looks · 0 without a shared component
+
+Fewer looks is better: one input, a short heading scale, a few button and badge variants. --all lists every look

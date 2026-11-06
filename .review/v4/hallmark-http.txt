@@ -1,0 +1,14 @@
+render tier: 5 screenshots in /Users/wsig/work/us1pools/.hallmark/shots (1280x800, 1440x900, 1920x1080 folds; 1440 and 375 full pages)
+http://127.0.0.1:4173
+  REFLEX 44c :1 [1440px] hero ends at 718px of a 900px screen | fix: Fill the first screen with the visual or the headline, not with copy
+  REFLEX 59 :1 [1440px] smallest gap between sections is 19px (gaps: 50, 19, 101, 202, 149, 202, 165, 109) | fix: 120px or more between sections, by the --section-gap steps
+  REFLEX 77 :1 [1440px] 1 thin section: "Retail" (71% wide) | fix: Widen the body to ten of twelve columns and give it mass: a visual 300px tall or more, a set of three across, rows, or a statement (layout.md § 4 and § 5)
+  REFLEX 83 :1 [1440px] photographs cover 38% of the page below the hero (21 pictures) | fix: Balance the page: cut or shrink pictures until they cover a quarter to a third of it, and carry the freed sections in type, figures, the product or a list (imagery.md § 5)
+  NOTE 58 :1 [1440px] 136 words on one screen (from y=4150) | fix: One idea per screen: cut to about 80 words, make the section an object
+styles.css
+  WAIVER waive :1 malformed waiver, ignored: /* Hallmark · waive 44c · compact desktop he… | fix: Three · -separated fields: /* Hallmark · waive <gate> · <guard evidence> · <reason> */
+  WAIVER waive :1 malformed waiver, ignored: /* Hallmark · waive 59 · financing is a conn…
+  WAIVER waive :1 malformed waiver, ignored: /* Hallmark · waive 77 · Retail intentionall…
+  WAIVER waive :1 malformed waiver, ignored: /* Hallmark · waive 83 · preserve all existi…
+  ANSWERED F15 :1 6 different column gaps across multi-column sections (2rem, 3rem, 4rem, 5rem, 1.5rem, .5rem)
+sloplint: 0 FAIL, 4 REFLEX, 0 WARN, 4 REJECTED, 1 ANSWERED, 1 NOTE across 1 file(s) and 1 URL(s).

@@ -9,6 +9,7 @@ const paragraphAfter = (heading) => escape(entries[entries.findIndex(({ tag, tex
 const names = (list) => list.map((name) => `<span>${name}</span>`).join('');
 const model = (title, list, href, brand = '') => `<li><a class="model-link" href="${href}">${brand}<strong>${title}</strong><span class="model-names">${names(list)}</span></a></li>`;
 const various = ['Various sizes &amp; colors'];
+const rowControls = (id, label) => `<div class="row-controls" hidden aria-label="${label} controls"><button type="button" data-row="${id}" data-step="-1" aria-label="Previous ${label}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m14 6-6 6 6 6M8 12h12"/></svg></button><button type="button" data-row="${id}" data-step="1" aria-label="Next ${label}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m10 6 6 6-6 6M4 12h12"/></svg></button></div>`;
 
 export function homePage() {
   const reasons = ['Quality Guaranteed', 'Shark-Smart Pricing', 'Pro Installation Crew', 'Chemical Concierge', 'Free Water Testing'];
@@ -56,7 +57,8 @@ export function homePage() {
     </div></section>
     <section class="services" aria-labelledby="services-title">
       <div class="container services-head" data-reveal><h2 id="services-title">Services</h2><div class="services-summary"><div><p class="sublabel">Including:</p><ul class="service-list" role="list">${services.map((item) => `<li>${escape(item).replace('In-Ground', '<span class="nowrap">In-Ground</span>')}</li>`).join('')}</ul></div><a class="button button-light" href="${tel(business.primary)}">Call ${business.primary}</a></div></div>
-      <div class="service-strip" role="region" aria-label="Services" tabindex="0">${[['Pumps', '33580aba'], ['Liners', '579b2c5f'], ['Filters & Heaters', '440327bc'], ['Openings & Closings', 'e2690e86']].map(([title, prefix]) => `<article class="service" data-reveal><figure>${image(prefix, title, { sizes: '(max-width: 640px) 82vw, (max-width: 1100px) 50vw, 25vw' })}</figure><div class="service-copy"><h3>${escape(title)}</h3><p>${paragraphAfter(title)}</p></div></article>`).join('')}</div>
+      <div class="container service-controls">${rowControls('services-row', 'services')}</div>
+      <div id="services-row" class="service-strip" role="region" aria-label="Services" tabindex="0">${[['Pumps', '33580aba'], ['Liners', '579b2c5f'], ['Filters & Heaters', '440327bc'], ['Openings & Closings', 'e2690e86']].map(([title, prefix]) => `<article class="service" data-reveal><figure>${image(prefix, title, { sizes: '(max-width: 640px) 82vw, (max-width: 1100px) 50vw, 25vw' })}</figure><div class="service-copy"><h3>${escape(title)}</h3><p>${paragraphAfter(title)}</p></div></article>`).join('')}</div>
     </section>
     <section class="section retail" aria-labelledby="retail-title"><div class="container retail-grid">
       <figure class="retail-photo" data-reveal>${image('a5502ee3', 'Inside the US-1 Pools retail store', { sizes: '(max-width: 960px) 100vw, 50vw' })}</figure>
@@ -67,8 +69,8 @@ export function homePage() {
       <ol class="reason-list" role="list">${reasons.map((title) => `<li data-reveal><h3>${title}</h3><p>${copy(title).slice(title.length + 1)}</p></li>`).join('')}</ol>
     </div></section>
     <section class="section recent" aria-labelledby="recent-title"><div class="container">
-      <h2 class="section-heading" id="recent-title">Recent Photos</h2>
-      <div class="recent-row" role="region" aria-label="Recent photos" tabindex="0"><a class="recent-cta" href="/gallery">${image('43a6a347', 'View recent photos', { sizes: '(max-width: 640px) 62vw, 300px' })}</a><a href="/gallery" aria-label="View gallery: The US-1 Pools store at 3453 US Hwy 1 South in Franklinton">${image('6ef8eace', 'The US-1 Pools store at 3453 US Hwy 1 South in Franklinton', { sizes: '(max-width: 640px) 62vw, 300px' })}</a><a href="/gallery" aria-label="View gallery: Inground pool with a stone paver deck beside a home">${image('1092da1f', 'Inground pool with a stone paver deck beside a home', { sizes: '(max-width: 640px) 62vw, 300px' })}</a>${homePhotos.map(({ url, alt }) => `<a href="/gallery" aria-label="View gallery: ${escape(alt)}">${image(url, alt, { sizes: '(max-width: 640px) 62vw, 300px' })}</a>`).join('')}</div>
+      <div class="recent-heading"><h2 class="section-heading" id="recent-title">Recent Photos</h2>${rowControls('photos-row', 'photos')}</div>
+      <div id="photos-row" class="recent-row" role="region" aria-label="Recent photos" tabindex="0"><a class="recent-cta" href="/gallery">${image('43a6a347', 'View recent photos', { sizes: '(max-width: 640px) 62vw, 300px' })}</a><a href="/gallery" aria-label="View gallery: The US-1 Pools store at 3453 US Hwy 1 South in Franklinton">${image('6ef8eace', 'The US-1 Pools store at 3453 US Hwy 1 South in Franklinton', { sizes: '(max-width: 640px) 62vw, 300px' })}</a><a href="/gallery" aria-label="View gallery: Inground pool with a stone paver deck beside a home">${image('1092da1f', 'Inground pool with a stone paver deck beside a home', { sizes: '(max-width: 640px) 62vw, 300px' })}</a>${homePhotos.map(({ url, alt }) => `<a href="/gallery" aria-label="View gallery: ${escape(alt)}">${image(url, alt, { sizes: '(max-width: 640px) 62vw, 300px' })}</a>`).join('')}</div>
       <div class="section-actions"><a class="text-link" href="/gallery">View gallery</a></div>
     </div></section>`,
   };

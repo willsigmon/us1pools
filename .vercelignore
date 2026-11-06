@@ -6,3 +6,5 @@ _source/
 scripts/
 AGENTS.md
 README.md
+.review/
+.hallmark/
