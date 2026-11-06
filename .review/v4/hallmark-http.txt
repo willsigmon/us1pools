@@ -1,12 +1,11 @@
 render tier: 5 screenshots in /Users/wsig/work/us1pools/.hallmark/shots (1280x800, 1440x900, 1920x1080 folds; 1440 and 375 full pages)
 http://127.0.0.1:4173
-  REFLEX 59 :1 [1440px] smallest gap between sections is 19px (gaps: 50, 19, 101, 202, 149, 202, 165, 109) | fix: 120px or more between sections, by the --section-gap steps
   WAIVED 44c :1 [1440px] hero ends at 718px of a 900px screen
+  WAIVED 59 :1 [1440px] smallest gap between sections is 19px (gaps: 50, 19, 101, 202, 149, 202, 165, 109)
   WAIVED 77 :1 [1440px] 1 thin section: "Retail" (71% wide)
   WAIVED 83 :1 [1440px] photographs cover 38% of the page below the hero (21 pictures)
   NOTE 58 :1 [1440px] 136 words on one screen (from y=4150) | fix: One idea per screen: cut to about 80 words, make the section an object
 styles.css
-  WAIVER 59 :1 waiver on 59 REJECTED (reason shares no word with the page) | fix: Fix the gate, or satisfy the guard and say why in the page's own words
   ANSWERED F15 :1 6 different column gaps across multi-column sections (2rem, 3rem, 4rem, 5rem, 1.5rem, .5rem)
-  NOTE waive :1 4 reflex gates waived (44c, 77, 83, 26b): that is a house style, not a … | fix: Lock it into a design.md so later pages inherit it instead of re-arguing it
-sloplint: 0 FAIL, 1 REFLEX, 0 WARN, 3 WAIVED, 1 REJECTED, 1 ANSWERED, 2 NOTE across 1 file(s) and 1 URL(s).
+  NOTE waive :1 5 reflex gates waived (44c, 59, 77, 83, 26b): that is a house style, no… | fix: Lock it into a design.md so later pages inherit it instead of re-arguing it
+sloplint: 0 FAIL, 0 WARN, 4 WAIVED, 1 ANSWERED, 2 NOTE across 1 file(s) and 1 URL(s).
