@@ -1,11 +1,8 @@
 styles.css
-  WAIVER waive :1 malformed waiver, ignored: /* Hallmark · waive 44c · compact desktop he… | fix: Three · -separated fields: /* Hallmark · waive <gate> · <guard evidence> · <reason> */
-  WAIVER waive :1 malformed waiver, ignored: /* Hallmark · waive 59 · financing is a conn…
-  WAIVER waive :1 malformed waiver, ignored: /* Hallmark · waive 77 · Retail intentionall…
-  WAIVER waive :1 malformed waiver, ignored: /* Hallmark · waive 83 · preserve all existi…
   ANSWERED F15 :1 6 different column gaps across multi-column sections (2rem, 3rem, 4rem, 5rem, 1.5rem, .5rem)
+  NOTE waive :1 5 reflex gates waived (44c, 59, 77, 83, 26b): that is a house style, no… | fix: Lock it into a design.md so later pages inherit it instead of re-arguing it
 index.html
   NOTE 19 :53 buzzword "industry-leading" | fix: Say what the product does, in its own nouns
   NOTE 58 :1 482 visible words on the page (450 at most) | fix: Cut copy: one idea per screen, sections become objects
   NOTE 58 :12 hero paragraph runs 14 words | fix: One sentence, twelve words or fewer
-sloplint: 0 FAIL, 0 WARN, 4 REJECTED, 1 ANSWERED, 3 NOTE across 2 file(s).
+sloplint: 0 FAIL, 0 WARN, 1 ANSWERED, 4 NOTE across 2 file(s).
