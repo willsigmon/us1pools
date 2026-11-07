@@ -13,7 +13,7 @@ import {
   normalizeText,
   setApiHeaders,
 } from "./_utils.js";
-import { checkSpam, siteKey } from "./_turnstile.js";
+import { checkSpam, siteKey, turnstileReadiness } from "./_turnstile.js";
 
 const TURNSTILE_HOSTS = ["us1pools.com", "www.us1pools.com"];
 
@@ -49,7 +49,7 @@ export default async function handler(req, res) {
   // Public Turnstile site key for the static page (public by design).
   if (req.method === 'GET') {
     res.setHeader('Cache-Control', 'no-store');
-    return res.status(200).json({ turnstileSiteKey: siteKey() });
+    return res.status(200).json({ turnstileSiteKey: siteKey(), turnstileReady: turnstileReadiness().ready });
   }
 
   // Only allow POST

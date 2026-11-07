@@ -50,13 +50,46 @@ async function checkSpam(req, body, productionHosts, opts = {}) {
   const ip = clientIp(req);
   if (opts.rateLimit !== false && isRateLimited(ip)) return { status: 429, error: 'rate_limited' };
   const secret = process.env.TURNSTILE_SECRET_KEY;
-  if (!secret) return null; // keys not configured yet: honeypot + rate limit only
+  if (!secret) {
+    return turnstileUnconfiguredAllowed() ? null : { status: 503, error: 'form_unavailable' };
+  }
   const ok = await verifyTurnstile(secret, String(body['cf-turnstile-response'] || ''), ip, productionHosts);
   return ok ? null : { status: 403, error: 'verification_failed' };
 }
 
 function siteKey() {
   return process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || process.env.TURNSTILE_SITE_KEY || '';
+}
+
+// ---- Unconfigured-secret policy + readiness (Client Care Option A) ----
+// Missing TURNSTILE_SECRET_KEY: production ALWAYS fails closed (reject + log);
+// previews fail closed unless TURNSTILE_ALLOW_UNCONFIGURED=true is set on purpose;
+// local dev / unit tests (no VERCEL_ENV) are allowed.
+export function turnstileUnconfiguredAllowed(env = process.env, log = true) {
+  if (env.VERCEL_ENV === 'production') {
+    if (log) console.error('[turnstile] TURNSTILE_SECRET_KEY missing in production: rejecting form submission');
+    return false;
+  }
+  if (env.VERCEL_ENV === 'preview') return env.TURNSTILE_ALLOW_UNCONFIGURED === 'true';
+  return true;
+}
+
+/** No secrets exposed: booleans only. */
+export function turnstileReadiness(env = process.env) {
+  const secretConfigured = Boolean(env.TURNSTILE_SECRET_KEY);
+  const siteKeyConfigured = Boolean(env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || env.TURNSTILE_SITE_KEY || env.VITE_TURNSTILE_SITE_KEY);
+  return {
+    environment: env.VERCEL_ENV || 'local',
+    secretConfigured,
+    siteKeyConfigured,
+    ready: secretConfigured && siteKeyConfigured,
+    enforcing: secretConfigured || !turnstileUnconfiguredAllowed(env, false),
+  };
+}
+
+// Readiness check at cold start: loud in production logs when keys are missing.
+if (process.env.VERCEL_ENV === 'production' && !turnstileReadiness().ready) {
+  console.error('[turnstile] NOT READY in production: set TURNSTILE_SECRET_KEY and the public site key. Forms are failing closed.');
 }
 
 export { checkSpam, siteKey, TURNSTILE_ACTION };
