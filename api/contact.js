@@ -13,6 +13,9 @@ import {
   normalizeText,
   setApiHeaders,
 } from "./_utils.js";
+import { checkSpam, siteKey } from "./_turnstile.js";
+
+const TURNSTILE_HOSTS = ["us1pools.com", "www.us1pools.com"];
 
 const ALLOWED_PROJECTS = new Set([
   "Above ground pool",
@@ -42,6 +45,12 @@ const ALLOWED_TIMELINES = new Set([
 export default async function handler(req, res) {
   setApiHeaders(res);
   const isProduction = process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production";
+
+  // Public Turnstile site key for the static page (public by design).
+  if (req.method === 'GET') {
+    res.setHeader('Cache-Control', 'no-store');
+    return res.status(200).json({ turnstileSiteKey: siteKey() });
+  }
 
   // Only allow POST
   if (req.method !== 'POST') {
@@ -114,6 +123,12 @@ export default async function handler(req, res) {
   // Basic spam check (honeypot field)
   if (normalizeText(website, 100)) {
     return jsonError(res, 400, 'Invalid submission');
+  }
+
+  // Cloudflare Turnstile: enforced whenever TURNSTILE_SECRET_KEY is set; fails closed.
+  const spam = await checkSpam(req, body, TURNSTILE_HOSTS, { rateLimit: false });
+  if (spam) {
+    return jsonError(res, spam.status, 'We could not verify this request. Please refresh the page and try again, or call us.');
   }
 
   try {

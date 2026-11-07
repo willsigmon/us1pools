@@ -133,7 +133,7 @@
             </iframe>
           </div>
         </div>
-        <form class="contact-form" id="contactForm">
+        <form class="contact-form" id="contactForm" action="/api/contact" data-turnstile-form>
           <div class="form-grid">
             <label>
               Full name <span class="required" aria-hidden="true">*</span>
@@ -250,6 +250,7 @@
   <script defer data-domain="us1pools.com" src="https://plausible.io/js/script.js"></script>
   <script src="script.js"></script>
   <script src="contact-form.js"></script>
+  <script src="/turnstile.js" defer></script>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
